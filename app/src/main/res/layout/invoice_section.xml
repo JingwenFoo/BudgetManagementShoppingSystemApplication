@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/invoiceChildRecyclerView"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOTAL (RM) "
+        android:id="@+id/totalRM"
+        android:layout_below="@+id/invoiceChildRecyclerView"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/debitCreditCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VISA DEBIT "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_below="@+id/totalRM"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHANGE (RM) "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_below="@+id/debitCreditCard"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100.00"
+        android:id="@+id/total"
+        android:layout_below="@+id/invoiceChildRecyclerView"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/debitCreditCardCharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100.00"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/totalRM"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_below="@+id/debitCreditCard"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"/>
+
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="@android:color/black"
+       android:layout_marginTop="20dp"
+       android:layout_below="@+id/change"
+       android:id="@+id/dividerLine"/>
+
+    <TextView
+        android:id="@+id/datePayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="31/09/2021"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/dividerLine"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/timePayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10.00 am"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/dividerLine"
+        android:layout_toRightOf="@+id/datePayment"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/paidBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paid By : "
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/datePayment"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/custName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Name"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/datePayment"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/paidBy"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="THANK YOU FOR SHOPPING"
+        android:textColor="#FF5722"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
+</RelativeLayout>
