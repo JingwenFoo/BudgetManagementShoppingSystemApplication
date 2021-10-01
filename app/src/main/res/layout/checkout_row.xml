@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/checkoutProductImg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_refresh"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkoutProductName"
+            android:layout_toRightOf="@+id/checkoutProductImg"
+            android:text="Product Name"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/checkoutProductSellingPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/checkoutProductName"
+            android:text="8.99"
+            android:textColor="#FF5722"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/checkoutProductSellingPriceRM"
+            />
+
+        <TextView
+            android:id="@+id/checkoutProductSellingPriceRM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/checkoutProductName"
+            android:text="RM "
+            android:textColor="#FF5722"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/checkoutProductImg"
+            />
+
+        <TextView
+            android:id="@+id/checkoutProductUnitPriceRM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/checkoutProductSellingPriceRM"
+            android:text="@string/normal_price"
+            android:textColor="#68000000"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/checkoutProductImg"
+            />
+
+        <TextView
+            android:id="@+id/checkoutProductDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/checkoutProductSellingPriceRM"
+            android:text="discount"
+            android:textColor="#FF5722"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/checkoutProductUnitPriceRM"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/checkoutProductQuantity"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/checkoutProductTotalPriceRM"
+            />
+
+        <TextView
+            android:id="@+id/checkoutProductTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/checkoutProductName"
+            android:text="8.99"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+
+            />
+
+        <TextView
+            android:id="@+id/checkoutProductTotalPriceRM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RM "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/checkoutProductTotalPrice"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+
+            />
+
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
+
+

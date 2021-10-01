@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true">
+
+    <GridLayout
+        android:columnCount="4"
+        android:rowCount="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/noPLR"
+                android:layout_columnWeight="1"
+                android:layout_column="0"
+                android:text="1"
+                android:layout_rowSpan="2"
+                android:layout_gravity="center"
+                android:width="10dp"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="1dp"
+                android:background="#ffffff"
+                />
+            <TextView
+                android:id="@+id/productNamePLR"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_columnWeight="2"
+                android:layout_rowSpan="2"
+                android:layout_weight="2"
+                android:layout_column="1"
+                android:text="Product Name"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginBottom="1dp"
+                android:background="#ffffff"
+
+                />
+            <TextView
+                android:id="@+id/categoryPLR"
+                android:layout_columnWeight="3"
+                android:layout_weight="2"
+                android:layout_rowSpan="2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="Category"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginBottom="1dp"
+                android:background="#ffffff"
+                />
+
+            <Button
+                android:layout_column="3"
+                android:id="@+id/PLViewBtnPLR"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#2196F3"
+                android:text="View/Edit" />
+            <Button
+                android:layout_column="3"
+                android:id="@+id/PLDeleteBtnPLR"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#D50606"
+                android:textSize="12dp"
+                android:text="Delete"
+                />
+    </GridLayout>
+
+
+</androidx.cardview.widget.CardView>

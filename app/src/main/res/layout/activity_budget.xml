@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Budget"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please enter your budget: RM "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+         />
+
+    <EditText
+        android:id="@+id/editTextBudget"
+        android:layout_width="100dp"
+        android:inputType="numberDecimal"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textView2"
+        android:saveEnabled="false"
+         />
+
+    <TextView
+        android:id="@+id/textFresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fresh"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="20dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+       />
+
+    <TextView
+        android:id="@+id/textHousehold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Household"
+        android:layout_below="@+id/textBeverages"
+        android:layout_marginLeft="10dp"
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+         />
+
+    <TextView
+        android:id="@+id/textBeverages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beverages"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textGroceries"
+        android:layout_marginLeft="10dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/textPCare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personal Care"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textHousehold"
+        android:layout_marginLeft="10dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+         />
+
+    <TextView
+        android:id="@+id/textGroceries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Groceries"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textFresh"
+        android:layout_marginLeft="10dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+         />
+    <TextView
+        android:id="@+id/textClothes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clothes"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textPCare"
+        android:layout_marginLeft="10dp"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
+         />
+
+    <SeekBar
+        android:id="@+id/seekBarFresh"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textClothes"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="50dp"
+        />
+
+    <SeekBar
+        android:id="@+id/seekBarBeverages"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textClothes"
+        android:layout_below="@+id/textBeverages"/>
+
+    <SeekBar
+        android:id="@+id/seekBarHouse"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textClothes"
+        android:layout_below="@+id/textHousehold" />
+
+    <SeekBar
+        android:id="@+id/seekBarPC"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textClothes"
+        android:layout_below="@+id/textPCare" />
+
+    <SeekBar
+        android:id="@+id/seekBarGroc"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textClothes"
+        android:layout_below="@+id/textGroceries" />
+
+    <SeekBar
+        android:id="@+id/seekBarCloth"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textClothes"
+        android:layout_below="@+id/textClothes" />
+
+    <TextView
+        android:id="@+id/freshPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="50dp"
+    />
+
+    <TextView
+        android:id="@+id/grocPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:layout_below="@+id/textGroceries"
+        />
+
+    <TextView
+        android:id="@+id/bevPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:layout_below="@+id/textBeverages"
+        />
+    <TextView
+        android:id="@+id/housPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:layout_below="@+id/textHousehold"
+        />
+
+    <TextView
+        android:id="@+id/PCPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:layout_below="@+id/textPCare"
+        />
+
+    <TextView
+        android:id="@+id/clothPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:layout_below="@+id/textClothes"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="16sp"
+        android:layout_below="@+id/textView1"
+        android:layout_toRightOf="@+id/freshPer"
+        android:textColor="@color/black"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="16sp"
+        android:layout_below="@+id/textGroceries"
+        android:layout_toRightOf="@+id/grocPer"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="16sp"
+        android:layout_below="@+id/textBeverages"
+        android:layout_toRightOf="@+id/bevPer"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="16sp"
+        android:layout_below="@+id/textHousehold"
+        android:layout_toRightOf="@+id/housPer"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="16sp"
+        android:layout_below="@+id/textPCare"
+        android:layout_toRightOf="@+id/PCPer"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="16sp"
+        android:layout_below="@+id/textClothes"
+        android:layout_toRightOf="@+id/clothPer"
+        android:textColor="@color/black"
+        />
+
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go Shopping"
+        android:textSize="16sp"
+        android:backgroundTint="#009688"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.budgetmanagementshoppingsystemapplication">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Budget"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
+        <activity android:name=".ViewInvoice"></activity>
+        <activity android:name=".CustomerInvoice" />
+        <activity android:name=".CustomerCheckout" />
+        <activity
+            android:name=".CustomerViewProduct"
+            android:label="Product Information"
+            android:parentActivityName=".ViewCart" />
+        <activity
+            android:name=".AddToCart"
+            android:label="Add to Cart"
+            android:parentActivityName=".ViewCart" />
+        <activity
+            android:name=".Budget"
+            android:label="Budget Setting"
+            android:parentActivityName=".CustomerHomepage" />
+        <activity
+            android:name=".ViewCart"
+            android:label="Shopping Cart"
+            android:parentActivityName=".Budget" />
+        <activity
+            android:name=".EditForm"
+            android:label="Update Product"
+            android:parentActivityName=".ViewForm" />
+        <activity
+            android:name=".ViewForm"
+            android:label="Product Detail"
+            android:parentActivityName=".ViewList" />
+        <activity
+            android:name=".ViewList"
+            android:label="Product List"
+            android:parentActivityName=".AdminHomepage" />
+        <activity
+            android:name=".AddProduct"
+            android:label="Add New Product"
+            android:parentActivityName=".ViewList" />
+        <activity
+            android:name=".ViewAccountDetail"
+            android:label="Customer Detail"
+            android:parentActivityName=".ViewAccountList" />
+        <activity
+            android:name=".ViewAccountList"
+            android:label="Account List"
+            android:parentActivityName=".AdminHomepage" />
+        <activity
+            android:name=".AdminHomepage"
+            android:label="Admin Homepage"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EditProfile"
+            android:label="Edit Profile"
+            android:parentActivityName=".ViewProfile" />
+        <activity
+            android:name=".ViewProfile"
+            android:label="Profile"
+            android:parentActivityName=".CustomerHomepage" />
+        <activity
+            android:name=".CustomerHomepage"
+            android:label="Customer Homepage"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Register"
+            android:label="Register"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="BMSSA">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CaptureAct"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+    </application>
+
+</manifest>

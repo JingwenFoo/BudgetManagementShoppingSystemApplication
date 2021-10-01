@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/section_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="#7EB0EEF6">
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/teal_700"/>
+
+    <TextView
+        android:id="@+id/catTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:text="Budget :"
+        android:layout_toLeftOf="@+id/categoryBudgetRM"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"/>
+
+    <TextView
+        android:id="@+id/categoryBudgetRM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM "
+        android:textColor="@color/teal_700"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_toLeftOf="@+id/categoryBudget"
+        android:layout_marginTop="10dp"
+       />
+
+    <TextView
+        android:id="@+id/categoryBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50.50"
+        android:textColor="@color/teal_700"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoryRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+</RelativeLayout>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddToCart">
+
+    <TextView
+        android:id="@+id/pdInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Product Information"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgProduct"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/pdInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_refresh" />
+
+    <TextView
+        android:id="@+id/stockView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgProduct"
+        android:text="100"
+        android:layout_toLeftOf="@+id/textViewLeft"
+        />
+
+    <TextView
+        android:id="@+id/textViewLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgProduct"
+        android:text=" left"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp" />
+
+
+    <TextView
+        android:id="@+id/disSellingPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgProduct"
+        android:layout_toRightOf="@+id/disSellingPriceRM"
+        android:layout_marginTop="10dp"
+        android:text="9.00"
+        android:textColor="#F44336"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/disSellingPriceRM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgProduct"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="RM "
+        android:textColor="#F44336"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/uid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="User ID"/>
+
+    <TextView
+        android:id="@+id/disNormalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/disSellingPrice"
+        android:layout_marginLeft="20dp"
+        android:text="@string/normal_price"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/disSellingPrice"
+        android:layout_marginLeft="20dp"
+        android:text="Discount"
+        android:textColor="#F44336"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/disNormalPrice"/>
+
+
+    <TextView
+        android:id="@+id/disName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/disNormalPrice"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Product Name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/disBrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/disName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Product Brand"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/disDescp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/disBrand"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Product Description"
+        android:textColor="#66000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/disDescp"
+        android:layout_marginTop="20dp"/>
+
+    <ImageButton
+        android:id="@+id/addQuantityBtn"
+        android:layout_toRightOf="@+id/quantity"
+        android:layout_below="@id/disDescp"
+        android:layout_marginTop="15dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add_quantity_round"/>
+
+    <ImageButton
+        android:id="@+id/minusQuantityBtn"
+        android:layout_toLeftOf="@+id/quantity"
+        android:layout_below="@id/disDescp"
+        android:layout_marginTop="15dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_minus_quantity_round"/>
+
+    <ImageButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_cancel"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/addToCartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quantity"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#FF5722"
+        android:layout_marginTop="10dp"
+        android:text="Add to Cart" />
+
+    <TextView
+        android:id="@+id/overBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You are over budget!"
+        android:textSize="16sp"
+        android:layout_below="@+id/addToCartBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#C31A0E"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "909880374509",
+    "firebase_url": "https://bmssa-938c4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bmssa-938c4",
+    "storage_bucket": "bmssa-938c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909880374509:android:a571e126165b8ff37108e4",
+        "android_client_info": {
+          "package_name": "com.example.budgetmanagementshoppingsystemapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909880374509-ivdd0ge4gahspg5m1sagce02l0snmpf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXwH-JI4-skdCZMkiJM2kRewvs5boxHO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909880374509-ivdd0ge4gahspg5m1sagce02l0snmpf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

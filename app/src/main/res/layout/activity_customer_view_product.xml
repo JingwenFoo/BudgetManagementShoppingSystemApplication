@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerViewProduct">
+
+    <TextView
+        android:id="@+id/CusttextViewPInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Product Information"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/CustproductImageView"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/CusttextViewPInfo"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/darker_gray"
+        android:src="@drawable/ic_image"/>
+
+    <TextView
+        android:id="@+id/CustproductIDView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Code:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="150dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/CusttextViewProductID"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Product Code"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/CustproductIDView"
+        android:layout_marginTop="150dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Name:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/CustproductIDView"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/CusttextViewProductName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Product Name"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/CustproductIDView"
+        android:layout_below="@+id/CusttextViewProductID"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/CusttextViewProductName"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/CusttextViewCategory"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Category"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/CustproductIDView"
+        android:layout_below="@+id/CusttextViewProductName"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brand:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/CusttextViewCategory"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/CusttextViewBrand"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Product Brand"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/CustproductIDView"
+        android:layout_below="@+id/CusttextViewCategory"
+        android:padding="10dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price (RM):"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/CusttextViewBrand"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/CusttextViewPrice"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Product Brand"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/CustproductIDView"
+        android:layout_below="@+id/CusttextViewBrand"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/CusttextViewPrice"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/CusttextViewDescp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/CustproductIDView"
+        android:layout_below="@+id/CusttextViewPrice"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/CusttextViewDescp"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/CusttextViewStock"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Stock Availability"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/CustproductIDView"
+        android:layout_below="@+id/CusttextViewDescp"
+        android:padding="10dp"/>
+
+</RelativeLayout>

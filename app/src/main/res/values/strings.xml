@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Budget Management Shopping System Application</string>
+    <string name="normal_price"><Strike>RM 10.99</Strike></string>
+</resources>
