@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
-        <activity android:name=".ViewInvoice"></activity>
+        <activity android:name=".ViewInvoice" />
         <activity android:name=".CustomerInvoice" />
         <activity android:name=".CustomerCheckout" />
         <activity
