@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageAccount;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
+import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.example.budgetmanagementshoppingsystemapplication.preferences;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageProduct;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
+import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +51,7 @@ public class ViewList extends AppCompatActivity {
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addProduct = new Intent(ViewList.this,AddProduct.class);
+                Intent addProduct = new Intent(ViewList.this, AddProduct.class);
                 startActivity(addProduct);
             }
         });

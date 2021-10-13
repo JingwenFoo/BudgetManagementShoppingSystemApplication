@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageAccount;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
+import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -43,7 +45,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
         holder.viewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent view = new Intent(context,ViewAccountDetail.class);
+                Intent view = new Intent(context, ViewAccountDetail.class);
                 view.putExtra("uid",accountList.get(position).getUid());
                 context.startActivity(view);
             }
@@ -66,7 +68,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Customer");
                 ref.child(uid).removeValue();
                 Toast.makeText(context,"Customer deleted successfully",Toast.LENGTH_SHORT).show();
-                Intent refresh = new Intent(context,ViewAccountList.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent refresh = new Intent(context, ViewAccountList.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(refresh);
             }
         });

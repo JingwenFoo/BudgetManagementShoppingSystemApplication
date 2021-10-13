@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageProduct;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
+import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,7 +47,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.viewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent view = new Intent(context,ViewForm.class);
+                Intent view = new Intent(context, ViewForm.class);
                 view.putExtra("pid",productList.get(position).getProductID());
                 context.startActivity(view);
             }
@@ -69,7 +71,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Product");
                 ref.child(pid).removeValue();
                 Toast.makeText(context,"Product deleted successfully",Toast.LENGTH_SHORT).show();
-                Intent refresh = new Intent(context,ViewList.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent refresh = new Intent(context, ViewList.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(refresh);
             }
         });

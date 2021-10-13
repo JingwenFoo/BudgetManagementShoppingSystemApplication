@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageProduct;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 

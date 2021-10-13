@@ -10,7 +10,7 @@
         android:id="@+id/recyclerViewCheckoutSection"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
-    
+
     <TextView
         android:id="@+id/chooseTypeTV"
         android:layout_width="wrap_content"

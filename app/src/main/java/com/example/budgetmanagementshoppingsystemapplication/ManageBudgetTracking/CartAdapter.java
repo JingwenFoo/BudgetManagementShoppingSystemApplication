@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.CustomerViewProduct;
+import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
+import com.example.budgetmanagementshoppingsystemapplication.Model.ShoppingCart;
+import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.example.budgetmanagementshoppingsystemapplication.preferences;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

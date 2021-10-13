@@ -1,6 +1,5 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,12 +12,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.example.budgetmanagementshoppingsystemapplication.preferences;
 
 public class Budget extends AppCompatActivity {
 
@@ -802,6 +797,20 @@ public class Budget extends AppCompatActivity {
                             preferences.setDataClothBudget(Budget.this, String.valueOf(0));
                         else
                             preferences.setDataClothBudget(Budget.this, tv_cloth.getText().toString());
+
+                        if(preferences.getDataFreshBudgetTotal(Budget.this).isEmpty())
+                            preferences.setDataFreshBudgetTotal(Budget.this, String.valueOf(0));
+                        if(preferences.getDataBevBudgetTotal(Budget.this).isEmpty())
+                            preferences.setDataBevBudgetTotal(Budget.this, String.valueOf(0));
+                        if(preferences.getDataGroBudgetTotal(Budget.this).isEmpty())
+                            preferences.setDataGroBudgetTotal(Budget.this, String.valueOf(0));
+                        if(preferences.getDataHouseBudgetTotal(Budget.this).isEmpty())
+                            preferences.setDataHouseBudgetTotal(Budget.this, String.valueOf(0));
+                        if(preferences.getDataPCareBudgetTotal(Budget.this).isEmpty())
+                            preferences.setDataPCareBudgetTotal(Budget.this, String.valueOf(0));
+                        if(preferences.getDataClothBudgetTotal(Budget.this).isEmpty())
+                            preferences.setDataClothBudgetTotal(Budget.this, String.valueOf(0));
+
 
                         Float freshBud = Float.parseFloat(preferences.getDataFreshBudget(Budget.this));
                         Float groBud = Float.parseFloat(preferences.getDataGroBudget(Budget.this));

@@ -17,71 +17,74 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
-        <activity android:name=".ViewInvoice" />
-        <activity android:name=".CustomerInvoice" />
-        <activity android:name=".CustomerCheckout" />
+        <activity android:name=".ManagePayment.ViewInvoice" />
+        <activity android:name=".ManagePayment.CustomerInvoice" />
         <activity
-            android:name=".CustomerViewProduct"
+            android:name=".ManagePayment.CustomerCheckout"
+            android:label="Checkout"
+            android:parentActivityName=".ManageBudgetTracking.ViewCart"/>
+        <activity
+            android:name=".ManageProduct.CustomerViewProduct"
             android:label="Product Information"
-            android:parentActivityName=".ViewCart" />
+            android:parentActivityName=".ManageBudgetTracking.ViewCart" />
         <activity
-            android:name=".AddToCart"
+            android:name=".ManageBudgetTracking.AddToCart"
             android:label="Add to Cart"
-            android:parentActivityName=".ViewCart" />
+            android:parentActivityName=".ManageBudgetTracking.ViewCart" />
         <activity
-            android:name=".Budget"
+            android:name=".ManageBudgetTracking.Budget"
             android:label="Budget Setting"
             android:parentActivityName=".CustomerHomepage" />
         <activity
-            android:name=".ViewCart"
+            android:name=".ManageBudgetTracking.ViewCart"
             android:label="Shopping Cart"
-            android:parentActivityName=".Budget" />
+            android:parentActivityName=".ManageBudgetTracking.Budget" />
         <activity
-            android:name=".EditForm"
+            android:name=".ManageProduct.EditForm"
             android:label="Update Product"
-            android:parentActivityName=".ViewForm" />
+            android:parentActivityName=".ManageProduct.ViewForm" />
         <activity
-            android:name=".ViewForm"
+            android:name=".ManageProduct.ViewForm"
             android:label="Product Detail"
-            android:parentActivityName=".ViewList" />
+            android:parentActivityName=".ManageProduct.ViewList" />
         <activity
-            android:name=".ViewList"
+            android:name=".ManageProduct.ViewList"
             android:label="Product List"
             android:parentActivityName=".AdminHomepage" />
         <activity
-            android:name=".AddProduct"
+            android:name=".ManageProduct.AddProduct"
             android:label="Add New Product"
-            android:parentActivityName=".ViewList" />
+            android:parentActivityName=".ManageProduct.ViewList" />
         <activity
-            android:name=".ViewAccountDetail"
+            android:name=".ManageAccount.ViewAccountDetail"
             android:label="Customer Detail"
-            android:parentActivityName=".ViewAccountList" />
+            android:parentActivityName=".ManageAccount.ViewAccountList" />
         <activity
-            android:name=".ViewAccountList"
+            android:name=".ManageAccount.ViewAccountList"
             android:label="Account List"
             android:parentActivityName=".AdminHomepage" />
         <activity
             android:name=".AdminHomepage"
             android:label="Admin Homepage"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".ManageAccount.MainActivity" />
         <activity
-            android:name=".EditProfile"
+            android:name=".ManageAccount.EditProfile"
             android:label="Edit Profile"
-            android:parentActivityName=".ViewProfile" />
+            android:parentActivityName=".ManageAccount.ViewProfile" />
         <activity
-            android:name=".ViewProfile"
+            android:name=".ManageAccount.ViewProfile"
             android:label="Profile"
             android:parentActivityName=".CustomerHomepage" />
         <activity
             android:name=".CustomerHomepage"
             android:label="Customer Homepage"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".ManageAccount.MainActivity" />
         <activity
-            android:name=".Register"
+            android:name=".ManageAccount.Register"
             android:label="Register"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".ManageAccount.MainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ManageAccount.MainActivity"
             android:label="BMSSA">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -90,7 +93,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CaptureAct"
+            android:name=".ManageProduct.CaptureAct"
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
