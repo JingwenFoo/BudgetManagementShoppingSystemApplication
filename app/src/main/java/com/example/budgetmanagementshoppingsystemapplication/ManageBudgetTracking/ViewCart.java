@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.CustomerCheckout;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.CaptureAct;
 import com.example.budgetmanagementshoppingsystemapplication.Model.ShoppingCart;
 import com.example.budgetmanagementshoppingsystemapplication.R;
@@ -50,23 +51,6 @@ public class ViewCart extends AppCompatActivity {
         CheckoutBtn = findViewById(R.id.checkOutBtn);
         addMoreBtn = findViewById(R.id.addMoreItemBtn);
         cartRecyclerView = findViewById(R.id.categoryRecyclerView);
-      /*  userID = findViewById(R.id.userID);
-
-
-        ref = FirebaseDatabase.getInstance().getReference().child("Account").child(String.valueOf(preferences.getDataStatus(this)));
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String uid = snapshot.child("uid").getValue(String.class);
-                userID.setText(uid);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-*/
 
         ref = FirebaseDatabase.getInstance().getReference();
         ref.child("ShoppingCart").addValueEventListener(new ValueEventListener() {
@@ -88,7 +72,6 @@ public class ViewCart extends AppCompatActivity {
             }
 
         });
-
 
         Float budget = Float.parseFloat(preferences.getDataBudget(ViewCart.this));
         Float totalCartPrice = Float.parseFloat(preferences.getDataTotalCart(ViewCart.this));
@@ -138,31 +121,23 @@ public class ViewCart extends AppCompatActivity {
         MainRecylcerAdapter mainRecylcerAdapter = new MainRecylcerAdapter(ViewCart.this, sectionList);
         mainRecyclerView.setAdapter(mainRecylcerAdapter);
         mainRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-/*
-
-        Intent intent = getIntent();
-        int fresh = intent.getIntExtra("fresh",0);
-        int gro = intent.getIntExtra("gro",0);
-        int house = intent.getIntExtra("house",0);
-        int bev = intent.getIntExtra("bev",0);
-        int PCare = intent.getIntExtra("PCare",0);
-        int cloth = intent.getIntExtra("cloth",0);*/
 
         tv_budget.setText(String.valueOf(preferences.getDataBudget(this)));
         editBudBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent edit = new Intent(ViewCart.this, Budget.class);
-             /*   edit.putExtra("freshE", fresh);
-                edit.putExtra("groE", gro);
-                edit.putExtra("bevE", bev);
-                edit.putExtra("houseE", house);
-                edit.putExtra("PCareE", PCare);
-                edit.putExtra("clothE", cloth);*/
                 startActivity(edit);
             }
         });
 
+        CheckoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent checkout = new Intent(ViewCart.this, CustomerCheckout.class);
+                startActivity(checkout);
+            }
+        });
 
     }
 
@@ -186,7 +161,6 @@ public class ViewCart extends AppCompatActivity {
                 String productCode = result.getContents();
                 Intent in = new Intent(ViewCart.this, AddToCart.class);
                 in.putExtra("proid", productCode);
-              //  in.putExtra("uid", userID.getText().toString());
                 in.putExtra("totalPriceCart", tv_ttpricecart.getText().toString());
                 startActivity(in);
             }
@@ -205,11 +179,7 @@ public class ViewCart extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        //     Intent intent = getIntent();
-        //    String uid = ""+intent.getStringExtra("custID");
-        //    Integer quantityUp = intent.getIntExtra("quantityUpdate",0);
         tv_budget.setText(String.valueOf(preferences.getDataBudget(this)));
-        // userID.setText(uid);
 
     }
 

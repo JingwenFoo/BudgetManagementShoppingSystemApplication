@@ -258,7 +258,7 @@ public class MainRecylcerAdapter extends RecyclerView.Adapter<MainRecylcerAdapte
         return sectionList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView category, categoryBudget;
         RecyclerView childRecyclerView;
