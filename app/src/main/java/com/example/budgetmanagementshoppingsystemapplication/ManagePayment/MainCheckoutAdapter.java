@@ -4,7 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -66,6 +70,23 @@ public class MainCheckoutAdapter extends RecyclerView.Adapter<MainCheckoutAdapte
 
             }
         });
+
+        holder.payBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selected_id = holder.radioGroup.getCheckedRadioButtonId();
+                if (selected_id == R.id.debitCreditCard)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
+        });
+
     }
 
     @Override
@@ -77,11 +98,16 @@ public class MainCheckoutAdapter extends RecyclerView.Adapter<MainCheckoutAdapte
 
         RecyclerView childRecyclerView;
         TextView totalPrice;
+        Button payBtn;
+        RadioGroup radioGroup;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             childRecyclerView = itemView.findViewById(R.id.recyclerViewCheckoutSection);
             totalPrice = itemView.findViewById(R.id.totalPriceCheckout);
+            payBtn = itemView.findViewById(R.id.payBtn);
+            radioGroup = itemView.findViewById(R.id.paymentTypeRadio);
+
 
         }
     }

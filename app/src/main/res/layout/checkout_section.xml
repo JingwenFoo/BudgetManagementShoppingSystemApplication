@@ -33,7 +33,8 @@
             android:id="@+id/radioDebitCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Debit/Credit Card"/>
+            android:text="Debit/Credit Card"
+            android:checked="true"/>
         <RadioButton
             android:id="@+id/radioOnlineBank"
             android:layout_width="wrap_content"
