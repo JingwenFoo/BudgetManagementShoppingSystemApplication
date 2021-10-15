@@ -1,6 +1,7 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManagePayment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,13 +76,15 @@ public class MainCheckoutAdapter extends RecyclerView.Adapter<MainCheckoutAdapte
             @Override
             public void onClick(View v) {
                 int selected_id = holder.radioGroup.getCheckedRadioButtonId();
-                if (selected_id == R.id.debitCreditCard)
+                if (selected_id == R.id.radioDebitCard)
                 {
-
+                    Intent cardPayment = new Intent(context,CardPayment.class);
+                    cardPayment.putExtra("totalAmount",holder.totalPrice.getText());
+                    context.startActivity(cardPayment);
                 }
                 else
                 {
-
+                    Toast.makeText(context,"Online banking",Toast.LENGTH_SHORT).show();
                 }
 
             }

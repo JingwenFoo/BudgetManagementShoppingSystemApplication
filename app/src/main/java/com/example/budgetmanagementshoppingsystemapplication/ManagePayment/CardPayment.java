@@ -43,7 +43,7 @@ import okhttp3.Response;
 public class CardPayment extends AppCompatActivity {
 
     // 10.0.2.2 is the Android emulator's alias to localhost
-    private static final String BACKEND_URL = "https://obscure-headland-61818.herokuapp.com/";
+    private static final String BACKEND_URL = "https://budget-management-shopping.herokuapp.com/";
     private OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
     private Stripe stripe;
@@ -56,6 +56,9 @@ public class CardPayment extends AppCompatActivity {
 
         amountTextView = findViewById(R.id.totalAmountPay);
 
+        Intent intent = getIntent();
+        String totalAmount = intent.getStringExtra("totalAmount");
+        amountTextView.setText(totalAmount);
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -72,7 +75,7 @@ public class CardPayment extends AppCompatActivity {
         Map<String, Object> payMap = new HashMap<>();
         Map<String, Object> itemMap = new HashMap<>();
         List<Map<String, Object>> itemList = new ArrayList<>();
-        payMap.put("currency", "usd");
+        payMap.put("currency", "myr");
         itemMap.put("id", "photo_subscription");
         itemMap.put("amount", amount);
         itemList.add(itemMap);
