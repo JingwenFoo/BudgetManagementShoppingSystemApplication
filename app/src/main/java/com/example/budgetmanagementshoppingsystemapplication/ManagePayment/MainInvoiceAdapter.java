@@ -42,40 +42,40 @@ public class MainInvoiceAdapter extends RecyclerView.Adapter<MainInvoiceAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MainInvoiceAdapter.ViewHolder holder, int position) {
-//        holder.childRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-//        holder.invoiceID.setText(paymentID);
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Payment").child(paymentID);
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Payment paymentDetail = snapshot.getValue(Payment.class);
-//                holder.totalPay.setText(paymentDetail.getAmountPay());
-//                holder.paymentType.setText(paymentDetail.getPaymentType());
-//                holder.datetime.setText(paymentDetail.getDateTime());
-//                holder.custName.setText(paymentDetail.getCustomerName());
-//
-//                ArrayList<ShoppingCart> invoiceItem = new ArrayList<>();
-//                float  totalPrice = 0;
-//                for (DataSnapshot snapshot1 : snapshot.child("itemPurchase").getChildren()) {
-//                    ShoppingCart product = snapshot1.getValue(ShoppingCart.class);
-//                    totalPrice += Float.parseFloat(product.getTotalPrice());
-//                    invoiceItem.add(product);
-//                }
-//
-//                InvoiceItemAdapter custInvoiceAdapter = new InvoiceItemAdapter(context, invoiceItem);
-//                holder.childRecyclerView.setAdapter(custInvoiceAdapter);
-//                custInvoiceAdapter.notifyDataSetChanged();
-//
-//                float totalPay = Float.parseFloat(holder.totalPay.getText().toString());
-//                holder.totalPrice.setText(String.format("%.2f",totalPrice));
-//                holder.change.setText(String.format("%.2f",totalPay-totalPrice));
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        holder.childRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        holder.invoiceID.setText(paymentID);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Payment").child(paymentID);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Payment paymentDetail = snapshot.getValue(Payment.class);
+                holder.totalPay.setText(paymentDetail.getAmountPay());
+                holder.paymentType.setText(paymentDetail.getPaymentType());
+                holder.datetime.setText(paymentDetail.getDateTime());
+                holder.custName.setText(paymentDetail.getCustomerName());
+
+                ArrayList<ShoppingCart> invoiceItem = new ArrayList<>();
+                float  totalPrice = 0;
+                for (DataSnapshot snapshot1 : snapshot.child("itemPurchase").getChildren()) {
+                    ShoppingCart product = snapshot1.getValue(ShoppingCart.class);
+                    totalPrice += Float.parseFloat(product.getTotalPrice());
+                    invoiceItem.add(product);
+                }
+
+                InvoiceItemAdapter custInvoiceAdapter = new InvoiceItemAdapter(context, invoiceItem);
+                holder.childRecyclerView.setAdapter(custInvoiceAdapter);
+                custInvoiceAdapter.notifyDataSetChanged();
+
+                float totalPay = Float.parseFloat(holder.totalPay.getText().toString());
+                holder.totalPrice.setText(String.format("%.2f",totalPrice));
+                holder.change.setText(String.format("%.2f",totalPay-totalPrice));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

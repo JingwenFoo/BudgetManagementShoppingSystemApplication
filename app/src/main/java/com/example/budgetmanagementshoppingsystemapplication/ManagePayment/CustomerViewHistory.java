@@ -19,6 +19,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CustomerViewHistory extends AppCompatActivity {
@@ -52,8 +53,10 @@ DatabaseReference ref;
                         String totalPurchase = snapshot1.child("amountPay").getValue(String.class);
 
                         invoiceList.add(new Payment(invoiceID, totalPurchase, dateTime));
+
                     }
                 }
+                Collections.reverse(invoiceList);
                 adapter.notifyDataSetChanged();
             }
 

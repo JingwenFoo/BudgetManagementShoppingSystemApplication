@@ -45,7 +45,6 @@ public class InvoiceItemAdapter extends RecyclerView.Adapter<InvoiceItemAdapter.
     public void onBindViewHolder(@NonNull InvoiceItemAdapter.InvoiceViewHolder holder, int position) {
         ShoppingCart product = this.invoiceItems.get(position);
         holder.quantity.setText(product.getProductQuantity());
-        holder.totalPrice.setText(product.getTotalPrice());
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Product").child(product.getProductID());
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -55,9 +54,11 @@ public class InvoiceItemAdapter extends RecyclerView.Adapter<InvoiceItemAdapter.
                 holder.unitPrice.setText(String.format("%.2f",item.getProductPrice()));
 
                 int quantity = Integer.parseInt(product.getProductQuantity());
+                holder.totalPrice.setText(String.format("%.2f",item.getProductPrice()*quantity));
+
                 if (item.getSellingPrice() < item.getProductPrice()) {
-                    Float promotion = (item.getProductPrice()*quantity) - (item.getProductPrice()*quantity*(100-Float.parseFloat(product.getDiscount())));
-                    holder.discount.setText(String.format("%.2f", promotion));
+                    Float discount= Float.parseFloat(product.getTotalPrice())-(item.getProductPrice()*quantity);
+                    holder.discount.setText(String.format("%.2f", discount));
 
                 } else {
                     holder.discount.setText("");

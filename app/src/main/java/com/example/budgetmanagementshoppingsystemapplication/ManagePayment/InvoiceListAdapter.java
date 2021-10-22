@@ -13,32 +13,34 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.budgetmanagementshoppingsystemapplication.Model.Payment;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 
-
 import java.util.List;
 
-public class CustomerHistoryAdapter extends RecyclerView.Adapter<CustomerHistoryAdapter.InvoiceViewHolder> {
+public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.InvoiceViewHolder> {
     Context context;
     List<Payment> invoiceList;
 
-    public CustomerHistoryAdapter(Context context, List<Payment> invoiceList) {
+    public InvoiceListAdapter(Context context, List<Payment> invoiceList) {
         this.context = context;
         this.invoiceList = invoiceList;
     }
 
     @NonNull
     @Override
-    public CustomerHistoryAdapter.InvoiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public InvoiceListAdapter.InvoiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View viewD = inflater.inflate(R.layout.customer_history_row,parent,false);
-        return new InvoiceViewHolder(viewD);
+        View viewD = inflater.inflate(R.layout.view_invoice_row,parent,false);
+        return new InvoiceListAdapter.InvoiceViewHolder(viewD);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomerHistoryAdapter.InvoiceViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InvoiceListAdapter.InvoiceViewHolder holder, int position) {
         Payment invoice = this.invoiceList.get(position);
-        holder.invoiceID.setText(invoice.getPaymentID());
+
+        holder.no.setText(String.valueOf(position+1));
+        holder.custName.setText(invoice.getCustomerName());
         holder.datetime.setText(invoice.getDateTime());
-        holder.totalPurchase.setText("RM "+invoice.getAmountPay());
+        holder.totalPurchase.setText(invoice.getAmountPay());
+        holder.status.setText(invoice.getPaymentStatus());
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,15 +62,17 @@ public class CustomerHistoryAdapter extends RecyclerView.Adapter<CustomerHistory
 
     public class InvoiceViewHolder extends RecyclerView.ViewHolder{
 
-        TextView invoiceID, datetime, totalPurchase;
+        TextView no, custName, datetime, totalPurchase, status;
 
         public  View mainLayout;
 
         public InvoiceViewHolder(@NonNull View itemView) {
             super(itemView);
-            invoiceID = itemView.findViewById(R.id.invoiceID);
-            datetime = itemView.findViewById(R.id.dateTime);
-            totalPurchase = itemView.findViewById(R.id.totalPurchase);
+            no = itemView.findViewById(R.id.IVNo);
+            custName = itemView.findViewById(R.id.IVCustName);
+            datetime = itemView.findViewById(R.id.IVDate);
+            status = itemView.findViewById(R.id.IVStatus);
+            totalPurchase = itemView.findViewById(R.id.IVAmount);
             mainLayout = itemView;
         }
     }

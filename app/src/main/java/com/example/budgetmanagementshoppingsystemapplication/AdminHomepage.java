@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
 import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.ViewAccountList;
+import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewInvoice;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.ViewList;
 
 public class AdminHomepage extends AppCompatActivity {
@@ -37,6 +38,14 @@ Button accountListBtn, manageProductBtn, invoiceListBtn;
             public void onClick(View v) {
                 Intent accountList = new Intent(AdminHomepage.this, ViewAccountList.class);
                 startActivity(accountList);
+            }
+        });
+
+        invoiceListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent invoiceList = new Intent(AdminHomepage.this, ViewInvoice.class);
+                startActivity(invoiceList);
             }
         });
     }

@@ -8,14 +8,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         >
         <TextView
             android:id="@+id/IVNo"
-            android:layout_width="10dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:text="1"
             android:textSize="14sp"
+            android:gravity="center"
             android:layout_marginLeft="10dp"
             android:textColor="@color/black"
             android:layout_centerVertical="true"
@@ -23,31 +24,32 @@
 
         <TextView
             android:id="@+id/IVCustName"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="Customer Name"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/IVNo"/>
 
         <TextView
             android:id="@+id/IVDate"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Date"
             android:textSize="14sp"
+            android:gravity="center"
             android:textColor="@color/black"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/IVRM"
+            android:layout_toRightOf="@+id/IVCustName"
             android:layout_marginRight="20dp"/>
 
         <TextView
             android:id="@+id/IVRM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RM"
+            android:text="RM "
             android:textColor="@color/black"
             android:textSize="14sp"
             android:layout_centerVertical="true"
@@ -55,14 +57,14 @@
             />
         <TextView
             android:id="@+id/IVAmount"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="100.00"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/IVStatus"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="15dp"/>
 
         <TextView
             android:id="@+id/IVStatus"
@@ -71,7 +73,7 @@
             android:text="Status"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"/>
 
