@@ -93,16 +93,40 @@
         android:layout_marginLeft="5dp"
         android:layout_below="@+id/editTextProductNameUpdate"
         android:padding="10dp"/>
-    <EditText
-        android:id="@+id/editTextCategoryUpdate"
+
+    <Spinner
+        android:id="@+id/spinnerCategoryUpdate"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:hint="Category"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:gravity="center"
+        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/productIDUpdate"
         android:layout_below="@+id/editTextProductNameUpdate"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category Detail:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/spinnerCategoryUpdate"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editTextCategoryDetailUpdate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Category Detail"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/productIDUpdate"
+        android:layout_below="@+id/spinnerCategoryUpdate"
         android:padding="10dp"/>
 
     <TextView
@@ -112,7 +136,7 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:layout_marginLeft="5dp"
-        android:layout_below="@+id/editTextCategoryUpdate"
+        android:layout_below="@+id/editTextCategoryDetailUpdate"
         android:padding="10dp"/>
     <EditText
         android:id="@+id/editTextBrandUpdate"
@@ -123,7 +147,7 @@
         android:textSize="16dp"
         android:gravity="center"
         android:layout_toRightOf="@+id/productIDUpdate"
-        android:layout_below="@+id/editTextCategoryUpdate"
+        android:layout_below="@+id/editTextCategoryDetailUpdate"
         android:padding="10dp"/>
 
 

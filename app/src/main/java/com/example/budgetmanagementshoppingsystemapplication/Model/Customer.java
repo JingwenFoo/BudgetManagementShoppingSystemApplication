@@ -9,7 +9,6 @@ public class Customer {
     private String name;
     private String phone;
     private String address;
-    private String paymentCard;
 
     public Customer() {
     }
@@ -20,14 +19,13 @@ public class Customer {
         this.username = username;
     }
 
-    public Customer(String uid, String username, String email, String name, String phone, String address, String paymentCard) {
+    public Customer(String uid, String username, String email, String name, String phone, String address) {
         this.uid = uid;
         this.username = username;
         this.email = email;
         this.name = name;
         this.phone = phone;
         this.address = address;
-        this.paymentCard = paymentCard;
     }
 
     public String getUid() {
@@ -94,11 +92,4 @@ public class Customer {
         this.address = address;
     }
 
-    public String getPaymentCard() {
-        return paymentCard;
-    }
-
-    public void setPaymentCard(String paymentCard) {
-        this.paymentCard = paymentCard;
-    }
 }

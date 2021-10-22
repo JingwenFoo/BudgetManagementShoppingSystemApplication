@@ -29,7 +29,7 @@ public class ViewForm extends AppCompatActivity {
 
     ImageView DisplayProImg;
     Button editProBtn;
-    TextView ProName, ProCode, ProCateg, ProPrice, ProBrand, ProDesp, ProStock, ProSellingPrice;
+    TextView ProName, ProCode, ProCateg, ProCategDetail, ProPrice, ProBrand, ProDesp, ProStock, ProSellingPrice;
 
     Uri imageUriView;
     DatabaseReference ref;
@@ -44,6 +44,7 @@ public class ViewForm extends AppCompatActivity {
         ProName = findViewById(R.id.textViewProductName);
         ProCode = findViewById(R.id.textViewProductID);
         ProCateg = findViewById(R.id.textViewCategory);
+        ProCategDetail = findViewById(R.id.textViewCategoryDetail);
         ProBrand = findViewById(R.id.textViewBrand);
         ProPrice = findViewById(R.id.textViewPrice);
         ProSellingPrice = findViewById(R.id.textViewSellingPrice);
@@ -61,6 +62,7 @@ public class ViewForm extends AppCompatActivity {
                 ProName.setText(String.valueOf(productDetail.getProductName()));
                 ProCode.setText(productID);
                 ProCateg.setText(String.valueOf(productDetail.getCategory()));
+                ProCategDetail.setText(String.valueOf(productDetail.getCategoryDetail()));
                 ProBrand.setText(String.valueOf(productDetail.getProductBrand()));
                 ProPrice.setText(String.format("%.2f",productDetail.getProductPrice()));
                 ProSellingPrice.setText(String.format("%.2f",productDetail.getSellingPrice()));
@@ -99,4 +101,9 @@ public class ViewForm extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 }

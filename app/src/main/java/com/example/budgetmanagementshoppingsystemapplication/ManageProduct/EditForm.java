@@ -16,9 +16,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,9 +49,9 @@ public class EditForm extends AppCompatActivity {
     ImageView Product_img;
     Button UploadBtn, UpdateBtn;
     TextView ed_ProCode;
-    EditText ed_ProName, ed_Category, ed_Brand, ed_Price, ed_SellingPrice, ed_Descp, ed_Stock;
+    EditText ed_ProName, ed_CategoryDetail, ed_Brand, ed_Price, ed_SellingPrice, ed_Descp, ed_Stock;
     ProgressDialog progressDialogUpdate;
-
+    Spinner mySpinner;
     Uri imageUriUpdate;
     String urlUpdate;
     public static final int PICK_IMAGE=100;
@@ -67,12 +69,18 @@ public class EditForm extends AppCompatActivity {
         UpdateBtn = findViewById(R.id.updateProductBtn);
         ed_ProCode = findViewById(R.id.editTextProductIDUpdate);
         ed_ProName = findViewById(R.id.editTextProductNameUpdate);
-        ed_Category = findViewById(R.id.editTextCategoryUpdate);
+        ed_CategoryDetail = findViewById(R.id.editTextCategoryDetailUpdate);
         ed_Brand = findViewById(R.id.editTextBrandUpdate);
         ed_Price = findViewById(R.id.editTextPriceUpdate);
         ed_SellingPrice = findViewById(R.id.editTextSellingPriceUpdate);
         ed_Descp = findViewById(R.id.editTextDescpUpdate);
         ed_Stock = findViewById(R.id.editTextStockUpdate);
+        mySpinner = findViewById(R.id.spinnerCategoryUpdate);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(EditForm.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.category));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+
 
         progressDialogUpdate = new ProgressDialog(this);
 
@@ -89,7 +97,21 @@ public class EditForm extends AppCompatActivity {
                 Product productDetail = snapshot.child(editPID).getValue(Product.class);
                 ed_ProName.setText(String.valueOf(productDetail.getProductName()));
                 ed_ProCode.setText(editPID);
-                ed_Category.setText(String.valueOf(productDetail.getCategory()));
+                String category = productDetail.getCategory();
+                if (category.matches("Fresh"))
+                    mySpinner.setSelection(1);
+                else if (category.matches("Beverages"))
+                    mySpinner.setSelection(2);
+                else if (category.matches("Groceries"))
+                    mySpinner.setSelection(3);
+                else if (category.matches("Household"))
+                    mySpinner.setSelection(4);
+                else if (category.matches("Personal Care"))
+                    mySpinner.setSelection(5);
+                else
+                    mySpinner.setSelection(6);
+
+                ed_CategoryDetail.setText(String.valueOf(productDetail.getCategoryDetail()));
                 ed_Brand.setText(String.valueOf(productDetail.getProductBrand()));
                 ed_Price.setText(String.format("%.2f",productDetail.getProductPrice()));
                 ed_SellingPrice.setText(String.format("%.2f",productDetail.getSellingPrice()));
@@ -129,7 +151,7 @@ public class EditForm extends AppCompatActivity {
         UpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ed_ProCode.getText().length() != 0 && ed_ProName.getText().length() != 0 && ed_Brand.getText().length() != 0 && ed_Category.getText().length() != 0 && ed_Price.getText().length() != 0 && ed_SellingPrice.getText().length()!=0 && ed_Descp.getText().length() != 0 && ed_Stock.getText().length() != 0) {
+                if (ed_ProCode.getText().length() != 0 && ed_ProName.getText().length() != 0 && ed_Brand.getText().length() != 0 && ed_Price.getText().length() != 0 && ed_SellingPrice.getText().length()!=0 && ed_Descp.getText().length() != 0 && ed_Stock.getText().length() != 0) {
                     updateProduct();
                 } else {
                     Toast.makeText(EditForm.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
@@ -158,7 +180,8 @@ public class EditForm extends AppCompatActivity {
                         map.put("productID", ed_ProCode.getText().toString());
                         map.put("productName", ed_ProName.getText().toString());
                         map.put("productBrand", ed_Brand.getText().toString());
-                        map.put("category", ed_Category.getText().toString());
+                        map.put("category", String.valueOf(mySpinner.getSelectedItem()));
+                        map.put("categoryDetail", ed_CategoryDetail.getText().toString());
                         map.put("productPrice", Float.valueOf(ed_Price.getText().toString()));
                         map.put("sellingPrice", Float.valueOf(ed_SellingPrice.getText().toString()));
                         map.put("productImage", urlUpdate);

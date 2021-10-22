@@ -96,11 +96,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Brand:"
+        android:text="Category Detail:"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:layout_marginLeft="5dp"
         android:layout_below="@+id/textViewCategory"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/textViewCategoryDetail"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Category Detail"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/productIDView"
+        android:layout_below="@+id/textViewCategory"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brand:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/textViewCategoryDetail"
         android:padding="10dp"/>
     <TextView
         android:id="@+id/textViewBrand"
@@ -111,7 +132,7 @@
         android:textSize="16dp"
         android:gravity="center"
         android:layout_toRightOf="@+id/productIDView"
-        android:layout_below="@+id/textViewCategory"
+        android:layout_below="@+id/textViewCategoryDetail"
         android:padding="10dp"/>
 
 

@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Budget Management Shopping System Application</string>
+
     <string name="normal_price"><Strike>RM 10.99</Strike></string>
+
+    <string-array name="category">
+        <item>Select category</item>
+        <item>Fresh</item>
+        <item>Beverages</item>
+        <item>Groceries</item>
+        <item>Household</item>
+        <item>Personal Care</item>
+        <item>Clothes</item>
+    </string-array>
 </resources>

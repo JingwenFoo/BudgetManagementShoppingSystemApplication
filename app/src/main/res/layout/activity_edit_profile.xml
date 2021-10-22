@@ -44,6 +44,7 @@
         android:textSize="14dp"
         android:padding="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/editName"/>
 
     <TextView
@@ -79,16 +80,6 @@
 
 
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Card Number: "
-        android:gravity="center_horizontal"
-        android:textSize="14dp"
-        android:padding="10dp"
-        android:layout_below="@+id/custAddressEdit"
-        android:layout_marginLeft="10dp"/>
-
-    <TextView
         android:id="@+id/custUsernameEdit"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -97,6 +88,7 @@
         android:textSize="14dp"
         android:padding="10dp"
         android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/editName"/>
 
     <EditText
@@ -108,7 +100,8 @@
         android:textSize="14dp"
         android:inputType="phone"
         android:layout_below="@+id/custUsernameEdit"
-        android:layout_marginLeft="150dp"/>
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"/>
 
     <EditText
         android:id="@+id/custEmailEdit"
@@ -130,17 +123,6 @@
         android:gravity="center_horizontal"
         android:textSize="14dp"
         android:layout_below="@+id/custEmailEdit"
-        android:layout_marginLeft="150dp"/>
-
-    <EditText
-        android:id="@+id/custCardEdit"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="Card number"
-        android:inputType="number"
-        android:gravity="center_horizontal"
-        android:textSize="14dp"
-        android:layout_below="@+id/custAddressEdit"
         android:layout_marginLeft="150dp"/>
 
     <Button

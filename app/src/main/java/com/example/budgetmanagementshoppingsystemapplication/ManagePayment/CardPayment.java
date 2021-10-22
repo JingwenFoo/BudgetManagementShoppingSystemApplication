@@ -1,5 +1,6 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManagePayment;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -61,6 +62,7 @@ public class CardPayment extends AppCompatActivity {
     private Stripe stripe;
     private TextView amountTextView;
     private DatabaseReference refCart, refPayment;
+    private ProgressDialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class CardPayment extends AppCompatActivity {
         refCart = FirebaseDatabase.getInstance().getReference().child("ShoppingCart").child(preferences.getDataUserID(this));
         refPayment = FirebaseDatabase.getInstance().getReference().child("Payment");
 
+        progressDialog = new ProgressDialog(this);
         Intent intent = getIntent();
         String totalAmount = intent.getStringExtra("totalAmount");
         amountTextView.setText(totalAmount);
@@ -106,6 +109,10 @@ public class CardPayment extends AppCompatActivity {
         Button payButton = findViewById(R.id.payButton);
         payButton.setOnClickListener((View view) -> {
             CardInputWidget cardInputWidget = findViewById(R.id.cardInputWidget);
+
+            progressDialog.setTitle("Payment progressing");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
             PaymentMethodCreateParams params = cardInputWidget.getPaymentMethodCreateParams();
             if (params != null) {
                 ConfirmPaymentIntentParams confirmParams = ConfirmPaymentIntentParams
@@ -113,6 +120,7 @@ public class CardPayment extends AppCompatActivity {
                 stripe.confirmPayment(this, confirmParams);
             }
         });
+        progressDialog.dismiss();
     }
     private void displayAlert(@NonNull String title,
                               @Nullable String message) {

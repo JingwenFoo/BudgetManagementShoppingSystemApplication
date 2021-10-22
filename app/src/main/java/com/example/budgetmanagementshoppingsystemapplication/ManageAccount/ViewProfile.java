@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ViewProfile extends AppCompatActivity {
 Button editProfileBtn;
-TextView name, username, phone, address, cardNumber, email;
+TextView name, username, phone, address, email;
 DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,6 @@ DatabaseReference ref;
         username = findViewById(R.id.custUsername);
         phone = findViewById(R.id.custPhone);
         address = findViewById(R.id.custAddress);
-        cardNumber = findViewById(R.id.custCard);
         email = findViewById(R.id.custEmail);
 
         ref = FirebaseDatabase.getInstance().getReference();
@@ -60,7 +59,6 @@ DatabaseReference ref;
                 phone.setText(String.valueOf(customer.getPhone()));
                 email.setText(String.valueOf(customer.getEmail()));
                 address.setText(String.valueOf(customer.getAddress()));
-                cardNumber.setText(String.valueOf(customer.getPaymentCard()));
 
             }
 

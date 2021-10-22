@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 public class CustomerViewProduct extends AppCompatActivity {
 
     ImageView proimg;
-    TextView tv_ProCode, tv_ProName, tv_Category, tv_Brand, tv_Price, tv_Descp, tv_Stock;
+    TextView tv_ProCode, tv_ProName, tv_Category, tv_CategoryDetail, tv_Brand, tv_Price, tv_Descp, tv_Stock;
 
     DatabaseReference ref;
     Uri imageUriView;
@@ -40,6 +40,7 @@ public class CustomerViewProduct extends AppCompatActivity {
         tv_ProCode = findViewById(R.id.CusttextViewProductID);
         tv_ProName = findViewById(R.id.CusttextViewProductName);
         tv_Category = findViewById(R.id.CusttextViewCategory);
+        tv_CategoryDetail = findViewById(R.id.CusttextViewCategoryDetail);
         tv_Brand = findViewById(R.id.CusttextViewBrand);
         tv_Price = findViewById(R.id.CusttextViewPrice);
         tv_Descp = findViewById(R.id.CusttextViewDescp);
@@ -57,6 +58,7 @@ public class CustomerViewProduct extends AppCompatActivity {
                 tv_ProName.setText(String.valueOf(productDetail.getProductName()));
                 tv_ProCode.setText(productID);
                 tv_Category.setText(String.valueOf(productDetail.getCategory()));
+                tv_CategoryDetail.setText(String.valueOf(productDetail.getCategoryDetail()));
                 tv_Brand.setText(String.valueOf(productDetail.getProductBrand()));
                 tv_Price.setText(String.format("%.2f",productDetail.getProductPrice()));
                 tv_Stock.setText(String.valueOf(productDetail.getStockAvailable()));

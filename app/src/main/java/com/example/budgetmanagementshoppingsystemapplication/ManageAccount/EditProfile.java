@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class EditProfile extends AppCompatActivity {
     Button updateProfileBtn;
     TextView edit_username, edit_name;
-    EditText edit_phone, edit_address, edit_cardNumber, edit_email;
+    EditText edit_phone, edit_address, edit_email;
     DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,6 @@ public class EditProfile extends AppCompatActivity {
         edit_username = findViewById(R.id.custUsernameEdit);
         edit_phone = findViewById(R.id.custPhoneEdit);
         edit_address = findViewById(R.id.custAddressEdit);
-        edit_cardNumber = findViewById(R.id.custCardEdit);
         edit_email = findViewById(R.id.custEmailEdit);
 
         ref = FirebaseDatabase.getInstance().getReference();
@@ -50,11 +49,7 @@ public class EditProfile extends AppCompatActivity {
                 edit_phone.setText(String.valueOf(customer.getPhone()));
                 edit_email.setText(String.valueOf(customer.getEmail()));
                 edit_address.setText(String.valueOf(customer.getAddress()));
-                if(snapshot.child("Customer").child(uid).child("paymentCard").equals("-")){
-                    edit_cardNumber.setHint("Enter Card number");
-                }
-                else
-                    edit_cardNumber.setText(String.valueOf(customer.getPaymentCard()));
+
             }
 
             @Override
@@ -73,7 +68,6 @@ public class EditProfile extends AppCompatActivity {
                         ref.child("Customer").child(uid).child("phone").setValue(edit_phone.getText().toString());
                         ref.child("Customer").child(uid).child("email").setValue(edit_email.getText().toString());
                         ref.child("Customer").child(uid).child("address").setValue(edit_address.getText().toString());
-                        ref.child("Customer").child(uid).child("paymentCard").setValue(edit_cardNumber.getText().toString());
 
                         Toast.makeText(EditProfile.this,"Profile updated successfully",Toast.LENGTH_SHORT).show();
                         Intent in = new Intent(EditProfile.this, ViewProfile.class);

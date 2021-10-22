@@ -16,9 +16,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.budgetmanagementshoppingsystemapplication.R;
@@ -40,11 +42,12 @@ public class AddProduct extends AppCompatActivity {
 
     ImageView addProImg;
     Button AddUploadBtn, AddScanBtn, AddProBtn;
-    EditText ed_AddProCode, ed_AddProName, ed_AddProCateg, ed_AddProBrand, ed_AddProPrice, ed_SellPrice, ed_AddProDescp, ed_AddProStock;
+    EditText ed_AddProCode, ed_AddProName, ed_AddProCategDetail, ed_AddProBrand, ed_AddProPrice, ed_SellPrice, ed_AddProDescp, ed_AddProStock;
     DatabaseReference ref;
     StorageReference storageReference;
     Uri imageUri;
     String url;
+    Spinner mySpinner;
     public static final int PICK_IMAGE = 100;
     ProgressDialog progressDialog;
 
@@ -59,12 +62,17 @@ public class AddProduct extends AppCompatActivity {
         AddProBtn = findViewById(R.id.addProductBtn);
         ed_AddProCode = findViewById(R.id.editTextProductID);
         ed_AddProName = findViewById(R.id.editTextProductName);
-        ed_AddProCateg = findViewById(R.id.editTextCategory);
+        ed_AddProCategDetail = findViewById(R.id.editTextCategoryDetail);
         ed_AddProBrand = findViewById(R.id.editTextBrand);
         ed_AddProPrice = findViewById(R.id.editTextPrice);
         ed_SellPrice = findViewById(R.id.editTextSellingPrice);
         ed_AddProDescp = findViewById(R.id.editTextDescp);
         ed_AddProStock = findViewById(R.id.editTextStock);
+        mySpinner = findViewById(R.id.spinnerCategory);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AddProduct.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.category));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
 
         progressDialog = new ProgressDialog(this);
         storageReference = FirebaseStorage.getInstance().getReference().child("Product images/");
@@ -96,7 +104,7 @@ public class AddProduct extends AppCompatActivity {
         AddProBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ed_AddProCode.getText().length() != 0 && imageUri != null && ed_AddProName.getText().length() != 0 && ed_AddProBrand.getText().length() != 0 && ed_AddProCateg.getText().length() != 0 && ed_AddProPrice.getText().length() != 0 && ed_AddProDescp.getText().length() != 0 && ed_AddProStock.getText().length() != 0) {
+                if (ed_AddProCode.getText().length() != 0 && imageUri != null && ed_AddProName.getText().length() != 0 && ed_AddProBrand.getText().length() != 0 && ed_AddProPrice.getText().length() != 0 && ed_AddProDescp.getText().length() != 0 && ed_AddProStock.getText().length() != 0) {
                     addNewProduct();
                 } else {
                     Toast.makeText(AddProduct.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
@@ -132,7 +140,8 @@ public class AddProduct extends AppCompatActivity {
                         map.put("productID", ed_AddProCode.getText().toString());
                         map.put("productName", ed_AddProName.getText().toString());
                         map.put("productBrand", ed_AddProBrand.getText().toString());
-                        map.put("category", ed_AddProCateg.getText().toString());
+                        map.put("category",String.valueOf(mySpinner.getSelectedItem()));
+                        map.put("categoryDetail", ed_AddProCategDetail.getText().toString());
                         map.put("productPrice", Float.valueOf(ed_AddProPrice.getText().toString()));
                         map.put("sellingPrice", Float.valueOf(ed_SellPrice.getText().toString()));
                         map.put("productImage", url);

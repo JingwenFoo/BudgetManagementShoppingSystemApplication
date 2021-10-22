@@ -3,6 +3,7 @@ package com.example.budgetmanagementshoppingsystemapplication.Model;
 public class Product {
     private String productID;
     private String category;
+    private String categoryDetail;
     private String productName;
     private String productBrand;
     private String productDescription;
@@ -14,9 +15,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(String productID, String category, String productName, String productBrand, String productDescription, String productImage, Float productPrice, Float sellingPrice, String stockAvailable) {
+    public Product(String productID, String category, String categoryDetail, String productName, String productBrand, String productDescription, String productImage, Float productPrice, Float sellingPrice, String stockAvailable) {
         this.productID = productID;
         this.category = category;
+        this.categoryDetail = categoryDetail;
         this.productName = productName;
         this.productBrand = productBrand;
         this.productDescription = productDescription;
@@ -40,6 +42,14 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getCategoryDetail() {
+        return categoryDetail;
+    }
+
+    public void setCategoryDetail(String categoryDetail) {
+        this.categoryDetail = categoryDetail;
     }
 
     public String getProductName() {
