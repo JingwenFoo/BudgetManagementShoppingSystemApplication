@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManagePayment.PayByCash">
+
+    <TextView
+        android:id="@+id/payatcounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pay at Counter"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/payCounterDescript"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Please screenshot this QRcode to scan at counter for payment"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_below="@+id/payatcounter"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/qrcode"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/payCounterDescript"/>
+
+</RelativeLayout>

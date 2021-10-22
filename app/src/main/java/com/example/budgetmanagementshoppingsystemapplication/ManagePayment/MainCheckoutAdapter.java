@@ -1,6 +1,8 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManagePayment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.ViewAccountList;
 import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking.CartAdapter;
 import com.example.budgetmanagementshoppingsystemapplication.Model.ShoppingCart;
 import com.example.budgetmanagementshoppingsystemapplication.R;
@@ -84,7 +87,24 @@ public class MainCheckoutAdapter extends RecyclerView.Adapter<MainCheckoutAdapte
                 }
                 else
                 {
-                    Toast.makeText(context,"Online banking",Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Pay Cash at Counter?");
+                    builder.setMessage("Are you sure you want to pay cash at counter?");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent PayByCash = new Intent(context, PayByCash.class);
+                            PayByCash.putExtra("totalAmount",holder.totalPrice.getText());
+                            context.startActivity(PayByCash);
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    builder.create().show();
                 }
 
             }
