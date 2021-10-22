@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
 import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.ViewProfile;
 import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking.Budget;
+import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.CustomerViewHistory;
+import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,20 @@ DatabaseReference ref;
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userID = snapshot.child("uid").getValue(String.class);
                 preferences.setDataUserID(CustomerHomepage.this, userID);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        ref = FirebaseDatabase.getInstance().getReference().child("Customer").child(String.valueOf(preferences.getDataUserID(this)));
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String custName = snapshot.child("name").getValue(String.class);
+                preferences.setDataCustomerName(CustomerHomepage.this, custName);
             }
 
             @Override
@@ -70,6 +86,12 @@ DatabaseReference ref;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
+        if(itemId==R.id.historyBtn)
+        {
+            Intent intent = new Intent(CustomerHomepage.this, CustomerViewHistory.class);
+            startActivity(intent);
+
+        }
         if(itemId==R.id.logoutBtn)
         {
             Intent in = new Intent(CustomerHomepage.this, MainActivity.class);

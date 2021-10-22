@@ -17,10 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
-
-        <activity android:name=".ManagePayment.CardPayment"></activity>
+        <activity android:name=".ManagePayment.CustomerViewHistory"></activity>
+        <activity
+            android:name=".ManagePayment.CardPayment"
+            android:label="Card Payment"
+            android:parentActivityName=".ManagePayment.CustomerCheckout" />
         <activity android:name=".ManagePayment.ViewInvoice" />
-        <activity android:name=".ManagePayment.CustomerInvoice" />
+        <activity
+            android:name=".ManagePayment.CustomerInvoice"
+            android:label="Invoice"
+            android:parentActivityName=".CustomerHomepage" />
         <activity
             android:name=".ManagePayment.CustomerCheckout"
             android:label="Checkout"

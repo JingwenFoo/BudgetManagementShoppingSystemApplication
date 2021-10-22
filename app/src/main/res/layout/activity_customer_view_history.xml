@@ -4,32 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManagePayment.CustomerInvoice">
+    tools:context=".ManagePayment.CustomerViewHistory">
 
     <TextView
-        android:id="@+id/invoiceTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INVOICE"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"/>
-    <TableLayout
-        android:id="@+id/tableLayoutCustInvoice"
+        android:id="@+id/textViewHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f1f1f1"
-        android:layout_below="@+id/invoiceTV">
+        android:text="HISTORY"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:padding="10dp"/>
+    <TableLayout
+        android:id="@+id/tableLayoutHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewHistory"
+        android:background="#f1f1f1">
         <TableRow>
 
             <TextView
-                android:layout_weight="4"
+                android:layout_weight="10"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
-                android:layout_gravity="center"
-                android:text="Product"
+                android:layout_marginLeft="10dp"
+                android:text="Invoice ID"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -37,56 +37,43 @@
                 />
 
             <TextView
-                android:layout_weight="0"
+                android:layout_weight="1"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_width="70dp"
                 android:layout_column="1"
-                android:text="Quantity"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="Date  Time"
+                android:padding="5dp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/black" />
 
             <TextView
-                android:layout_weight="1"
+                android:layout_weight="0.1"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_width="50dp"
-                android:text="Unit Price (RM)"
+                android:layout_marginLeft="10dp"
+                android:text="Total Purchase"
                 android:gravity="center"
-                android:layout_marginRight="10dp"
                 android:textStyle="bold"
+                android:padding="5dp"
                 android:textSize="16sp"
                 android:textColor="@color/black" />
-
-            <TextView
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="60dp"
-                android:gravity="center"
-                android:layout_column="3"
-                android:text="Total Price (RM)"
-                android:layout_marginRight="10dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                />
 
         </TableRow>
     </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCustInvoice"
+        android:id="@+id/recyclerViewHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tableLayoutCustInvoice"
+        android:layout_below="@+id/tableLayoutHistory"
         android:focusableInTouchMode="true"
         android:clickable="true"
         android:focusable="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
 
 
 </RelativeLayout>

@@ -89,10 +89,10 @@
        android:id="@+id/dividerLine"/>
 
     <TextView
-        android:id="@+id/datePayment"
+        android:id="@+id/paymentIDTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="31/09/2021"
+        android:text="Invoice ID: "
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_below="@+id/dividerLine"
@@ -100,16 +100,28 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
-        android:id="@+id/timePayment"
+        android:id="@+id/paymentID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10.00 am"
+        android:text="invoice ID"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_below="@+id/dividerLine"
-        android:layout_toRightOf="@+id/datePayment"
-        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/paymentIDTextView"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/datePayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="31/09/2021 10.00 am"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/paymentID"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
 
     <TextView
         android:id="@+id/paidBy"

@@ -12,7 +12,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
 import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.example.budgetmanagementshoppingsystemapplication.preferences;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -27,11 +36,14 @@ import com.stripe.android.view.CardInputWidget;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -48,13 +60,15 @@ public class CardPayment extends AppCompatActivity {
     private String paymentIntentClientSecret;
     private Stripe stripe;
     private TextView amountTextView;
+    private DatabaseReference refCart, refPayment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_payment);
-
         amountTextView = findViewById(R.id.totalAmountPay);
+        refCart = FirebaseDatabase.getInstance().getReference().child("ShoppingCart").child(preferences.getDataUserID(this));
+        refPayment = FirebaseDatabase.getInstance().getReference().child("Payment");
 
         Intent intent = getIntent();
         String totalAmount = intent.getStringExtra("totalAmount");
@@ -81,7 +95,6 @@ public class CardPayment extends AppCompatActivity {
         itemList.add(itemMap);
         payMap.put("items", itemList);
         String json = new Gson().toJson(payMap);
-
         RequestBody body = RequestBody.create(json, mediaType);
         Request request = new Request.Builder()
                 .url(BACKEND_URL + "create-payment-intent")
@@ -159,7 +172,7 @@ public class CardPayment extends AppCompatActivity {
             }
         }
     }
-    private static final class PaymentResultCallback
+    private final class PaymentResultCallback
             implements ApiResultCallback<PaymentIntentResult> {
         @NonNull private final WeakReference<CardPayment> activityRef;
         PaymentResultCallback(@NonNull CardPayment activity) {
@@ -175,11 +188,43 @@ public class CardPayment extends AppCompatActivity {
             PaymentIntent.Status status = paymentIntent.getStatus();
             if (status == PaymentIntent.Status.Succeeded) {
                 // Payment completed successfully
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                activity.displayAlert(
-                        "Payment completed",
-                        gson.toJson(paymentIntent)
-                );
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:a");
+                String currentTime = sdf.format(System.currentTimeMillis());
+                String paymentID = refPayment.push().getKey();
+                Map<String, Object> paymentMap = new HashMap<>();
+                paymentMap.put("paymentID",paymentID);
+                paymentMap.put("customerName",preferences.getDataCustomerName(CardPayment.this));
+                paymentMap.put("amountPay",amountTextView.getText().toString());
+                paymentMap.put("paymentStatus","Paid");
+                paymentMap.put("datetime",currentTime);
+                paymentMap.put("paymentType","Card");
+                refPayment.child(paymentID).setValue(paymentMap);
+                refCart.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        refPayment.child(paymentID).child("itemPurchase").setValue(snapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(activity,"Payment successful", Toast.LENGTH_SHORT).show();
+                                refCart.removeValue();
+                                Intent invoice = new Intent(CardPayment.this, CustomerViewHistory.class);
+                                startActivity(invoice);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+//                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//                activity.displayAlert(
+//                        "Payment completed",
+//                        gson.toJson(paymentIntent)
+//                );
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
                 // Payment failed – allow retrying using a different payment method
                 activity.displayAlert(

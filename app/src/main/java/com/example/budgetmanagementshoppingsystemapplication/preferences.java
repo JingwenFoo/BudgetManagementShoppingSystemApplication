@@ -8,6 +8,7 @@ public class preferences {
     private static final String DATA_LOGIN = "status_login",
             DATA_STATUS = "username",
             DATA_USERID = "userid",
+            DATA_CUSTNAME = "custName",
             DATA_BUDGET = "budget",
             DATA_FRESHBUDGET = "freshBudget",
             DATA_GROBUDGET = "groBudget",
@@ -200,7 +201,17 @@ public class preferences {
         return getSharedReferences(context).getString(DATA_CLOTHBUDGET,"");
     }
 
+    public static void setDataCustomerName(Context context, String custName)
+    {
+        SharedPreferences.Editor editor = getSharedReferences(context).edit();
+        editor.putString(DATA_CUSTNAME,custName);
+        editor.apply();
+    }
 
+    public static String getDataCustomerName(Context context)
+    {
+        return getSharedReferences(context).getString(DATA_CUSTNAME,"");
+    }
 
     public static void setDataUserID(Context context, String userID)
     {
@@ -295,6 +306,7 @@ public class preferences {
         editor.remove(DATA_STATUS);
         editor.remove(DATA_LOGIN);
         editor.remove(DATA_USERID);
+        editor.remove(DATA_CUSTNAME);
         editor.remove(DATA_BUDGET);
         editor.remove(DATA_TOTALCART);
         editor.remove(DATA_FRESHBUDGETTOTAL);
