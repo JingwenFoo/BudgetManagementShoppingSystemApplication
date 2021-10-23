@@ -13,18 +13,18 @@
         android:layout_marginBottom="52dp"
         android:backgroundTint="#FF5722"
         android:text="Start Shopping"
-        app:layout_constraintBottom_toTopOf="@+id/suggestPBtn"
+        app:layout_constraintBottom_toTopOf="@+id/historyBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountBtn" />
 
     <Button
-        android:id="@+id/suggestPBtn"
+        android:id="@+id/historyBtn"
         android:layout_width="200dp"
         android:layout_height="0dp"
         android:layout_marginBottom="130dp"
         android:backgroundTint="@color/teal_700"
-        android:text="Package Suggestion"
+        android:text="History"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

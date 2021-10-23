@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class CustomerHomepage extends AppCompatActivity {
-Button accountBtn, shoppingBtn, packageBtn;
+Button accountBtn, shoppingBtn, historyBtn;
 DatabaseReference ref;
 
     @Override
@@ -31,7 +31,7 @@ DatabaseReference ref;
         setContentView(R.layout.activity_customer_homepage);
         accountBtn = findViewById(R.id.accountBtn);
         shoppingBtn = findViewById(R.id.shoppingBtn);
-        packageBtn = findViewById(R.id.suggestPBtn);
+        historyBtn = findViewById(R.id.historyBtn);
 
         ref = FirebaseDatabase.getInstance().getReference().child("Account").child(String.valueOf(preferences.getDataStatus(this)));
         ref.addValueEventListener(new ValueEventListener() {
@@ -46,7 +46,7 @@ DatabaseReference ref;
 
             }
         });
-        
+
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +62,14 @@ DatabaseReference ref;
                 startActivity(profile);
             }
         });
+
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerHomepage.this, CustomerViewHistory.class);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,12 +80,6 @@ DatabaseReference ref;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
-        if(itemId==R.id.historyBtn)
-        {
-            Intent intent = new Intent(CustomerHomepage.this, CustomerViewHistory.class);
-            startActivity(intent);
-
-        }
         if(itemId==R.id.logoutBtn)
         {
             Intent in = new Intent(CustomerHomepage.this, MainActivity.class);

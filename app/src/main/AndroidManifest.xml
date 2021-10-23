@@ -17,8 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
-        <activity android:name=".ManagePayment.PayByCash"
-            android:label="Pay at Counter"></activity>
+        <activity android:name=".ManageBudgetTracking.ShoppingPage"
+            android:label="Shopping"
+            android:parentActivityName=".ManageBudgetTracking.Budget"></activity>
+        <activity android:name=".ManagePackageSuggestion.DisplayPackageItem"
+            android:label="Package Suggestion"
+            android:parentActivityName=".ManagePackageSuggestion.PackageSuggestion"/>
+        <activity android:name=".ManagePackageSuggestion.PackageSuggestion"
+            android:label="Package Suggestion"
+            android:parentActivityName=".ManagePackageSuggestion.SelectCategory"/>
+        <activity android:name=".ManagePackageSuggestion.SelectCategory"
+            android:label="Package Suggestion"
+            android:parentActivityName=".ManageBudgetTracking.ShoppingPage"/>
+        <activity
+            android:name=".ManagePayment.PayByCash"
+            android:label="Pay at Counter" />
         <activity
             android:name=".ManagePayment.CustomerViewHistory"
             android:label="History"
@@ -53,7 +66,7 @@
         <activity
             android:name=".ManageBudgetTracking.ViewCart"
             android:label="Shopping Cart"
-            android:parentActivityName=".ManageBudgetTracking.Budget" />
+            android:parentActivityName=".ManageBudgetTracking.ShoppingPage" />
         <activity
             android:name=".ManageProduct.EditForm"
             android:label="Update Product"
@@ -112,6 +125,10 @@
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

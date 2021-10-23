@@ -855,7 +855,7 @@ public class Budget extends AppCompatActivity {
                             Toast.makeText(Budget.this, "Clothes Budget not enough, increase your budget",Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Intent goShopping = new Intent(Budget.this, ViewCart.class);
+                            Intent goShopping = new Intent(Budget.this, ShoppingPage.class);
                             startActivity(goShopping);
                         }
                     }else

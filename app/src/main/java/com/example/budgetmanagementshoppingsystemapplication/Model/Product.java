@@ -1,5 +1,7 @@
 package com.example.budgetmanagementshoppingsystemapplication.Model;
 
+import androidx.annotation.NonNull;
+
 public class Product {
     private String productID;
     private String category;
@@ -13,6 +15,10 @@ public class Product {
     private String stockAvailable;
 
     public Product() {
+    }
+
+    public Product(String categoryDetail) {
+        this.categoryDetail = categoryDetail;
     }
 
     public Product(String productID, String category, String categoryDetail, String productName, String productBrand, String productDescription, String productImage, Float productPrice, Float sellingPrice, String stockAvailable) {
@@ -106,5 +112,13 @@ public class Product {
 
     public void setStockAvailable(String stockAvailable) {
         this.stockAvailable = stockAvailable;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "CategoryItem{" +
+                "categoryDetail='" + categoryDetail +
+                '}';
     }
 }
