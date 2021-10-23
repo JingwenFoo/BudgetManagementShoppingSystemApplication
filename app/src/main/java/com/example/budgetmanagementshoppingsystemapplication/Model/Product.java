@@ -114,11 +114,20 @@ public class Product {
         this.stockAvailable = stockAvailable;
     }
 
-    @NonNull
     @Override
     public String toString() {
-        return "CategoryItem{" +
-                "categoryDetail='" + categoryDetail +
+        return "Product{" +
+               // "productID='" + productID + '\'' +
+                ", category='" + category + '\'' +
+                ", categoryDetail='" + categoryDetail + '\'' +
+//                ", productName='" + productName + '\'' +
+//                ", productBrand='" + productBrand + '\'' +
+//                ", productDescription='" + productDescription + '\'' +
+//                ", productImage='" + productImage + '\'' +
+//                ", productPrice=" + productPrice +
+//                ", sellingPrice=" + sellingPrice +
+//                ", stockAvailable='" + stockAvailable + '\'' +
                 '}';
     }
+
 }

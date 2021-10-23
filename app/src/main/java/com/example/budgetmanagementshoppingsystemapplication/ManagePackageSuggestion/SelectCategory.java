@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -75,6 +76,15 @@ CategoryItemAdapter adapter;
             }
         });
 
+        suggestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Product> selectedCategory = adapter.getCategorySelectedArrayList();
+                System.out.println(selectedCategory);
+            }
+        });
+
+
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -92,8 +102,9 @@ CategoryItemAdapter adapter;
 
             }
         });
+
     }
-    
+
     private void searchCategory(String search)
     {
         Query query = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("categoryDetail")
