@@ -46,21 +46,7 @@ DatabaseReference ref;
 
             }
         });
-
-        ref = FirebaseDatabase.getInstance().getReference().child("Customer").child(String.valueOf(preferences.getDataUserID(this)));
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String custName = snapshot.child("name").getValue(String.class);
-                preferences.setDataCustomerName(CustomerHomepage.this, custName);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

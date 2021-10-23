@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.budgetmanagementshoppingsystemapplication.CustomerHomepage;
 import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.preferences;
@@ -61,7 +62,7 @@ public class CardPayment extends AppCompatActivity {
     private String paymentIntentClientSecret;
     private Stripe stripe;
     private TextView amountTextView;
-    private DatabaseReference refCart, refPayment;
+    private DatabaseReference ref, refCart, refPayment;
     private ProgressDialog progressDialog;
 
     @Override
@@ -69,13 +70,29 @@ public class CardPayment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_payment);
         amountTextView = findViewById(R.id.totalAmountPay);
+
         refCart = FirebaseDatabase.getInstance().getReference().child("ShoppingCart").child(preferences.getDataUserID(this));
         refPayment = FirebaseDatabase.getInstance().getReference().child("Payment");
+        ref = FirebaseDatabase.getInstance().getReference().child("Customer").child(String.valueOf(preferences.getDataUserID(this)));
 
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String custName = snapshot.child("name").getValue(String.class);
+                preferences.setDataCustomerName(CardPayment.this, custName);
+                System.out.println(preferences.getDataCustomerName(CardPayment.this));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         progressDialog = new ProgressDialog(this);
         Intent intent = getIntent();
         String totalAmount = intent.getStringExtra("totalAmount");
         amountTextView.setText(totalAmount);
+        System.out.println(preferences.getDataCustomerName(CardPayment.this));
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -196,13 +213,13 @@ public class CardPayment extends AppCompatActivity {
             PaymentIntent.Status status = paymentIntent.getStatus();
             if (status == PaymentIntent.Status.Succeeded) {
                 // Payment completed successfully
-
+                System.out.println(preferences.getDataCustomerName(CardPayment.this));
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:a");
                 String currentTime = sdf.format(System.currentTimeMillis());
                 String paymentID = refPayment.push().getKey();
                 Map<String, Object> paymentMap = new HashMap<>();
                 paymentMap.put("paymentID",paymentID);
-                paymentMap.put("customerName",preferences.getDataCustomerName(CardPayment.this));
+                paymentMap.put("customerName",String.valueOf(preferences.getDataCustomerName(CardPayment.this)));
                 paymentMap.put("amountPay",amountTextView.getText().toString());
                 paymentMap.put("paymentStatus","Paid");
                 paymentMap.put("datetime",currentTime);
