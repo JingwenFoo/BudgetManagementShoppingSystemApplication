@@ -29,10 +29,9 @@ import java.util.function.Predicate;
 
 public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapter.ViewHolder> {
     Context context;
-    List<Product> categoryItems;
-    ArrayList<Product> categorySelected;
+    List<String> categoryItems, categorySelected;
 
-    public CategoryItemAdapter(Context context, List<Product> categoryItems) {
+    public CategoryItemAdapter(Context context, List<String> categoryItems) {
         this.context = context;
         this.categoryItems = categoryItems;
     }
@@ -47,46 +46,40 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
 
     @Override
     public void onBindViewHolder(@NonNull CategoryItemAdapter.ViewHolder holder, int position) {
-        Product categoryItem = this.categoryItems.get(position);
-        holder.categoryItemCheckbox.setText(categoryItem.getCategoryDetail());
+        String categoryItem = this.categoryItems.get(position);
+        holder.categoryItemCheckbox.setText(categoryItem);
         categorySelected = new ArrayList<>();
-        holder.categoryItemCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+        holder.categoryItemCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onClick(View v) {
+                boolean isChecked = holder.categoryItemCheckbox.isChecked();
                 if(isChecked)
                 {
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Product");
-                    ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot snapshot1:snapshot.getChildren())
-                        {
-                            Product product = snapshot1.getValue(Product.class);
-                            if(product.getCategoryDetail() != null && product.getCategoryDetail().matches(categoryItem.getCategoryDetail()))
-                                categorySelected.add(product);
-                        }
-                        Collections.sort(categorySelected, new Comparator<Product>() {
-                            @Override
-                            public int compare(Product o1, Product o2) {
-                                return o1.getCategoryDetail().compareTo(o2.getCategoryDetail());
-                            }
-                        });
-
-                    }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }else
+                    categorySelected.add(categoryItem);
+                    Collections.sort(categorySelected);
+                }
+                else
                 {
-                    Predicate<Product> uncheck = categoryDetail -> categoryDetail.getCategoryDetail().matches(categoryItem.getCategoryDetail());
-                    categorySelected.removeIf(uncheck);
+                    categorySelected.remove(categoryItem);
                 }
             }
         });
+
+//        holder.categoryItemCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked)
+//                {
+//                    categorySelected.add(categoryItem);
+//                    Collections.sort(categorySelected);
+//                }
+//                else
+//                {
+//                    categorySelected.remove(categoryItem);
+//                }
+//            }
+//        });
 
     }
 
@@ -108,7 +101,7 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
         }
     }
 
-    public  ArrayList<Product> getCategorySelectedArrayList()
+    public  List<String> getCategorySelectedArrayList()
     {
         return categorySelected;
     }

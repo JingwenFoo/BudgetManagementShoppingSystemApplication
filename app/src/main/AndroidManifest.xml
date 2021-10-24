@@ -17,18 +17,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
-        <activity android:name=".ManageBudgetTracking.ShoppingPage"
+        <activity android:name=".ManagePackageSuggestion.AdminAddPackage"></activity>
+        <activity android:name=".ManagePackageSuggestion.AdminPackageList" />
+        <activity
+            android:name=".ManagePackageSuggestion.OnPromotionDisplay"
+            android:label="Items on Promotion"
+            android:parentActivityName=".ManagePackageSuggestion.SelectCategory" />
+        <activity
+            android:name=".ManageBudgetTracking.ShoppingPage"
             android:label="Shopping"
-            android:parentActivityName=".ManageBudgetTracking.Budget"></activity>
-        <activity android:name=".ManagePackageSuggestion.DisplayPackageItem"
+            android:parentActivityName=".ManageBudgetTracking.Budget" />
+        <activity
+            android:name=".ManagePackageSuggestion.DisplayPackageItem"
             android:label="Package Suggestion"
-            android:parentActivityName=".ManagePackageSuggestion.PackageSuggestion"/>
-        <activity android:name=".ManagePackageSuggestion.PackageSuggestion"
+            android:parentActivityName=".ManagePackageSuggestion.PackageSuggestion" />
+        <activity
+            android:name=".ManagePackageSuggestion.PackageSuggestion"
             android:label="Package Suggestion"
-            android:parentActivityName=".ManagePackageSuggestion.SelectCategory"/>
-        <activity android:name=".ManagePackageSuggestion.SelectCategory"
-            android:label="Package Suggestion"
-            android:parentActivityName=".ManageBudgetTracking.ShoppingPage"/>
+            android:parentActivityName=".ManageBudgetTracking.ShoppingPage" />
+        <activity
+            android:name=".ManagePackageSuggestion.SelectCategory"
+            android:label="Items on Promotion"
+            android:parentActivityName=".ManageBudgetTracking.ShoppingPage" />
         <activity
             android:name=".ManagePayment.PayByCash"
             android:label="Pay at Counter" />

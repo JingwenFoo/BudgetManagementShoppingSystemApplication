@@ -13,7 +13,7 @@
         android:id="@+id/PStitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Package Suggestion"
+        android:text="Items on Promotion"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="25sp"
@@ -32,44 +32,20 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:id="@+id/searchCategoryTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search: "
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:padding="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/PSdescp"/>
-
-    <EditText
-        android:id="@+id/searchCategoryEditText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="#80191818"
-        android:hint="Search"
-        android:textSize="15dp"
-        android:padding="10dp"
-        android:layout_below="@+id/PSdescp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/searchCategoryTextView"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryitemRecycleView"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_below="@+id/searchCategoryEditText"
-        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/PSdescp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="85dp"
         />
 
     <Button
-        android:id="@+id/suggestBtn"
+        android:id="@+id/viewBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Suggest"
+        android:layout_height="60dp"
+        android:text="View Promotion"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"/>

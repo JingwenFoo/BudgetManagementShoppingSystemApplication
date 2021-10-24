@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManagePackageSuggestion.AdminAddPackage"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/textViewAddPackage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Package"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/packageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Package Name:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/textViewAddPackage"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editTextPackageName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Package Name"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:inputType="number"
+        android:layout_toRightOf="@+id/packageName"
+        android:layout_below="@+id/textViewAddPackage"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/scanProductBtn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="SCAN"
+        android:textSize="12sp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewProduct1"
+        />
+
+    <TextView
+        android:id="@+id/textViewProduct1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product 1"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/packageName"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Code:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/textViewProduct1"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editTextProductCode"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Product Code"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/packageName"
+        android:layout_below="@+id/textViewProduct1"
+        android:padding="10dp"/>
+
+
+
+
+</RelativeLayout>

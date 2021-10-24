@@ -5,7 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ManagePackageSuggestion.PackageSuggestion">
+<TextView
+    android:id="@+id/pSText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Package Suggestion"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:textSize="23sp"
+    android:gravity="center"
+    android:layout_marginTop="20dp"/>
 
-
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/packagelistRecycleview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/pSText"
+    android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManagePackageSuggestion.DisplayPackageItem">
+    tools:context=".ManagePackageSuggestion.OnPromotionDisplay">
 
     <TextView
-        android:id="@+id/packageselectedNum"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Package Num"
+        android:text="Items On Promotion"
+        android:textStyle="bold"
         android:textSize="20sp"
+        android:gravity="center"
+        android:id="@+id/onPromoteTextView"
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"/>
+        android:padding="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/packageselectedRecycleView"
+        android:id="@+id/recyclerViewOnPromotionDisplay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/packageselectedNum"
-        android:layout_marginTop="20dp"/>
-
+        android:layout_below="@+id/onPromoteTextView"
+        android:layout_marginTop="10dp"
+        />
 
 </RelativeLayout>

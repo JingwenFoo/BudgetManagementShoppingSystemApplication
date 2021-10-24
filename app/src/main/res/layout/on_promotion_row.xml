@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/PromoteProductImg"
+            android:layout_width="80dp"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_refresh"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/PromoteProductName"
+            android:layout_toRightOf="@+id/PromoteProductImg"
+            android:text="Product Name"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/PromoteProductBrand"
+            android:layout_toRightOf="@+id/PromoteProductImg"
+            android:text="Product Brand"
+            android:textSize="14sp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@+id/PromoteProductName"
+            android:textColor="@color/black"/>
+
+
+        <TextView
+            android:id="@+id/PromoteProductSellingPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8.99"
+            android:textColor="#FF5722"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/PromoteProductSellingPriceRM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RM "
+            android:textColor="#FF5722"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/PromoteProductSellingPrice"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/PromoteProductUnitPriceRM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PromoteProductSellingPriceRM"
+            android:text="@string/normal_price"
+            android:textColor="#68000000"
+            android:textSize="12sp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+
+            />
+
+        <TextView
+            android:id="@+id/PromoteProductDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PromoteProductUnitPriceRM"
+            android:text="discount"
+            android:textColor="#FF5722"
+            android:textSize="14sp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,8 +1,12 @@
 package com.example.budgetmanagementshoppingsystemapplication.Model;
 
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String productID;
     private String category;
     private String categoryDetail;
@@ -15,6 +19,11 @@ public class Product {
     private String stockAvailable;
 
     public Product() {
+    }
+
+    public Product(String productID, String categoryDetail) {
+        this.productID = productID;
+        this.categoryDetail = categoryDetail;
     }
 
     public Product(String categoryDetail) {
@@ -117,11 +126,11 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-               // "productID='" + productID + '\'' +
-                ", category='" + category + '\'' +
+                "productID='" + productID + '\'' +
+               // ", category='" + category + '\'' +
                 ", categoryDetail='" + categoryDetail + '\'' +
-//                ", productName='" + productName + '\'' +
-//                ", productBrand='" + productBrand + '\'' +
+               // ", productName='" + productName + '\'' +
+               // ", productBrand='" + productBrand + '\'' +
 //                ", productDescription='" + productDescription + '\'' +
 //                ", productImage='" + productImage + '\'' +
 //                ", productPrice=" + productPrice +
