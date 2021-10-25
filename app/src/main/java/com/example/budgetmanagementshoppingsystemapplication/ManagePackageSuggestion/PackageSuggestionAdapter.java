@@ -35,7 +35,7 @@ import java.util.ListIterator;
 public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSuggestionAdapter.ViewHolder> {
     Context context;
     ArrayList<List<Product>> packageItems;
-
+    float totalPricePackage=0;
     public PackageSuggestionAdapter(Context context, ArrayList<List<Product>> packageItems) {
         this.context = context;
         this.packageItems = packageItems;
@@ -60,16 +60,15 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
         }
         holder.productItemRecyclerView.setHasFixedSize(true);
         holder.productItemRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context,packageItem);
+        PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context,packageItem,holder.packageNum.getText().toString(),packageItems.get(position));
         holder.productItemRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        System.out.println(packageItem);
-        float totalPrice=0;
+       float totalPricePackage=0;
         for(int i=0; i<packageItem.size(); i++)
-            totalPrice+=packageItem.get(i).getSellingPrice();
+            totalPricePackage+=packageItem.get(i).getSellingPrice();
 
-        holder.totalPrice.setText(String.format("%.2f",totalPrice));
+        holder.totalPrice.setText(String.format("%.2f",totalPricePackage));
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +79,7 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
                 context.startActivity(intent);
             }
         });
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManagePackageSuggestion;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,28 +10,58 @@ import android.os.Bundle;
 
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
 import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class OnPromotionDisplay extends AppCompatActivity {
 RecyclerView recyclerView;
 OnPromotionAdapter adapter;
+DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_promotion_display);
 
         recyclerView = findViewById(R.id.recyclerViewOnPromotionDisplay);
-
-        Intent intent = getIntent();
+        ref = FirebaseDatabase.getInstance().getReference().child("Product");
         List<Product> promotionList = new ArrayList<>();
-        promotionList = (ArrayList<Product>)intent.getSerializableExtra("promotionList");
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new OnPromotionAdapter(this, promotionList);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    Product product = snapshot1.getValue(Product.class);
+                    if (product.getSellingPrice()<product.getProductPrice())
+                        promotionList.add(product);
+
+                }
+                Collections.sort(promotionList, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return o1.getProductName().compareTo(o2.getProductName());
+                    }
+                });
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(OnPromotionDisplay.this));
+                adapter = new OnPromotionAdapter(OnPromotionDisplay.this, promotionList);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 }

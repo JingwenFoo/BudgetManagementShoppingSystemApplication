@@ -17,12 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
-        <activity android:name=".ManagePackageSuggestion.AdminAddPackage"></activity>
-        <activity android:name=".ManagePackageSuggestion.AdminPackageList" />
         <activity
             android:name=".ManagePackageSuggestion.OnPromotionDisplay"
             android:label="Items on Promotion"
-            android:parentActivityName=".ManagePackageSuggestion.SelectCategory" />
+            android:parentActivityName=".ManageBudgetTracking.ShoppingPage" />
         <activity
             android:name=".ManageBudgetTracking.ShoppingPage"
             android:label="Shopping"
@@ -34,10 +32,10 @@
         <activity
             android:name=".ManagePackageSuggestion.PackageSuggestion"
             android:label="Package Suggestion"
-            android:parentActivityName=".ManageBudgetTracking.ShoppingPage" />
+            android:parentActivityName=".ManagePackageSuggestion.SelectCategory" />
         <activity
             android:name=".ManagePackageSuggestion.SelectCategory"
-            android:label="Items on Promotion"
+            android:label="Package Suggestion"
             android:parentActivityName=".ManageBudgetTracking.ShoppingPage" />
         <activity
             android:name=".ManagePayment.PayByCash"

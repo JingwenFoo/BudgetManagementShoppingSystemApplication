@@ -36,4 +36,9 @@ public class PackageSuggestion extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

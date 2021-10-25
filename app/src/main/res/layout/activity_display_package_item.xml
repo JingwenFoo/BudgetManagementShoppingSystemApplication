@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Package Num"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"

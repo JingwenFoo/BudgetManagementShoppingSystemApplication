@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManagePackageSuggestion.OnPromotionDisplay;
 import com.example.budgetmanagementshoppingsystemapplication.ManagePackageSuggestion.SelectCategory;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 
@@ -28,11 +29,19 @@ Button shoppingNowBtn, packageSuggestBtn, viewPromotionBtn;
             }
         });
 
-        viewPromotionBtn.setOnClickListener(new View.OnClickListener() {
+        packageSuggestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent packageSuggest = new Intent(ShoppingPage.this, SelectCategory.class);
                 startActivity(packageSuggest);
+            }
+        });
+
+        viewPromotionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewPromotion = new Intent(ShoppingPage.this, OnPromotionDisplay.class);
+                startActivity(viewPromotion);
             }
         });
     }

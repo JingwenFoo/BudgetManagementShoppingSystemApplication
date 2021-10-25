@@ -52,7 +52,7 @@ public class OnPromotionAdapter extends RecyclerView.Adapter<OnPromotionAdapter.
                 Product item = snapshot.getValue(Product.class);
                 Picasso.get().load(item.getProductImage()).into(holder.productImg);
                 holder.productName.setText(item.getProductName());
-                holder.sellingPrice.setText(String.format("%.2f",item.getProductPrice()));
+                holder.sellingPrice.setText(String.format("%.2f",item.getSellingPrice()));
                 holder.productBrand.setText(item.getProductBrand());
                 holder.normalPrice.setPaintFlags(holder.normalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 holder.normalPrice.setText("RM "+String.format("%.2f",item.getProductPrice()));
