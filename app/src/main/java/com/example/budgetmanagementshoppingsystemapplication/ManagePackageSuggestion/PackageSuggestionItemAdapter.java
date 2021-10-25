@@ -34,7 +34,7 @@ public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSu
     @Override
     public void onBindViewHolder(@NonNull PackageSuggestionItemAdapter.ViewHolder holder, int position) {
         holder.productName.setText(packageItems.get(position).getProductName());
-        holder.sellingPrice.setText(packageItems.get(position).getSellingPrice().toString());
+        holder.sellingPrice.setText(String.format("%.2f",packageItems.get(position).getSellingPrice()));
     }
 
     @Override

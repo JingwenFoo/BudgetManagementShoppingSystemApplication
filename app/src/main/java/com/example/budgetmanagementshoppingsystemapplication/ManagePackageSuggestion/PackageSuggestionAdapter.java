@@ -26,15 +26,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
 
 public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSuggestionAdapter.ViewHolder> {
     Context context;
-    List<Product> packageItems;
+    ArrayList<List<Product>> packageItems;
 
-    public PackageSuggestionAdapter(Context context, List<Product> packageItems) {
+    public PackageSuggestionAdapter(Context context, ArrayList<List<Product>> packageItems) {
         this.context = context;
         this.packageItems = packageItems;
     }
@@ -49,26 +51,33 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
 
     @Override
     public void onBindViewHolder(@NonNull PackageSuggestionAdapter.ViewHolder holder, int position) {
-        Product product = this.packageItems.get(position);
-        ArrayList<List<Product>> packageData = new ArrayList<List<Product>>();
-//        System.out.println(packageData);
-//        packageData.add(packageItems);
-//        packageData.add(packageItems);
-//        System.out.println(packageData);
-
-        holder.packageNum.setText("Package 1");
-
+        holder.packageNum.setText("Package "+(position+1));
+        ListIterator<Product> iterator = this.packageItems.get(position).listIterator(0);
+        List<Product> packageItem = new ArrayList<>();
+        while (iterator.hasNext())
+        {
+            packageItem.add(iterator.next());
+        }
         holder.productItemRecyclerView.setHasFixedSize(true);
         holder.productItemRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context, packageItems);
+        PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context,packageItem);
         holder.productItemRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        System.out.println(packageItem);
+        float totalPrice=0;
+        for(int i=0; i<packageItem.size(); i++)
+            totalPrice+=packageItem.get(i).getSellingPrice();
+
+        holder.totalPrice.setText(String.format("%.2f",totalPrice));
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, DisplayPackageItem.class);
+                intent.putExtra("packageItem", (Serializable) packageItems.get(position));
+                intent.putExtra("packageNum", holder.packageNum.getText());
+                context.startActivity(intent);
             }
         });
     }
@@ -78,7 +87,7 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
         if(packageItems == null)
             return 0;
         else
-            return 1;
+            return packageItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

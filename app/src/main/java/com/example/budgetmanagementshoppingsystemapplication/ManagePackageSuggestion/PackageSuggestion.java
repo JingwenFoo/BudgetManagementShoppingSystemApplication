@@ -26,15 +26,14 @@ public class PackageSuggestion extends AppCompatActivity {
         recyclerView = findViewById(R.id.packagelistRecycleview);
 
         Intent intent = getIntent();
-        List<Product> packageList = new ArrayList<>();
-        packageList = (ArrayList<Product>)intent.getSerializableExtra("promotionList");
-
-        System.out.println(packageList);
+        ArrayList<List<Product>> packageList = new ArrayList<>();
+        packageList = (ArrayList<List<Product>>)intent.getSerializableExtra("packageData");
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PackageSuggestionAdapter(this, packageList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
     }
 }
