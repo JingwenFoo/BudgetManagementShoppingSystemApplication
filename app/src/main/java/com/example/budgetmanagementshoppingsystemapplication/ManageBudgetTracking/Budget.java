@@ -162,7 +162,7 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    preferences.clearFreshBudget(Budget.this);
+                 //   preferences.clearFreshBudget(Budget.this);
                     tv_fresh.setText(String.valueOf(progressValue));
                     }
 
@@ -282,7 +282,7 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    preferences.clearGroBudget(Budget.this);
+                 //   preferences.clearGroBudget(Budget.this);
                     tv_groc.setText(String.valueOf(progressValue));
                     }
             });
@@ -400,7 +400,7 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    preferences.clearHouseBudget(Budget.this);
+                //    preferences.clearHouseBudget(Budget.this);
                     tv_house.setText(String.valueOf(progressValue));
                 }
             });
@@ -518,7 +518,7 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    preferences.clearBevBudget(Budget.this);
+                //    preferences.clearBevBudget(Budget.this);
                     tv_bev.setText(String.valueOf(progressValue));
                 }
             });
@@ -636,7 +636,7 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    preferences.clearClothBudget(Budget.this);
+                  //  preferences.clearClothBudget(Budget.this);
                     tv_cloth.setText(String.valueOf(progressValue));
 
                 }

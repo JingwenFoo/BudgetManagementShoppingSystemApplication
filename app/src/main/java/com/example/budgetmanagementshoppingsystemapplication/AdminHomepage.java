@@ -16,7 +16,7 @@ import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewI
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.ViewList;
 
 public class AdminHomepage extends AppCompatActivity {
-Button accountListBtn, manageProductBtn, invoiceListBtn, managePackageBtn;
+Button accountListBtn, manageProductBtn, invoiceListBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,15 +24,6 @@ Button accountListBtn, manageProductBtn, invoiceListBtn, managePackageBtn;
         accountListBtn = findViewById(R.id.accountListBtn);
         manageProductBtn = findViewById(R.id.manageProductBtn);
         invoiceListBtn= findViewById(R.id.invoiceListBtn);
-        managePackageBtn = findViewById(R.id.managePackagetBtn);
-
-        managePackageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent managePackage = new Intent(AdminHomepage.this, ViewList.class);
-                startActivity(managePackage);
-            }
-        });
 
         manageProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override

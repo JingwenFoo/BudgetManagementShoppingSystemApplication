@@ -248,58 +248,7 @@ public class preferences {
     {
         return getSharedReferences(context).getBoolean(DATA_LOGIN,false);
     }
-
-    public static void clearBudget(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_BUDGET);
-        editor.apply();
-    }
-
-    public static void clearFreshBudget(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_FRESHBUDGET);
-        editor.apply();
-    }
-    public static void clearGroBudget(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_GROBUDGET);
-        editor.apply();
-    }
-    public static void clearHouseBudget(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_HOUSEBUDGET);
-        editor.apply();
-    }
-    public static void clearBevBudget(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_BEVBUDGET);
-        editor.apply();
-    }
-    public static void clearPCareBudget(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_PCAREBUDGET);
-        editor.apply();
-    }
-    public static void clearClothBudget(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_CLOTHBUDGET);
-        editor.apply();
-    }
-
-    public static void clearTotalCart(Context context)
-    {
-        SharedPreferences.Editor editor = getSharedReferences(context).edit();
-        editor.remove(DATA_TOTALCART);
-        editor.apply();
-    }
-
+    
     public static void clearData(Context context)
     {
         SharedPreferences.Editor editor = getSharedReferences(context).edit();

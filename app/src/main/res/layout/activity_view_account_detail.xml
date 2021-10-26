@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/custNameText"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Customer Name:"
         android:textColor="@color/black"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/custIDText"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Customer ID:"
         android:textColor="@color/black"
@@ -45,7 +45,7 @@
 
     <TextView
         android:id="@+id/custUsernameText"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Customer Username:"
         android:textColor="@color/black"
@@ -58,7 +58,7 @@
 
     <TextView
         android:id="@+id/custContactText"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Contact Number:"
         android:textColor="@color/black"
@@ -71,7 +71,7 @@
 
     <TextView
         android:id="@+id/custEmailText"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Email:"
         android:textColor="@color/black"
@@ -84,14 +84,14 @@
 
     <TextView
         android:id="@+id/custAddText"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Address:"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:padding="10dp"
         android:gravity="left"
-        android:layout_below="@+id/custEmailText"
+        android:layout_below="@+id/custEmailTextView"
         android:layout_marginLeft="15dp"
         />
 
@@ -116,7 +116,7 @@
         android:textSize="18dp"
         android:padding="10dp"
         android:gravity="left"
-        android:layout_below="@+id/custNameTextView"
+        android:layout_below="@+id/custNameText"
         android:layout_toRightOf="@+id/custIDText"
         />
 
@@ -129,6 +129,7 @@
         android:textSize="18dp"
         android:padding="10dp"
         android:gravity="left"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/custIDTextView"
         android:layout_toRightOf="@+id/custUsernameText"
         />
@@ -142,7 +143,8 @@
         android:textSize="18dp"
         android:padding="10dp"
         android:gravity="left"
-        android:layout_below="@+id/custUsernameTextView"
+        android:layout_below="@+id/custUsernameText"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/custContactText"
         />
 
@@ -155,7 +157,7 @@
         android:textSize="18dp"
         android:padding="10dp"
         android:gravity="left"
-        android:layout_below="@+id/custContactTextView"
+        android:layout_below="@+id/custContactText"
         android:layout_toRightOf="@+id/custEmailText"
         />
 

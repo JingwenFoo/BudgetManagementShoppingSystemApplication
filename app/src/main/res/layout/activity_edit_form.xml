@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/productImageUpdate"
         android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/teal_700"
         android:text="Upload Product Image"/>
 
     <TextView
@@ -239,11 +240,23 @@
         android:layout_toRightOf="@+id/productIDUpdate"
         android:layout_below="@+id/editTextDescpUpdate"
         android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/cancelProductBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_marginLeft="50dp"
+        android:backgroundTint="#716F6F"
+        android:layout_alignParentBottom="true" />
+
     <Button
         android:id="@+id/updateProductBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_toRightOf="@+id/cancelProductBtn"
+        android:layout_marginLeft="120dp"
+        android:backgroundTint="@color/teal_700"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

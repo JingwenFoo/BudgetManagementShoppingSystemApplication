@@ -2,6 +2,7 @@ package com.example.budgetmanagementshoppingsystemapplication.ManagePackageSugge
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +51,7 @@ DatabaseReference ref;
                     }
                 });
                 recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(OnPromotionDisplay.this));
+                recyclerView.setLayoutManager(new GridLayoutManager(OnPromotionDisplay.this,2));
                 adapter = new OnPromotionAdapter(OnPromotionDisplay.this, promotionList);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

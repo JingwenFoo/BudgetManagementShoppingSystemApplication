@@ -39,7 +39,8 @@
             android:parentActivityName=".ManageBudgetTracking.ShoppingPage" />
         <activity
             android:name=".ManagePayment.PayByCash"
-            android:label="Pay at Counter" />
+            android:label="Pay at Counter"
+            android:parentActivityName=".ManagePayment.CustomerViewHistory"/>
         <activity
             android:name=".ManagePayment.CustomerViewHistory"
             android:label="History"

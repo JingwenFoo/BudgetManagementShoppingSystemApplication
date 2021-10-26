@@ -47,7 +47,7 @@ import java.util.HashMap;
 public class EditForm extends AppCompatActivity {
 
     ImageView Product_img;
-    Button UploadBtn, UpdateBtn;
+    Button UploadBtn, UpdateBtn, CancelBtn;
     TextView ed_ProCode;
     EditText ed_ProName, ed_CategoryDetail, ed_Brand, ed_Price, ed_SellingPrice, ed_Descp, ed_Stock;
     ProgressDialog progressDialogUpdate;
@@ -76,6 +76,7 @@ public class EditForm extends AppCompatActivity {
         ed_Descp = findViewById(R.id.editTextDescpUpdate);
         ed_Stock = findViewById(R.id.editTextStockUpdate);
         mySpinner = findViewById(R.id.spinnerCategoryUpdate);
+        CancelBtn = findViewById(R.id.cancelProductBtn);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(EditForm.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.category));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -156,6 +157,15 @@ public class EditForm extends AppCompatActivity {
                 } else {
                     Toast.makeText(EditForm.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        CancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cancel = new Intent(EditForm.this,ViewForm.class);
+                cancel.putExtra("pid", editPID);
+                startActivity(cancel);
             }
         });
 
