@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageAccount;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
-import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.ViewProfile;
 import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking.Budget;
 import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.CustomerViewHistory;
-import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
+import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.budgetmanagementshoppingsystemapplication.R;
-import com.example.budgetmanagementshoppingsystemapplication.preferences;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 
 public class Budget extends AppCompatActivity {
 

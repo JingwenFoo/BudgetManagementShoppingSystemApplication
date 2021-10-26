@@ -10,10 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.budgetmanagementshoppingsystemapplication.AdminHomepage;
-import com.example.budgetmanagementshoppingsystemapplication.CustomerHomepage;
 import com.example.budgetmanagementshoppingsystemapplication.R;
-import com.example.budgetmanagementshoppingsystemapplication.preferences;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

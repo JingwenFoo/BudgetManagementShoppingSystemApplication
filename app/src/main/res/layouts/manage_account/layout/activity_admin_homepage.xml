@@ -4,40 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerHomepage">
+    tools:context=".ManageAccount.AdminHomepage">
 
     <Button
-        android:id="@+id/shoppingBtn"
+        android:id="@+id/manageProductBtn"
         android:layout_width="200dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="52dp"
-        android:backgroundTint="#FF5722"
-        android:text="Start Shopping"
-        app:layout_constraintBottom_toTopOf="@+id/historyBtn"
+        android:layout_marginBottom="53dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Manage Product"
+        app:layout_constraintBottom_toTopOf="@+id/invoiceListBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/accountListBtn" />
 
     <Button
-        android:id="@+id/historyBtn"
+        android:id="@+id/invoiceListBtn"
         android:layout_width="200dp"
         android:layout_height="0dp"
         android:layout_marginBottom="130dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="History"
+        android:backgroundTint="#FF9800"
+        android:text="Invoice List"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shoppingBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/manageProductBtn" />
 
     <Button
-        android:id="@+id/accountBtn"
+        android:id="@+id/accountListBtn"
         android:layout_width="200dp"
         android:layout_height="0dp"
         android:layout_marginTop="66dp"
-        android:layout_marginBottom="55dp"
-        android:text="Account"
-        app:layout_constraintBottom_toTopOf="@+id/shoppingBtn"
+        android:layout_marginBottom="54dp"
+        android:backgroundTint="#12B3B2"
+        android:text="Account List"
+        app:layout_constraintBottom_toTopOf="@+id/manageProductBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

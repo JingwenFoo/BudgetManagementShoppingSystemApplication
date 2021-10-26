@@ -14,13 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.budgetmanagementshoppingsystemapplication.CustomerHomepage;
 import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.CustomerCheckout;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.CaptureAct;
-import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
 import com.example.budgetmanagementshoppingsystemapplication.Model.ShoppingCart;
 import com.example.budgetmanagementshoppingsystemapplication.R;
-import com.example.budgetmanagementshoppingsystemapplication.preferences;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -35,7 +35,6 @@ import java.util.ListIterator;
 public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSuggestionAdapter.ViewHolder> {
     Context context;
     ArrayList<List<Product>> packageItems;
-    float totalPricePackage=0;
     public PackageSuggestionAdapter(Context context, ArrayList<List<Product>> packageItems) {
         this.context = context;
         this.packageItems = packageItems;
@@ -51,34 +50,48 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
 
     @Override
     public void onBindViewHolder(@NonNull PackageSuggestionAdapter.ViewHolder holder, int position) {
-        holder.packageNum.setText("Package "+(position+1));
         ListIterator<Product> iterator = this.packageItems.get(position).listIterator(0);
         List<Product> packageItem = new ArrayList<>();
         while (iterator.hasNext())
         {
             packageItem.add(iterator.next());
         }
-        holder.productItemRecyclerView.setHasFixedSize(true);
-        holder.productItemRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context,packageItem,holder.packageNum.getText().toString(),packageItems.get(position));
-        holder.productItemRecyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
 
-       float totalPricePackage=0;
-        for(int i=0; i<packageItem.size(); i++)
-            totalPricePackage+=packageItem.get(i).getSellingPrice();
+        if(packageItem.size()==0)
+        {
+            holder.packageNum.setText("No package is suggested");
+            holder.totalPrice.setText("");
+            holder.totalPriceRM.setText("");
+        }
+        else
+        {
+            holder.totalPriceRM.setText("Total Price : RM ");
+            holder.packageNum.setText("Package "+(position+1));
 
-        holder.totalPrice.setText(String.format("%.2f",totalPricePackage));
+            holder.productItemRecyclerView.setHasFixedSize(true);
+            holder.productItemRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context,packageItem,holder.packageNum.getText().toString(),packageItems.get(position));
+            holder.productItemRecyclerView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DisplayPackageItem.class);
-                intent.putExtra("packageItem", (Serializable) packageItems.get(position));
-                intent.putExtra("packageNum", holder.packageNum.getText());
-                context.startActivity(intent);
-            }
-        });
+            float totalPricePackage=0;
+            for(int i=0; i<packageItem.size(); i++)
+                totalPricePackage+=packageItem.get(i).getSellingPrice();
+
+            holder.totalPrice.setText(String.format("%.2f",totalPricePackage));
+
+            holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DisplayPackageItem.class);
+                    intent.putExtra("packageItem", (Serializable) packageItems.get(position));
+                    intent.putExtra("packageNum", holder.packageNum.getText());
+                    context.startActivity(intent);
+                }
+            });
+        }
+
+
 
     }
 
@@ -93,7 +106,7 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         RecyclerView productItemRecyclerView;
-        TextView packageNum, totalPrice;
+        TextView packageNum, totalPrice, totalPriceRM;
 
         public View mainLayout;
 
@@ -102,6 +115,7 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
             productItemRecyclerView = itemView.findViewById(R.id.packageItemRecyclerView);
             packageNum = itemView.findViewById(R.id.packageNum);
             totalPrice = itemView.findViewById(R.id.packtotalPrice);
+            totalPriceRM = itemView.findViewById(R.id.packtotalPriceRM);
             mainLayout = itemView;
         }
     }

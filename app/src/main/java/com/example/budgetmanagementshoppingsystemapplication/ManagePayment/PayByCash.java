@@ -3,16 +3,13 @@ package com.example.budgetmanagementshoppingsystemapplication.ManagePayment;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.budgetmanagementshoppingsystemapplication.R;
-import com.example.budgetmanagementshoppingsystemapplication.preferences;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;

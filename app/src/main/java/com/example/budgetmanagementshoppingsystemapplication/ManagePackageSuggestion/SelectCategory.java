@@ -9,20 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
 import com.example.budgetmanagementshoppingsystemapplication.R;
-import com.example.budgetmanagementshoppingsystemapplication.preferences;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
@@ -30,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class SelectCategory extends AppCompatActivity {
 RecyclerView recyclerViewCategoryDetail;
@@ -85,7 +80,6 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
             @Override
             public void onClick(View v) {
                 List<String> selectedCategory = adapter.getCategorySelectedArrayList();
-               System.out.println("Selected checkbox = " + selectedCategory);
 
                 Float budget = Float.parseFloat(preferences.getDataBudget(SelectCategory.this));
                 Float freshBud = Float.parseFloat(preferences.getDataFreshBudget(SelectCategory.this));
@@ -124,25 +118,13 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                                 Product product = snapshot1.getValue(Product.class);
-//                                if (product.getCategoryDetail() != null && product.getCategoryDetail().matches(selectedCategoryItem)) {
-//                                    if (product.getCategory().matches("Fresh") && product.getSellingPrice()<product.getProductPrice())
-//                                        freshList.add(product);
-//                                    if (product.getCategory().matches("Groceries") && product.getSellingPrice()<product.getProductPrice())
-//                                        grocList.add(product);
-//                                    if (product.getCategory().matches("Beverages") && product.getSellingPrice()<product.getProductPrice())
-//                                        bevList.add(product);
-//                                    if (product.getCategory().matches("Household") && product.getSellingPrice()<product.getProductPrice())
-//                                        houseList.add(product);
-//                                    if (product.getCategory().matches("Personal Care") && product.getSellingPrice()<product.getProductPrice())
-//                                        pCareList.add(product);
-//                                    if (product.getCategory().matches("Clothes") && product.getSellingPrice()<product.getProductPrice())
-//                                        clothList.add(product);
 
                                 if (product.getCategoryDetail() != null && product.getCategoryDetail().matches(selectedCategoryItem)) {
                                     if (product.getCategory().matches("Fresh"))
                                     {
                                         if(product.getSellingPrice()+freshTotal<fresh)
-                                            freshList.add(product);
+                                                freshList.add(product);
+
                                     }
 
                                     if (product.getCategory().matches("Groceries"))

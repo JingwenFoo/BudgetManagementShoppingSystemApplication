@@ -47,7 +47,7 @@
             android:id="@+id/PromoteProductSellingPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="8.99"
+            android:text="0.00"
             android:textColor="#FF5722"
             android:textSize="18sp"
             android:textStyle="bold"

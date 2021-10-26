@@ -3,6 +3,7 @@ package com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracki
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.Custo
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
 import com.example.budgetmanagementshoppingsystemapplication.Model.ShoppingCart;
 import com.example.budgetmanagementshoppingsystemapplication.R;
-import com.example.budgetmanagementshoppingsystemapplication.preferences;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,6 +83,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     holder.discount.setText(String.format("%.2f", promotion) + " %");
 
                 } else {
+                    holder.sellingPrice.setTextColor(Color.BLACK);
+                    holder.sellingPriceRM.setTextColor(Color.BLACK);
                     holder.sellingPrice.setText(String.format("%.2f", item.getProductPrice()));
                     holder.normalPrice.setText("");
                     holder.discount.setText("");
@@ -421,7 +424,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         ImageView productImg;
         ImageButton delete;
-        TextView productName, sellingPrice, totalPrice, normalPrice, discount;
+        TextView productName, sellingPrice, sellingPriceRM,  totalPrice, normalPrice, discount;
         EditText quantity;
 
         public CartViewHolder(@NonNull View itemView) {
@@ -430,6 +433,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             delete = itemView.findViewById(R.id.cartDeleteBtn);
             productName = itemView.findViewById(R.id.cartProductName);
             sellingPrice = itemView.findViewById(R.id.cartProductSellingPrice);
+            sellingPriceRM = itemView.findViewById(R.id.cartProductSellingPriceRM);
             totalPrice = itemView.findViewById(R.id.cartProductTotalPrice);
             quantity = itemView.findViewById(R.id.cartProductQuantity);
             normalPrice = itemView.findViewById(R.id.cartProductUnitPriceRM);

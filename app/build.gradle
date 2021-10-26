@@ -27,6 +27,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\layouts\\manage_account', 'src\\main\\res\\layouts\\manage_product', 'src\\main\\res\\layouts\\manage_package_suggestion', 'src\\main\\res\\layouts\\manage_budget_tracking', 'src\\main\\res\\layouts\\manage_payment'
+            }
+        }
+    }
 }
 
 dependencies {

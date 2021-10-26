@@ -1,4 +1,4 @@
-package com.example.budgetmanagementshoppingsystemapplication;
+package com.example.budgetmanagementshoppingsystemapplication.ManageAccount;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,10 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
-import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.ViewAccountList;
 import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewInvoice;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.ViewList;
+import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 
 public class AdminHomepage extends AppCompatActivity {
 Button accountListBtn, manageProductBtn, invoiceListBtn;

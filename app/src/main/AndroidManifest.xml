@@ -44,7 +44,7 @@
         <activity
             android:name=".ManagePayment.CustomerViewHistory"
             android:label="History"
-            android:parentActivityName=".CustomerHomepage" />
+            android:parentActivityName=".ManageAccount.CustomerHomepage" />
         <activity
             android:name=".ManagePayment.CardPayment"
             android:label="Card Payment"
@@ -52,7 +52,7 @@
         <activity
             android:name=".ManagePayment.ViewInvoice"
             android:label="Invoice List"
-            android:parentActivityName=".AdminHomepage" />
+            android:parentActivityName=".ManageAccount.AdminHomepage" />
         <activity
             android:name=".ManagePayment.CustomerInvoice"
             android:label="Invoice" />
@@ -71,7 +71,7 @@
         <activity
             android:name=".ManageBudgetTracking.Budget"
             android:label="Budget Setting"
-            android:parentActivityName=".CustomerHomepage" />
+            android:parentActivityName=".ManageAccount.CustomerHomepage" />
         <activity
             android:name=".ManageBudgetTracking.ViewCart"
             android:label="Shopping Cart"
@@ -87,7 +87,7 @@
         <activity
             android:name=".ManageProduct.ViewList"
             android:label="Product List"
-            android:parentActivityName=".AdminHomepage" />
+            android:parentActivityName=".ManageAccount.AdminHomepage" />
         <activity
             android:name=".ManageProduct.AddProduct"
             android:label="Add New Product"
@@ -99,9 +99,9 @@
         <activity
             android:name=".ManageAccount.ViewAccountList"
             android:label="Account List"
-            android:parentActivityName=".AdminHomepage" />
+            android:parentActivityName=".ManageAccount.AdminHomepage" />
         <activity
-            android:name=".AdminHomepage"
+            android:name=".ManageAccount.AdminHomepage"
             android:label="Admin Homepage"
             android:parentActivityName=".ManageAccount.MainActivity" />
         <activity
@@ -111,9 +111,9 @@
         <activity
             android:name=".ManageAccount.ViewProfile"
             android:label="Profile"
-            android:parentActivityName=".CustomerHomepage" />
+            android:parentActivityName=".ManageAccount.CustomerHomepage" />
         <activity
-            android:name=".CustomerHomepage"
+            android:name=".ManageAccount.CustomerHomepage"
             android:label="Customer Homepage"
             android:parentActivityName=".ManageAccount.MainActivity" />
         <activity
