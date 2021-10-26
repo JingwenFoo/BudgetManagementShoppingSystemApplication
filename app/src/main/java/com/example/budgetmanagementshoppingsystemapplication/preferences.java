@@ -248,7 +248,7 @@ public class preferences {
     {
         return getSharedReferences(context).getBoolean(DATA_LOGIN,false);
     }
-    
+
     public static void clearData(Context context)
     {
         SharedPreferences.Editor editor = getSharedReferences(context).edit();
@@ -257,13 +257,6 @@ public class preferences {
         editor.remove(DATA_USERID);
         editor.remove(DATA_CUSTNAME);
         editor.remove(DATA_BUDGET);
-        editor.remove(DATA_TOTALCART);
-        editor.remove(DATA_FRESHBUDGETTOTAL);
-        editor.remove(DATA_GROBUDGETTOTAL);
-        editor.remove(DATA_BEVBUDGETTOTAL);
-        editor.remove(DATA_HOUSEBUDGETTOTAL);
-        editor.remove(DATA_PCAREBUDGETTOTAL);
-        editor.remove(DATA_CLOTHBUDGETTOTAL);
         editor.remove(DATA_FRESHBUDGET);
         editor.remove(DATA_GROBUDGET);
         editor.remove(DATA_BEVBUDGET);
