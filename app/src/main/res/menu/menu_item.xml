@@ -6,6 +6,11 @@
     android:title="">
     <menu>
         <item
+            android:id="@+id/homeBtn"
+            android:icon="@drawable/ic_home"
+            android:title="Home"
+            app:showAsAction="never"/>
+        <item
             android:id="@+id/logoutBtn"
             android:icon="@drawable/ic_logout"
             android:title="Logout"
