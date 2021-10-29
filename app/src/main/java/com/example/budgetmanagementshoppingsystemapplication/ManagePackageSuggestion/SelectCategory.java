@@ -29,7 +29,7 @@ import java.util.List;
 
 public class SelectCategory extends AppCompatActivity {
 RecyclerView recyclerViewCategoryDetail;
-Button viewBtn;
+Button suggestBtn;
 DatabaseReference ref;
 List<String> categoryItemList = new ArrayList<>();
 List<Product> promotionProduct = new ArrayList<>();
@@ -41,7 +41,7 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
         setContentView(R.layout.activity_select_category);
 
         recyclerViewCategoryDetail = findViewById(R.id.categoryitemRecycleView);
-        viewBtn = findViewById(R.id.viewBtn);
+        suggestBtn = findViewById(R.id.suggestBtn);
         ref = FirebaseDatabase.getInstance().getReference();
 
         recyclerViewCategoryDetail.setHasFixedSize(true);
@@ -76,7 +76,7 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
             }
         });
 
-        viewBtn.setOnClickListener(new View.OnClickListener() {
+        suggestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<String> selectedCategory = adapter.getCategorySelectedArrayList();
