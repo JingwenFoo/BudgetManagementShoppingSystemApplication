@@ -206,6 +206,13 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
 
                         if(freshList.size()!=0)
                         {
+                            Collections.sort(freshList, new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2) {
+                                    return o1.getSellingPrice().compareTo(o2.getSellingPrice());
+                                }
+                            });
+
                             for(int i=0; i<freshList.size()-1; i++)
                             {
                                 for(int j=i+1; j<freshList.size(); j++)
@@ -241,6 +248,13 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
 
                         if(grocList.size()!=0)
                         {
+                            Collections.sort(grocList, new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2) {
+                                    return o1.getSellingPrice().compareTo(o2.getSellingPrice());
+                                }
+                            });
+
                             for(int i=0; i<grocList.size()-1; i++)
                             {
                                 for(int j=i+1; j<grocList.size(); j++)
@@ -276,6 +290,13 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
 
                         if(bevList.size()!=0)
                         {
+                            Collections.sort(bevList, new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2) {
+                                    return o1.getSellingPrice().compareTo(o2.getSellingPrice());
+                                }
+                            });
+
                             for(int i=0; i<bevList.size()-1; i++)
                             {
                                 for(int j=i+1; j<bevList.size(); j++)
@@ -310,6 +331,13 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
 
                         if(houseList.size()!=0)
                         {
+                            Collections.sort(houseList, new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2) {
+                                    return o1.getSellingPrice().compareTo(o2.getSellingPrice());
+                                }
+                            });
+
                             for(int i=0; i<houseList.size()-1; i++)
                             {
                                 for(int j=i+1; j<houseList.size(); j++)
@@ -344,6 +372,13 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
 
                         if(pCareList.size()!=0)
                         {
+                            Collections.sort(pCareList, new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2) {
+                                    return o1.getSellingPrice().compareTo(o2.getSellingPrice());
+                                }
+                            });
+
                             for(int i=0; i<pCareList.size()-1; i++)
                             {
                                 for(int j=i+1; j<pCareList.size(); j++)
@@ -378,6 +413,13 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
 
                         if(clothList.size()!=0)
                         {
+                            Collections.sort(clothList, new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2) {
+                                    return o1.getSellingPrice().compareTo(o2.getSellingPrice());
+                                }
+                            });
+
                             for(int i=0; i<clothList.size()-1; i++)
                             {
                                 for(int j=i+1; j<clothList.size(); j++)
@@ -761,10 +803,32 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                 }
                                 packageData.addAll(newClothPackage);
                             }
-
                         }
 
+                        float[] totalPrice = new float[packageData.size()];
 
+                        for(int i=0; i<packageData.size(); i++)
+                        {
+                            List<Product> packageDataList = new ArrayList<>();
+                            packageDataList.addAll(packageData.get(i));
+                            for(int j=0; j<packageDataList.size(); j++)
+                                totalPrice[i]+=packageDataList.get(j).getSellingPrice();
+                        }
+                        System.out.println(packageData);
+                        for(int j=0; j<packageData.size()-1; j++)
+                        {
+                            for(int k=j+1; k<packageData.size(); k++)
+                            {
+                                if (totalPrice[k]<totalPrice[j])
+                                {
+                                    List<Product> tempPackageData = new ArrayList<>();
+                                    tempPackageData.addAll(packageData.get(j));
+                                    packageData.remove(j);
+                                    packageData.add(k,tempPackageData);
+                                }
+                            }
+                        }
+                        System.out.println(packageData);
                         Intent intent = new Intent(SelectCategory.this, PackageSuggestion.class);
                         intent.putExtra("packageData", (Serializable) packageData);
                         startActivity(intent);
