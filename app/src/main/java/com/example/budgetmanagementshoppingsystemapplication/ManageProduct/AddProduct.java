@@ -87,7 +87,7 @@ public class AddProduct extends AppCompatActivity {
                             addProImg.setImageURI(imageUri);
                         } else {
                             Toast.makeText(AddProduct.this, "No image is selected", Toast.LENGTH_SHORT).show();
-                            addProImg.setImageResource(R.drawable.ic_image);
+                            addProImg.setImageResource(R.drawable.ic_image_loading);
                         }
                     }
                 });

@@ -96,6 +96,7 @@ public class EditForm extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 Product productDetail = snapshot.child(editPID).getValue(Product.class);
+                String productImage = snapshot.child(editPID).child("productImage").getValue(String.class);
                 ed_ProName.setText(String.valueOf(productDetail.getProductName()));
                 ed_ProCode.setText(editPID);
                 String category = productDetail.getCategory();
@@ -118,7 +119,7 @@ public class EditForm extends AppCompatActivity {
                 ed_SellingPrice.setText(String.format("%.2f",productDetail.getSellingPrice()));
                 ed_Stock.setText(String.valueOf(productDetail.getStockAvailable()));
                 ed_Descp.setText(String.valueOf(productDetail.getProductDescription()));
-                Picasso.get().load(String.valueOf(productDetail.getProductImage())).into(Product_img);
+                Picasso.get().load(productImage).into(Product_img);
             }
 
             @Override
@@ -175,52 +176,82 @@ public class EditForm extends AppCompatActivity {
         progressDialogUpdate.setTitle("Update Product");
         progressDialogUpdate.setCanceledOnTouchOutside(false);
         progressDialogUpdate.show();
+        ref = FirebaseDatabase.getInstance().getReference().child("Product");
 
-        StorageReference sRef = storageReference.child(System.currentTimeMillis() + "." + getExtensionFile(imageUriUpdate));
-        sRef.putFile(imageUriUpdate).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        urlUpdate = uri.toString();
-                        ref = FirebaseDatabase.getInstance().getReference().child("Product");
+        if (imageUriUpdate != null)
+        {
+            StorageReference sRef = storageReference.child(System.currentTimeMillis() + "." + getExtensionFile(imageUriUpdate));
+            sRef.putFile(imageUriUpdate).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            urlUpdate = uri.toString();
 
-                        HashMap<String, Object> map = new HashMap<>();
-                        map.put("productID", ed_ProCode.getText().toString());
-                        map.put("productName", ed_ProName.getText().toString());
-                        map.put("productBrand", ed_Brand.getText().toString());
-                        map.put("category", String.valueOf(mySpinner.getSelectedItem()));
-                        map.put("categoryDetail", ed_CategoryDetail.getText().toString());
-                        map.put("productPrice", Float.valueOf(ed_Price.getText().toString()));
-                        map.put("sellingPrice", Float.valueOf(ed_SellingPrice.getText().toString()));
-                        map.put("productImage", urlUpdate);
-                        map.put("productDescription", ed_Descp.getText().toString());
-                        map.put("stockAvailable", ed_Stock.getText().toString());
+                            HashMap<String, Object> map = new HashMap<>();
+                            map.put("productName", ed_ProName.getText().toString());
+                            map.put("productBrand", ed_Brand.getText().toString());
+                            map.put("productImage", urlUpdate);
+                            map.put("category", String.valueOf(mySpinner.getSelectedItem()));
+                            map.put("categoryDetail", ed_CategoryDetail.getText().toString());
+                            map.put("productPrice", Float.valueOf(ed_Price.getText().toString()));
+                            map.put("sellingPrice", Float.valueOf(ed_SellingPrice.getText().toString()));
+                            map.put("productDescription", ed_Descp.getText().toString());
+                            map.put("stockAvailable", ed_Stock.getText().toString());
 
-                        progressDialogUpdate.dismiss();
-                        ref.child(ed_ProCode.getText().toString()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(EditForm.this, "Product updated successfully", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(EditForm.this, ViewForm.class));
-                                    finish();
-                                } else {
-                                    Toast.makeText(EditForm.this, "Failed update product", Toast.LENGTH_SHORT).show();
+                            progressDialogUpdate.dismiss();
+                            ref.child(ed_ProCode.getText().toString()).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(EditForm.this, "Product updated successfully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(EditForm.this, ViewForm.class));
+                                        finish();
+                                    } else {
+                                        Toast.makeText(EditForm.this, "Failed update product", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(EditForm.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressDialogUpdate.dismiss();
+                        }
+                    });
+                }
+            });
+        }
+        else
+        {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("productName", ed_ProName.getText().toString());
+            map.put("productBrand", ed_Brand.getText().toString());
+            map.put("category", String.valueOf(mySpinner.getSelectedItem()));
+            map.put("categoryDetail", ed_CategoryDetail.getText().toString());
+            map.put("productPrice", Float.valueOf(ed_Price.getText().toString()));
+            map.put("sellingPrice", Float.valueOf(ed_SellingPrice.getText().toString()));
+            map.put("productDescription", ed_Descp.getText().toString());
+            map.put("stockAvailable", ed_Stock.getText().toString());
+
+            progressDialogUpdate.dismiss();
+
+            ref.child(ed_ProCode.getText().toString()).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(EditForm.this, "Product updated successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(EditForm.this, ViewForm.class));
+                        finish();
+                    } else {
+                        Toast.makeText(EditForm.this, "Failed update product", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(EditForm.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        progressDialogUpdate.dismiss();
-                    }
-                });
-            }
-        });
+                }
+            });
+        }
+
 
     }
 

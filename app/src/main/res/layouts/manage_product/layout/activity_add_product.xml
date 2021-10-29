@@ -27,8 +27,8 @@
         android:scaleType="fitCenter"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/darker_gray"
-        android:src="@drawable/ic_image"/>
+        android:background="@color/white"
+        android:src="@drawable/ic_image_loading"/>
 
     <Button
         android:id="@+id/uploadImageBtn"
