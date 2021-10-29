@@ -184,13 +184,25 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                         promotionProduct.addAll(clothList);
 
                         ArrayList<List<Product>> packageData = new ArrayList<List<Product>>();
+                        ArrayList<List<Product>> newFreshPackage = new ArrayList<List<Product>>();
+                        ArrayList<List<Product>> newGroPackage = new ArrayList<List<Product>>();
+                        ArrayList<List<Product>> newBevPackage = new ArrayList<List<Product>>();
+                        ArrayList<List<Product>> newHousePackage = new ArrayList<List<Product>>();
+                        ArrayList<List<Product>> newPCarePackage = new ArrayList<List<Product>>();
+                        ArrayList<List<Product>> newClothPackage = new ArrayList<List<Product>>();
                         List<Product> tempPackage = new ArrayList<>();
                         List<Product> tempFreshList = new ArrayList<>();
+                        List<Product> newFreshList = new ArrayList<>();
                         List<Product> tempGrocList = new ArrayList<>();
+                        List<Product> newGroList = new ArrayList<>();
                         List<Product> tempBevList = new ArrayList<>();
+                        List<Product> newBevList = new ArrayList<>();
                         List<Product> tempHouseList = new ArrayList<>();
+                        List<Product> newHouseList = new ArrayList<>();
                         List<Product> tempPCareList = new ArrayList<>();
+                        List<Product> newPCareList = new ArrayList<>();
                         List<Product> tempClothList = new ArrayList<>();
+                        List<Product> newClothList = new ArrayList<>();
 
                         if(freshList.size()!=0)
                         {
@@ -202,11 +214,29 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                     {
                                         tempFreshList.add(freshList.get(j));
                                         freshList.remove(j);
+                                        j--;
                                     }
                                 }
                             }
                             tempPackage.addAll(freshList);
 
+                            while(tempFreshList.size()>0)
+                            {
+                                for(int i=0; i<freshList.size(); i++)
+                                {
+                                    for(int j=0; j<tempFreshList.size(); j++)
+                                    {
+                                        if (freshList.get(i).getCategoryDetail().equalsIgnoreCase(tempFreshList.get(j).getCategoryDetail()))
+                                        {
+                                            newFreshList = new ArrayList<>();
+                                            newFreshList.addAll(freshList);
+                                            newFreshList.set(i, tempFreshList.get(j));
+                                            tempFreshList.remove(j);
+                                        }
+                                    }
+                                }
+                                newFreshPackage.add(newFreshList);
+                            }
                         }
 
                         if(grocList.size()!=0)
@@ -219,10 +249,29 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                     {
                                         tempGrocList.add(grocList.get(j));
                                         grocList.remove(j);
+                                        j--;
                                     }
                                 }
                             }
                             tempPackage.addAll(grocList);
+
+                            while(tempGrocList.size()>0)
+                            {
+                                for(int i=0; i<grocList.size(); i++)
+                                {
+                                    for(int j=0; j<tempGrocList.size(); j++)
+                                    {
+                                        if (grocList.get(i).getCategoryDetail().equalsIgnoreCase(tempGrocList.get(j).getCategoryDetail()))
+                                        {
+                                            newGroList = new ArrayList<>();
+                                            newGroList.addAll(grocList);
+                                            newGroList.set(i, tempGrocList.get(j));
+                                            tempGrocList.remove(j);
+                                        }
+                                    }
+                                }
+                                newGroPackage.add(newGroList);
+                            }
                         }
 
                         if(bevList.size()!=0)
@@ -239,6 +288,24 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                 }
                             }
                             tempPackage.addAll(bevList);
+
+                            while(tempBevList.size()>0)
+                            {
+                                for(int i=0; i<bevList.size(); i++)
+                                {
+                                    for(int j=0; j<tempBevList.size(); j++)
+                                    {
+                                        if (bevList.get(i).getCategoryDetail().equalsIgnoreCase(tempBevList.get(j).getCategoryDetail()))
+                                        {
+                                            newBevList = new ArrayList<>();
+                                            newBevList.addAll(bevList);
+                                            newBevList.set(i, tempBevList.get(j));
+                                            tempBevList.remove(j);
+                                        }
+                                    }
+                                }
+                                newBevPackage.add(newBevList);
+                            }
                         }
 
                         if(houseList.size()!=0)
@@ -255,6 +322,24 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                 }
                             }
                             tempPackage.addAll(houseList);
+
+                            while(tempHouseList.size()>0)
+                            {
+                                for(int i=0; i<houseList.size(); i++)
+                                {
+                                    for(int j=0; j<tempHouseList.size(); j++)
+                                    {
+                                        if (houseList.get(i).getCategoryDetail().equalsIgnoreCase(tempHouseList.get(j).getCategoryDetail()))
+                                        {
+                                            newHouseList = new ArrayList<>();
+                                            newHouseList.addAll(houseList);
+                                            newHouseList.set(i, tempHouseList.get(j));
+                                            tempHouseList.remove(j);
+                                        }
+                                    }
+                                }
+                                newHousePackage.add(newHouseList);
+                            }
                         }
 
                         if(pCareList.size()!=0)
@@ -271,6 +356,24 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                 }
                             }
                             tempPackage.addAll(pCareList);
+
+                            while(tempPCareList.size()>0)
+                            {
+                                for(int i=0; i<pCareList.size(); i++)
+                                {
+                                    for(int j=0; j<tempPCareList.size(); j++)
+                                    {
+                                        if (pCareList.get(i).getCategoryDetail().equalsIgnoreCase(tempPCareList.get(j).getCategoryDetail()))
+                                        {
+                                            newPCareList = new ArrayList<>();
+                                            newPCareList.addAll(pCareList);
+                                            newPCareList.set(i, tempPCareList.get(j));
+                                            tempPCareList.remove(j);
+                                        }
+                                    }
+                                }
+                                newPCarePackage.add(newPCareList);
+                            }
                         }
 
                         if(clothList.size()!=0)
@@ -287,6 +390,24 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                 }
                             }
                             tempPackage.addAll(clothList);
+
+                            while(tempClothList.size()>0)
+                            {
+                                for(int i=0; i<clothList.size(); i++)
+                                {
+                                    for(int j=0; j<tempClothList.size(); j++)
+                                    {
+                                        if (clothList.get(i).getCategoryDetail().equalsIgnoreCase(tempClothList.get(j).getCategoryDetail()))
+                                        {
+                                            newClothList = new ArrayList<>();
+                                            newClothList.addAll(clothList);
+                                            newClothList.set(i, tempClothList.get(j));
+                                            tempClothList.remove(j);
+                                        }
+                                    }
+                                }
+                                newClothPackage.add(newClothList);
+                            }
                         }
 
                         Collections.sort(tempPackage, new Comparator<Product>() {
@@ -297,115 +418,352 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                         });
                         packageData.add(tempPackage);
 
-                        if(tempFreshList.size()>0 || tempGrocList.size()>0 || tempBevList.size()>0 || tempHouseList.size()>0 || tempPCareList.size()>0 || tempClothList.size()>0)
+                        if(newFreshPackage.size()!=0 || newGroPackage.size()!=0 || newBevPackage.size()!=0 || newHousePackage.size()!=0 || newPCarePackage.size()!=0 || newClothPackage.size()!=0)
                         {
-                            List<Product> tempPackage1 = new ArrayList<>();
-                            tempPackage1.addAll(tempPackage);
-
-                            if(tempFreshList.size()!=0)
+                            if(newFreshPackage.size()>=newGroPackage.size() && newFreshPackage.size()>=newBevPackage.size() && newFreshPackage.size()>newHousePackage.size() && newFreshPackage.size()>newPCarePackage.size() && newFreshPackage.size()>newClothPackage.size() )
                             {
-                                for(int i=0; i<tempPackage1.size(); i++)
+                                for(int i=0; i<newFreshPackage.size(); i++)
                                 {
-                                    for(int j=0; j<tempFreshList.size(); j++)
+                                    if(newGroPackage.size()!=0)
                                     {
-                                        if(tempPackage1.get(i).getCategoryDetail().matches(tempFreshList.get(j).getCategoryDetail()))
+                                        for(int j=0; j<newGroPackage.size(); j++)
                                         {
-                                            tempPackage1.add(tempFreshList.get(j));
-                                            tempPackage1.remove(i);
-                                            tempFreshList.remove(j);
+                                            newFreshPackage.get(i).addAll(newGroPackage.get(j));
                                         }
                                     }
-                                }
-                            }
+                                    else
+                                        newFreshPackage.get(i).addAll(grocList);
 
-                            if(tempGrocList.size()!=0)
-                            {
-                                for(int i=0; i<tempPackage1.size(); i++)
-                                {
-                                    for(int j=0; j<tempGrocList.size(); j++)
+                                    if(newBevPackage.size()!=0)
                                     {
-                                        if(tempPackage1.get(i).getCategoryDetail().matches(tempGrocList.get(j).getCategoryDetail()))
+                                        for(int j=0; j<newBevPackage.size(); j++)
                                         {
-                                            tempPackage1.add(tempGrocList.get(j));
-                                            tempPackage1.remove(i);
-                                            tempGrocList.remove(j);
+                                            newFreshPackage.get(i).addAll(newBevPackage.get(j));
                                         }
                                     }
-                                }
-                            }
+                                    else
+                                        newFreshPackage.get(i).addAll(bevList);
 
-                            if(tempBevList.size()!=0)
-                            {
-                                for(int i=0; i<tempPackage1.size(); i++)
-                                {
-                                    for(int j=0; j<tempBevList.size(); j++)
+                                    if(newHousePackage.size()!=0)
                                     {
-                                        if(tempPackage1.get(i).getCategoryDetail().matches(tempBevList.get(j).getCategoryDetail()))
+                                        for(int j=0; j<newHousePackage.size(); j++)
                                         {
-                                            tempPackage1.add(tempBevList.get(j));
-                                            tempPackage1.remove(i);
-                                            tempBevList.remove(j);
+                                            newFreshPackage.get(i).addAll(newHousePackage.get(j));
                                         }
                                     }
-                                }
-                            }
+                                    else
+                                        newFreshPackage.get(i).addAll(houseList);
 
-                            if(tempHouseList.size()!=0)
-                            {
-                                for(int i=0; i<tempPackage1.size(); i++)
-                                {
-                                    for(int j=0; j<tempHouseList.size(); j++)
+                                    if(newPCarePackage.size()!=0)
                                     {
-                                        if(tempPackage1.get(i).getCategoryDetail().matches(tempHouseList.get(j).getCategoryDetail()))
+                                        for(int j=0; j<newPCarePackage.size(); j++)
                                         {
-                                            tempPackage1.add(tempHouseList.get(j));
-                                            tempPackage1.remove(i);
-                                            tempHouseList.remove(j);
+                                            newFreshPackage.get(i).addAll(newPCarePackage.get(j));
                                         }
                                     }
-                                }
-                            }
+                                    else
+                                        newFreshPackage.get(i).addAll(pCareList);
 
-                            if(tempPCareList.size()!=0)
-                            {
-                                for(int i=0; i<tempPackage1.size(); i++)
-                                {
-                                    for(int j=0; j<tempPCareList.size(); j++)
+                                    if(newClothPackage.size()!=0)
                                     {
-                                        if(tempPackage1.get(i).getCategoryDetail().matches(tempPCareList.get(j).getCategoryDetail()))
+                                        for(int j=0; j<newClothPackage.size(); j++)
                                         {
-                                            tempPackage1.add(tempPCareList.get(j));
-                                            tempPackage1.remove(i);
-                                            tempPCareList.remove(j);
+                                            newFreshPackage.get(i).addAll(newClothPackage.get(j));
                                         }
                                     }
+                                    else
+                                        newFreshPackage.get(i).addAll(clothList);
                                 }
+                                packageData.addAll(newFreshPackage);
                             }
-
-                            if(tempClothList.size()!=0)
+                            else if(newGroPackage.size()>=newFreshPackage.size() && newGroPackage.size()>=newBevPackage.size() && newGroPackage.size()>newHousePackage.size() && newGroPackage.size()>newPCarePackage.size() && newGroPackage.size()>newClothPackage.size() )
                             {
-                                for(int i=0; i<tempPackage1.size(); i++)
+                                for(int i=0; i<newGroPackage.size(); i++)
                                 {
-                                    for(int j=0; j<tempClothList.size(); j++)
+                                    if(newFreshPackage.size()!=0)
                                     {
-                                        if(tempPackage1.get(i).getCategoryDetail().matches(tempClothList.get(j).getCategoryDetail()))
+                                        for(int j=0; j<newFreshPackage.size(); j++)
                                         {
-                                            tempPackage1.add(tempClothList.get(j));
-                                            tempPackage1.remove(i);
-                                            tempClothList.remove(j);
+                                            newGroPackage.get(i).addAll(newFreshPackage.get(j));
                                         }
                                     }
-                                }
-                            }
-                            Collections.sort(tempPackage1, new Comparator<Product>() {
-                                @Override
-                                public int compare(Product o1, Product o2) {
-                                    return o1.getCategoryDetail().compareTo(o2.getCategoryDetail());
-                                }
-                            });
+                                    else
+                                        newGroPackage.get(i).addAll(freshList);
 
-                            packageData.add(tempPackage1);
+
+                                    if(newBevPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newBevPackage.size(); j++)
+                                        {
+                                            newGroPackage.get(i).addAll(newBevPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newGroPackage.get(i).addAll(bevList);
+
+                                    if(newHousePackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newHousePackage.size(); j++)
+                                        {
+                                            newGroPackage.get(i).addAll(newHousePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newGroPackage.get(i).addAll(houseList);
+
+                                    if(newPCarePackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newPCarePackage.size(); j++)
+                                        {
+                                            newGroPackage.get(i).addAll(newPCarePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newGroPackage.get(i).addAll(pCareList);
+
+                                    if(newClothPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newClothPackage.size(); j++)
+                                        {
+                                            newGroPackage.get(i).addAll(newClothPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newGroPackage.get(i).addAll(clothList);
+                                }
+                                packageData.addAll(newGroPackage);
+                            }
+                            else if(newBevPackage.size()>=newFreshPackage.size() && newBevPackage.size()>=newGroPackage.size() && newBevPackage.size()>newHousePackage.size() && newBevPackage.size()>newPCarePackage.size() && newBevPackage.size()>newClothPackage.size() )
+                            {
+                                for(int i=0; i<newBevPackage.size(); i++)
+                                {
+                                    if(newFreshPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newFreshPackage.size(); j++)
+                                        {
+                                            newBevPackage.get(i).addAll(newFreshPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newBevPackage.get(i).addAll(freshList);
+
+
+                                    if(newGroPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newGroPackage.size(); j++)
+                                        {
+                                            newBevPackage.get(i).addAll(newGroPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newBevPackage.get(i).addAll(grocList);
+
+                                    if(newHousePackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newHousePackage.size(); j++)
+                                        {
+                                            newBevPackage.get(i).addAll(newHousePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newBevPackage.get(i).addAll(houseList);
+
+                                    if(newPCarePackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newPCarePackage.size(); j++)
+                                        {
+                                            newBevPackage.get(i).addAll(newPCarePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newBevPackage.get(i).addAll(pCareList);
+
+                                    if(newClothPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newClothPackage.size(); j++)
+                                        {
+                                            newBevPackage.get(i).addAll(newClothPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newBevPackage.get(i).addAll(clothList);
+                                }
+                                packageData.addAll(newBevPackage);
+                            }
+                            else if(newHousePackage.size()>=newFreshPackage.size() && newHousePackage.size()>=newBevPackage.size() && newHousePackage.size()>newGroPackage.size() && newHousePackage.size()>newPCarePackage.size() && newHousePackage.size()>newClothPackage.size() )
+                            {
+                                for(int i=0; i<newHousePackage.size(); i++)
+                                {
+                                    if(newFreshPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newFreshPackage.size(); j++)
+                                        {
+                                            newHousePackage.get(i).addAll(newFreshPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newHousePackage.get(i).addAll(freshList);
+
+
+                                    if(newBevPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newBevPackage.size(); j++)
+                                        {
+                                            newHousePackage.get(i).addAll(newBevPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newHousePackage.get(i).addAll(bevList);
+
+                                    if(newGroPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newGroPackage.size(); j++)
+                                        {
+                                            newHousePackage.get(i).addAll(newGroPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newHousePackage.get(i).addAll(grocList);
+
+                                    if(newPCarePackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newPCarePackage.size(); j++)
+                                        {
+                                            newHousePackage.get(i).addAll(newPCarePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newHousePackage.get(i).addAll(pCareList);
+
+                                    if(newClothPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newClothPackage.size(); j++)
+                                        {
+                                            newHousePackage.get(i).addAll(newClothPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newHousePackage.get(i).addAll(clothList);
+                                }
+                                packageData.addAll(newHousePackage);
+                            }
+                            else if(newPCarePackage.size()>=newFreshPackage.size() && newPCarePackage.size()>=newBevPackage.size() && newPCarePackage.size()>newHousePackage.size() && newPCarePackage.size()>newGroPackage.size() && newPCarePackage.size()>newClothPackage.size() )
+                            {
+                                for(int i=0; i<newPCarePackage.size(); i++)
+                                {
+                                    if(newFreshPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newFreshPackage.size(); j++)
+                                        {
+                                            newPCarePackage.get(i).addAll(newFreshPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newPCarePackage.get(i).addAll(freshList);
+
+
+                                    if(newBevPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newBevPackage.size(); j++)
+                                        {
+                                            newPCarePackage.get(i).addAll(newBevPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newPCarePackage.get(i).addAll(bevList);
+
+                                    if(newGroPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newGroPackage.size(); j++)
+                                        {
+                                            newPCarePackage.get(i).addAll(newGroPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newPCarePackage.get(i).addAll(grocList);
+
+                                    if(newHousePackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newHousePackage.size(); j++)
+                                        {
+                                            newPCarePackage.get(i).addAll(newHousePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newPCarePackage.get(i).addAll(houseList);
+
+                                    if(newClothPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newClothPackage.size(); j++)
+                                        {
+                                            newPCarePackage.get(i).addAll(newClothPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newPCarePackage.get(i).addAll(clothList);
+                                }
+                                packageData.addAll(newPCarePackage);
+                            }
+                            else
+                            {
+                                for(int i=0; i<newClothPackage.size(); i++)
+                                {
+                                    if(newFreshPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newFreshPackage.size(); j++)
+                                        {
+                                            newClothPackage.get(i).addAll(newFreshPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newClothPackage.get(i).addAll(freshList);
+
+
+                                    if(newBevPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newBevPackage.size(); j++)
+                                        {
+                                            newClothPackage.get(i).addAll(newBevPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newClothPackage.get(i).addAll(bevList);
+
+                                    if(newGroPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newGroPackage.size(); j++)
+                                        {
+                                            newClothPackage.get(i).addAll(newGroPackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newClothPackage.get(i).addAll(grocList);
+
+                                    if(newHousePackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newHousePackage.size(); j++)
+                                        {
+                                            newClothPackage.get(i).addAll(newHousePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newClothPackage.get(i).addAll(houseList);
+
+                                    if(newClothPackage.size()!=0)
+                                    {
+                                        for(int j=0; j<newPCarePackage.size(); j++)
+                                        {
+                                            newClothPackage.get(i).addAll(newPCarePackage.get(j));
+                                        }
+                                    }
+                                    else
+                                        newClothPackage.get(i).addAll(pCareList);
+                                }
+                                packageData.addAll(newClothPackage);
+                            }
+
                         }
+
 
                         Intent intent = new Intent(SelectCategory.this, PackageSuggestion.class);
                         intent.putExtra("packageData", (Serializable) packageData);
