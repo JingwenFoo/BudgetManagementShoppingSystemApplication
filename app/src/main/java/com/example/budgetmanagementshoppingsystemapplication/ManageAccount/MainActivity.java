@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.budgetmanagementshoppingsystemapplication.R;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 EditText username, password;
+TextView forgetPassword;
 Button loginBtn, signUpBtn;
 DatabaseReference ref;
 
@@ -29,10 +31,19 @@ DatabaseReference ref;
         setContentView(R.layout.activity_main);
         username = (EditText) findViewById(R.id.editTextUsername);
         password = (EditText) findViewById(R.id.editTextPassword);
+        forgetPassword = (TextView) findViewById(R.id.forgetPassword);
         loginBtn = (Button) findViewById(R.id.btnLogin);
         signUpBtn = (Button) findViewById(R.id.btnSignUp);
 
         ref = FirebaseDatabase.getInstance().getReference();
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ForgetPassword.class);
+                startActivity(intent);
+            }
+        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

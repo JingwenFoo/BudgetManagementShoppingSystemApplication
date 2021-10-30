@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
@@ -17,9 +19,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class ViewProfile extends AppCompatActivity {
 Button editProfileBtn;
+ImageView profilePic;
 TextView name, username, phone, address, email;
 DatabaseReference ref;
     @Override
@@ -32,6 +36,7 @@ DatabaseReference ref;
         phone = findViewById(R.id.custPhone);
         address = findViewById(R.id.custAddress);
         email = findViewById(R.id.custEmail);
+        profilePic = findViewById(R.id.viewprofilePic);
 
         ref = FirebaseDatabase.getInstance().getReference();
         username.setText(preferences.getDataStatus(ViewProfile.this));
@@ -59,7 +64,10 @@ DatabaseReference ref;
                 phone.setText(String.valueOf(customer.getPhone()));
                 email.setText(String.valueOf(customer.getEmail()));
                 address.setText(String.valueOf(customer.getAddress()));
-
+                if(!customer.getProfilePic().matches("null"))
+                    Picasso.get().load(customer.getProfilePic()).into(profilePic);
+                else
+                    profilePic.setImageResource(R.drawable.profile_icon);
             }
 
             @Override

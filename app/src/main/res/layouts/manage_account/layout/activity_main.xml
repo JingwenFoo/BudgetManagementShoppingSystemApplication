@@ -41,25 +41,53 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/img"/>
 
-    <EditText
-        android:id="@+id/editTextUsername"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernmeloginTIL"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:textSize="20dp"
+        app:passwordToggleEnabled="false"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/signin"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp">
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="text"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/editTextUsername"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextPassword"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordloginTIL"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textSize="20dp"
+        app:passwordToggleEnabled="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextUsername"
-        />
+        android:layout_below="@+id/usernmeloginTIL">
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/editTextUsername"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/forgetPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Forget password/username?"
+        android:textColor="@color/purple_700"
+        android:gravity="right"
+        android:layout_below="@id/passwordloginTIL"
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/btnLogin"
@@ -68,7 +96,7 @@
         android:text="Login"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextPassword"
+        android:layout_below="@+id/forgetPassword"
         android:layout_marginTop="10dp"/>
 
     <TextView

@@ -9,6 +9,7 @@ public class Customer {
     private String name;
     private String phone;
     private String address;
+    private String profilePic;
 
     public Customer() {
     }
@@ -19,13 +20,14 @@ public class Customer {
         this.username = username;
     }
 
-    public Customer(String uid, String username, String email, String name, String phone, String address) {
+    public Customer(String uid, String username, String email, String name, String phone, String address, String profilePic) {
         this.uid = uid;
         this.username = username;
         this.email = email;
         this.name = name;
         this.phone = phone;
         this.address = address;
+        this.profilePic = profilePic;
     }
 
     public String getUid() {
@@ -92,4 +94,11 @@ public class Customer {
         this.address = address;
     }
 
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
 }

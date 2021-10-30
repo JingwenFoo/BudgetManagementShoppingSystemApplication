@@ -17,6 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
+        <activity android:name=".ManageAccount.UpdateNewPassword"
+            android:label="Reset Password"
+            android:parentActivityName=".ManageAccount.ForgetPassword"></activity>
+        <activity
+            android:name=".ManageAccount.ForgetPassword"
+            android:label="Forget Password"
+            android:parentActivityName=".ManageAccount.MainActivity" />
         <activity
             android:name=".ManagePackageSuggestion.OnPromotionDisplay"
             android:label="Items on Promotion"
@@ -40,7 +47,7 @@
         <activity
             android:name=".ManagePayment.PayByCash"
             android:label="Pay at Counter"
-            android:parentActivityName=".ManagePayment.CustomerViewHistory"/>
+            android:parentActivityName=".ManagePayment.CustomerViewHistory" />
         <activity
             android:name=".ManagePayment.CustomerViewHistory"
             android:label="History"

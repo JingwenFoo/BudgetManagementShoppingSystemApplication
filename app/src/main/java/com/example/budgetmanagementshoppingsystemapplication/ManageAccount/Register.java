@@ -108,7 +108,7 @@ private static final Pattern PASSWORD_PATTERN =
                                 customer.setAddress(address.getText().toString());
 
                                 Customer account = new Customer(uid, username.getText().toString(), password.getText().toString());
-                                Customer customer = new Customer(uid, username.getText().toString(), email.getText().toString(), name.getText().toString().toUpperCase(), contactNo.getText().toString(), address.getText().toString());
+                                Customer customer = new Customer(uid, username.getText().toString(), email.getText().toString(), name.getText().toString().toUpperCase(), contactNo.getText().toString(), address.getText().toString(), "null");
                                 ref.child("Account").child(username.getText().toString()).setValue(account);
                                 ref.child("Customer").child(uid).setValue(customer);
                                 Toast.makeText(Register.this, "Register successfully", Toast.LENGTH_SHORT).show();

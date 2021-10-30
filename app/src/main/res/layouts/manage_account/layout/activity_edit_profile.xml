@@ -10,6 +10,7 @@
     android:focusable="true">
 
     <TextView
+        android:id="@+id/updateProfileTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update Profile"
@@ -18,13 +19,34 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"/>
 
-    <ImageView
-        android:id="@+id/profileIcon1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/profile_icon" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/editprofileCard"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="250dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/updateProfileTV"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/editdisplayprofilePic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/profile_icon"
+            android:scaleType="centerCrop"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile Picture"
+        android:id="@+id/editProficePic"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/editprofileCard"
+        android:layout_marginTop="10dp"/>
+
 
     <TextView
         android:id="@+id/editName"
@@ -33,7 +55,8 @@
         android:text="NAME"
         android:textSize="20dp"
         android:gravity="center_horizontal"
-        android:layout_below="@+id/profileIcon1"/>
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/editProficePic"/>
 
     <TextView
         android:id="@+id/usernameText"
