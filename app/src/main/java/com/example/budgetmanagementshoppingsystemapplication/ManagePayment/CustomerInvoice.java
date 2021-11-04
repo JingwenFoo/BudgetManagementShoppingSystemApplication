@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 
 public class CustomerInvoice extends AppCompatActivity {
-RecyclerView recyclerViewInvoice, recyclerViewInvoiceItem;
+RecyclerView recyclerViewInvoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,6 @@ RecyclerView recyclerViewInvoice, recyclerViewInvoiceItem;
         setContentView(R.layout.activity_customer_invoice);
 
         recyclerViewInvoice = findViewById(R.id.recyclerViewCustInvoice);
-        recyclerViewInvoiceItem = findViewById(R.id.invoiceChildRecyclerView);
 
         Intent intent = getIntent();
         String invoiceID = intent.getStringExtra("invoiceID");

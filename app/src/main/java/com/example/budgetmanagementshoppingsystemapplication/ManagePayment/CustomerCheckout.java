@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 
 public class CustomerCheckout extends AppCompatActivity {
-RecyclerView recyclerViewCheckout, recyclerViewCheckoutItem;
+RecyclerView recyclerViewCheckout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,6 @@ RecyclerView recyclerViewCheckout, recyclerViewCheckoutItem;
         setContentView(R.layout.activity_customer_checkout);
 
         recyclerViewCheckout = findViewById(R.id.recyclerViewCheckout);
-        recyclerViewCheckoutItem = findViewById(R.id.recyclerViewCheckoutSection);
 
         MainCheckoutAdapter mainCheckoutAdapter = new MainCheckoutAdapter(CustomerCheckout.this);
         recyclerViewCheckout.setAdapter(mainCheckoutAdapter);
