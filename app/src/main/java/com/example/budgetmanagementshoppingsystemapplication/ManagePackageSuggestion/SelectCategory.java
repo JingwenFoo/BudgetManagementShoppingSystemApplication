@@ -25,7 +25,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SelectCategory extends AppCompatActivity {
 RecyclerView recyclerViewCategoryDetail;
@@ -814,7 +816,7 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                             for(int j=0; j<packageDataList.size(); j++)
                                 totalPrice[i]+=packageDataList.get(j).getSellingPrice();
                         }
-                        System.out.println(packageData);
+
                         for(int j=0; j<packageData.size()-1; j++)
                         {
                             for(int k=j+1; k<packageData.size(); k++)
@@ -828,9 +830,30 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                 }
                             }
                         }
-                        System.out.println(packageData);
+                        ref.child("SuggestPackage").child(preferences.getDataUserID(SelectCategory.this)).removeValue();
+                        if (packageData.size()!=0)
+                        {
+                            Map<String, Object> packageMap = new HashMap<>();
+                            Map<String, Object> packageItemMap = new HashMap<>();
+                            for(int m=0; m<packageData.size(); m++)
+                            {
+                                String packageID = ref.child("SuggestPackage").child(preferences.getDataUserID(SelectCategory.this)).push().getKey();
+                                packageMap.put("packageID",packageID);
+                                // packageMap.put("packageItem","");
+                                packageMap.put("totalPackagePrice",String.format("%.2f",totalPrice[m]));
+                                ref.child("SuggestPackage").child(preferences.getDataUserID(SelectCategory.this)).child(packageID).setValue(packageMap);
+                                List<Product> packageDataList = new ArrayList<>();
+                                packageDataList.addAll(packageData.get(m));
+                                for (int n=0; n<packageDataList.size(); n++)
+                                {
+                                    packageItemMap.put("productID",packageDataList.get(n).getProductID());
+                                    ref.child("SuggestPackage").child(preferences.getDataUserID(SelectCategory.this)).child(packageID).child("packageItem").push().setValue(packageItemMap);
+                                }
+                            }
+                        }
+
                         Intent intent = new Intent(SelectCategory.this, PackageSuggestion.class);
-                        intent.putExtra("packageData", (Serializable) packageData);
+                     //   intent.putExtra("packageData", (Serializable) packageData);
                         startActivity(intent);
                     }
 

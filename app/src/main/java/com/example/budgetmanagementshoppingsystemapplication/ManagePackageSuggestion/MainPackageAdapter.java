@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking.Budget;
 import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking.ViewCart;
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
 import com.example.budgetmanagementshoppingsystemapplication.R;
@@ -121,7 +122,7 @@ public class MainPackageAdapter extends RecyclerView.Adapter<MainPackageAdapter.
                                     Integer stockUpdate = stockLeft-1;
                                     ref.child("Product").child(packageItems.get(finalI).getProductID()).child("stockAvailable").setValue(String.valueOf(stockUpdate));
                                     ref.child("ShoppingCart").child(preferences.getDataUserID(context)).child(packageItems.get(finalI).getProductID()).child("productQuantity").setValue(String.valueOf(quantityUpdate));
-                                    ref.child("ShoppingCart").child(preferences.getDataUserID(context)).child(packageItems.get(finalI).getProductID()).child("totalPrice").setValue(String.valueOf(totalPriceUpdate));
+                                    ref.child("ShoppingCart").child(preferences.getDataUserID(context)).child(packageItems.get(finalI).getProductID()).child("totalPrice").setValue(String.format("%.2f",totalPriceUpdate));
                                     Intent in = new Intent(context, ViewCart.class);
                                     context.startActivity(in);
                                 } else {
@@ -169,17 +170,47 @@ public class MainPackageAdapter extends RecyclerView.Adapter<MainPackageAdapter.
                 }
 
                 if(freshPackagePrice+freshTotal>fresh)
+                {
+                    Intent intent = new Intent(context, Budget.class);
+                    context.startActivity(intent);
                     Toast.makeText(context,"Package save failed. Fresh category is over budget", Toast.LENGTH_SHORT).show();
+                }
+
                 if(groPackagePrice+groTotal>groc)
+                {
+                    Intent intent = new Intent(context, Budget.class);
+                    context.startActivity(intent);
                     Toast.makeText(context,"Package save failed. Groceries category is over budget", Toast.LENGTH_SHORT).show();
+                }
+
                 if(bevPackagePrice+bevTotal>bev)
+                {
+                    Intent intent = new Intent(context, Budget.class);
+                    context.startActivity(intent);
                     Toast.makeText(context,"Package save failed. Beverages category is over budget", Toast.LENGTH_SHORT).show();
+                }
+
                 if(housePackagePrice+houseTotal>house)
+                {
+                    Intent intent = new Intent(context, Budget.class);
+                    context.startActivity(intent);
                     Toast.makeText(context,"Package save failed. Household category is over budget", Toast.LENGTH_SHORT).show();
+                }
+
                 if(pCarePackagePrice+PCareTotal>pCare)
+                {
+                    Intent intent = new Intent(context, Budget.class);
+                    context.startActivity(intent);
                     Toast.makeText(context,"Package save failed. Personal Care category is over budget", Toast.LENGTH_SHORT).show();
+                }
+
                 if(clothPackagePrice+clothTotal>cloth)
+                {
+                    Intent intent = new Intent(context, Budget.class);
+                    context.startActivity(intent);
                     Toast.makeText(context,"Package save failed. Clothes category is over budget", Toast.LENGTH_SHORT).show();
+                }
+
 
 
             }

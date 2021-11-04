@@ -1,14 +1,18 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManageAccount;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
@@ -25,6 +29,8 @@ import java.util.regex.Pattern;
 public class Register extends AppCompatActivity {
 EditText username, password, confirmPassword, name, contactNo, email, address;
 Button register;
+CheckBox checkBox;
+TextView termsAndConditions, policy;
 FirebaseAuth mAuth;
 DatabaseReference ref = FirebaseDatabase.getInstance("https://bmssa-e95ff-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 Customer customer;
@@ -51,10 +57,40 @@ private static final Pattern PASSWORD_PATTERN =
         email = (EditText) findViewById(R.id.editTextREmail);
         address = (EditText) findViewById(R.id.editTextRAddress);
         register = (Button) findViewById(R.id.btnRegister);
+        checkBox = (CheckBox) findViewById(R.id.checkboxAgree);
+        termsAndConditions = (TextView) findViewById(R.id.termsAndCondition);
+        policy = (TextView) findViewById(R.id.policy);
 
         customer = new Customer();
         mAuth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
+
+        termsAndConditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Register.this)
+                        .setTitle("Terms and Conditions")
+                        .setMessage(Html.fromHtml("<h5>"+"Welcome to Budget Management Shopping System Application!"+"</h5>"+
+                                "<br>"+"These terms and conditions outline the rules and regulations for the use of Budget Management Shopping System Application." +
+                                "<br><br>"+"By accessing this application, we assume you accept these terms and conditions. Do not continue to use Budget Management Shopping System Application if you do not agree to take all of the terms and conditions stated on this page." +
+                                "<br><br>"+"The following terminology applies to these "+"<b>"+"Terms and Conditions"+"</b>"+","+"<b>"+"Privacy Statement and Disclaimer Notice"+"</b>"+" and "+"<b>"+"all Agreements"+"</b>"+". All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to you in the most appropriate manner for the express purpose of meeting your needs."));
+                builder.setPositiveButton("Ok", null);
+                builder.create().show();
+            }
+        });
+
+        policy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Register.this)
+                        .setTitle("Privacy Policy")
+                        .setMessage(Html.fromHtml("At "+"<b>"+"Budget Management Shopping System Application"+"</b>"+", we collect and manage user data according to the following Privacy Policy."+
+                                "<br>"+"We collect information you provide directly to use. For example, we collect information when you create an account of Budget Management Shopping System Application." +
+                                "<br><br>"+"The type of information we may collect include your name, email address, postal address, and other contact or identifying information you choose to provide."));
+                builder.setPositiveButton("Ok", null);
+                builder.create().show();
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +126,11 @@ private static final Pattern PASSWORD_PATTERN =
                 {
                     confirmPassword.setError("Confirm password must be the same as Password");
                 }
-                else
+                if (!checkBox.isChecked())
+                {
+                    Toast.makeText(Register.this, "You have not accept our terms and conditions",Toast.LENGTH_SHORT).show();
+                }
+                if(checkBox.isChecked() && username.length()!=0 && name.length()!=0 && contactNo.length()!=0 && address.length()!=0 && Patterns.EMAIL_ADDRESS.matcher(email.getText().toString().trim()).matches() && password.getText().toString().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*+=])(?=\\S+$).{6,}$") && confirmPassword.getText().toString().matches(password.getText().toString()))
                 {
                     mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -119,7 +159,8 @@ private static final Pattern PASSWORD_PATTERN =
                             }
                         }
                     });
-                }
+                }else
+                    Toast.makeText(Register.this, "All field must be filled up",Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -18,6 +18,8 @@ import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTrackin
 import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking.CartAdapter;
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
 import com.example.budgetmanagementshoppingsystemapplication.Model.ShoppingCart;
+import com.example.budgetmanagementshoppingsystemapplication.Model.SuggestPackage;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,8 +36,8 @@ import java.util.ListIterator;
 
 public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSuggestionAdapter.ViewHolder> {
     Context context;
-    ArrayList<List<Product>> packageItems;
-    public PackageSuggestionAdapter(Context context, ArrayList<List<Product>> packageItems) {
+    List<SuggestPackage> packageItems;
+    public PackageSuggestionAdapter(Context context, List<SuggestPackage> packageItems) {
         this.context = context;
         this.packageItems = packageItems;
     }
@@ -50,14 +52,14 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
 
     @Override
     public void onBindViewHolder(@NonNull PackageSuggestionAdapter.ViewHolder holder, int position) {
-        ListIterator<Product> iterator = this.packageItems.get(position).listIterator(0);
-        List<Product> packageItem = new ArrayList<>();
-        while (iterator.hasNext())
-        {
-            packageItem.add(iterator.next());
-        }
+//        ListIterator<Product> iterator = this.packageItems.get(position).listIterator(0);
+        List<SuggestPackage> packageItemList = new ArrayList<>();
+//        while (iterator.hasNext())
+//        {
+//            packageItem.add(iterator.next());
+//        }
 
-        if(packageItem.size()==0)
+        if(packageItems.get(position).getTotalPackagePrice().matches("0.00"))
         {
             holder.packageNum.setText("No package is suggested");
             holder.totalPrice.setText("");
@@ -65,26 +67,48 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
         }
         else
         {
-            holder.totalPriceRM.setText("Total Price : RM ");
-            holder.packageNum.setText("Package "+(position+1));
-
+            SuggestPackage Package = this.packageItems.get(position);
             holder.productItemRecyclerView.setHasFixedSize(true);
             holder.productItemRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-            PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context,packageItem,holder.packageNum.getText().toString(),packageItems.get(position));
-            holder.productItemRecyclerView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
 
-            float totalPricePackage=0;
-            for(int i=0; i<packageItem.size(); i++)
-                totalPricePackage+=packageItem.get(i).getSellingPrice();
 
-            holder.totalPrice.setText(String.format("%.2f",totalPricePackage));
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SuggestPackage").child(preferences.getDataUserID(context)).child(Package.getPackageID()).child("packageItem");
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot dataSnapshot:snapshot.getChildren())
+                    {
+                        String packageItemID = dataSnapshot.child("productID").getValue(String.class);
+                        packageItemList.add(new SuggestPackage(packageItemID));
+                    }
+                    PackageSuggestionItemAdapter adapter = new PackageSuggestionItemAdapter(context,packageItemList,Package.getPackageID(),holder.packageNum.getText().toString());
+                    holder.productItemRecyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            holder.totalPriceRM.setText("Total Price : RM ");
+            holder.packageNum.setText("Package "+(position+1));
+            holder.totalPrice.setText(Package.getTotalPackagePrice());
+
+
+//            float totalPricePackage=0;
+//            for(int i=0; i<packageItem.size(); i++)
+//                totalPricePackage+=packageItem.get(i).getSellingPrice();
+
+
 
             holder.mainLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DisplayPackageItem.class);
-                    intent.putExtra("packageItem", (Serializable) packageItems.get(position));
+//                    intent.putExtra("packageItem", (Serializable) packageItems.get(position));
+                    intent.putExtra("packageID",Package.getPackageID());
                     intent.putExtra("packageNum", holder.packageNum.getText());
                     context.startActivity(intent);
                 }

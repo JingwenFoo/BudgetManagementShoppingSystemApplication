@@ -12,4 +12,8 @@
         <item>Personal Care</item>
         <item>Clothes</item>
     </string-array>
+
+    <string name="termsAndConditions"><a href="http://www.plantplaces.com/tsandcs.shtml">Terms and Conditions</a></string>
+
+    <string name="policy"><a href="http://www.plantplaces.com/privacy.shtml\">Privacy Policy.</a></string>
 </resources>

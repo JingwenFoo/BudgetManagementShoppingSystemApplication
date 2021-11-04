@@ -2,6 +2,7 @@ package com.example.budgetmanagementshoppingsystemapplication.ManagePackageSugge
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
+import com.example.budgetmanagementshoppingsystemapplication.Model.SuggestPackage;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.example.budgetmanagementshoppingsystemapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,15 +27,15 @@ import java.util.List;
 
 public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSuggestionItemAdapter.ViewHolder> {
     Context context;
-    List<Product> packageItems;
-    String packageNumber;
-    List<Product> packageListItem;
+    List<SuggestPackage> packageItemsID;
+    String packageNumber, packageID;
+   // List<Product> packageListItem;
 
-    public PackageSuggestionItemAdapter(Context context, List<Product> packageItems, String packageNumber, List<Product> packageListItem) {
+    public PackageSuggestionItemAdapter(Context context, List<SuggestPackage> packageItemsID, String packageID, String packageNumber) {
         this.context = context;
-        this.packageItems = packageItems;
+        this.packageItemsID = packageItemsID;
+        this.packageID = packageID;
         this.packageNumber = packageNumber;
-        this.packageListItem = packageListItem;
     }
 
     @NonNull
@@ -40,13 +48,34 @@ public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSu
 
     @Override
     public void onBindViewHolder(@NonNull PackageSuggestionItemAdapter.ViewHolder holder, int position) {
-        holder.productName.setText(packageItems.get(position).getProductName());
-        holder.sellingPrice.setText(String.format("%.2f",packageItems.get(position).getSellingPrice()));
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Product");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                {
+                    Product product = dataSnapshot.getValue(Product.class);
+                    if (product.getProductID().matches(packageItemsID.get(position).getProductID()))
+                    {
+                        holder.productName.setText(product.getProductName());
+                        holder.sellingPrice.setText(String.format("%.2f",product.getSellingPrice()));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DisplayPackageItem.class);
-                intent.putExtra("packageItem", (Serializable) packageListItem);
+           //     intent.putExtra("packageItem", (Serializable) packageItemsID);
+                intent.putExtra("packageID",packageID);
                 intent.putExtra("packageNum", packageNumber);
                 context.startActivity(intent);
             }
@@ -55,10 +84,10 @@ public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSu
 
     @Override
     public int getItemCount() {
-        if(packageItems == null)
+        if(packageItemsID == null)
             return 0;
         else
-            return packageItems.size();
+            return packageItemsID.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

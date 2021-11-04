@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Product {
     private String productID;
     private String category;
     private String categoryDetail;

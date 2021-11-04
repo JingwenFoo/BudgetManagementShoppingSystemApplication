@@ -86,7 +86,6 @@ public class CardPayment extends AppCompatActivity {
         Intent intent = getIntent();
         String totalAmount = intent.getStringExtra("totalAmount");
         amountTextView.setText(totalAmount);
-        System.out.println(preferences.getDataCustomerName(CardPayment.this));
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),

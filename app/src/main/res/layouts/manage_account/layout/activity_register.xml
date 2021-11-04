@@ -165,12 +165,54 @@
         android:layout_marginTop="380dp"
         android:layout_marginLeft="120dp"/>
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkboxAgree"
+        android:layout_below="@+id/editTextRAddress"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="I accept the "/>
+
+    <TextView
+        android:id="@+id/termsAndCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/termsAndConditions"
+        android:textColor="@color/purple_700"
+        android:layout_below="@+id/editTextRAddress"
+        android:layout_marginTop="33dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:layout_toRightOf="@+id/checkboxAgree"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" and I have read the "
+        android:textColor="@color/black"
+        android:layout_below="@+id/editTextRAddress"
+        android:layout_marginTop="33dp"
+        android:layout_toRightOf="@+id/termsAndCondition"/>
+
+    <TextView
+        android:id="@+id/policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/policy"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:textColor="@color/purple_700"
+        android:layout_below="@+id/termsAndCondition"
+        android:layout_marginLeft="50dp"/>
+
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"/>
+        android:layout_below="@+id/policy"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
