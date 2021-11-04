@@ -11,19 +11,21 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewInvoice;
+import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.StockChecklist;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.ViewList;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 
 public class AdminHomepage extends AppCompatActivity {
-Button accountListBtn, manageProductBtn, invoiceListBtn;
+Button accountListBtn, manageProductBtn, stockChecklistBtn, revenueBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_homepage);
         accountListBtn = findViewById(R.id.accountListBtn);
         manageProductBtn = findViewById(R.id.manageProductBtn);
-        invoiceListBtn= findViewById(R.id.invoiceListBtn);
+        stockChecklistBtn = findViewById(R.id.stockCheckListBtn);
+        revenueBtn = findViewById(R.id.manageRevenue);
 
         manageProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,11 +43,11 @@ Button accountListBtn, manageProductBtn, invoiceListBtn;
             }
         });
 
-        invoiceListBtn.setOnClickListener(new View.OnClickListener() {
+        stockChecklistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent invoiceList = new Intent(AdminHomepage.this, ViewInvoice.class);
-                startActivity(invoiceList);
+                Intent stockList = new Intent(AdminHomepage.this, StockChecklist.class);
+                startActivity(stockList);
             }
         });
     }

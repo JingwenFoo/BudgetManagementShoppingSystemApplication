@@ -17,9 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetManagementShoppingSystemApplication">
-        <activity android:name=".ManageAccount.UpdateNewPassword"
+        <activity android:name=".ManageProduct.StockChecklist"
+            android:label="Stock Checklist"
+            android:parentActivityName=".ManageAccount.AdminHomepage"></activity>
+        <activity
+            android:name=".ManageAccount.UpdateNewPassword"
             android:label="Reset Password"
-            android:parentActivityName=".ManageAccount.ForgetPassword"></activity>
+            android:parentActivityName=".ManageAccount.ForgetPassword" />
         <activity
             android:name=".ManageAccount.ForgetPassword"
             android:label="Forget Password"

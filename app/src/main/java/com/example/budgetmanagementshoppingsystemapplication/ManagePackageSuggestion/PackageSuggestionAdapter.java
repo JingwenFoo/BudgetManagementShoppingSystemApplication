@@ -52,12 +52,7 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
 
     @Override
     public void onBindViewHolder(@NonNull PackageSuggestionAdapter.ViewHolder holder, int position) {
-//        ListIterator<Product> iterator = this.packageItems.get(position).listIterator(0);
         List<SuggestPackage> packageItemList = new ArrayList<>();
-//        while (iterator.hasNext())
-//        {
-//            packageItem.add(iterator.next());
-//        }
 
         if(packageItems.get(position).getTotalPackagePrice().matches("0.00"))
         {
@@ -96,18 +91,10 @@ public class PackageSuggestionAdapter extends RecyclerView.Adapter<PackageSugges
             holder.packageNum.setText("Package "+(position+1));
             holder.totalPrice.setText(Package.getTotalPackagePrice());
 
-
-//            float totalPricePackage=0;
-//            for(int i=0; i<packageItem.size(); i++)
-//                totalPricePackage+=packageItem.get(i).getSellingPrice();
-
-
-
             holder.mainLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DisplayPackageItem.class);
-//                    intent.putExtra("packageItem", (Serializable) packageItems.get(position));
                     intent.putExtra("packageID",Package.getPackageID());
                     intent.putExtra("packageNum", holder.packageNum.getText());
                     context.startActivity(intent);

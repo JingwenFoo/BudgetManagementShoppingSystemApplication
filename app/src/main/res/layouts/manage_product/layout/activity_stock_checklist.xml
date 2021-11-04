@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManageProduct.StockChecklist">
+
+    <TextView
+        android:id="@+id/textViewStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock Checklist"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TableLayout
+        android:id="@+id/tableLayoutStock"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textViewStock"
+        android:background="#f1f1f1">
+    <TableRow>
+
+    <TextView
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_marginLeft="10dp"
+        android:text="Product"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_weight="0.1"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_marginLeft="10dp"
+        android:text="Stock Availability"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black" />
+
+    </TableRow>
+    </TableLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/stockListRecyclerView"
+        android:layout_below="@+id/tableLayoutStock"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

@@ -39,7 +39,6 @@ DatabaseReference refPackage, refProduct;
         Intent intent = getIntent();
         List<SuggestPackage> packageItemList = new ArrayList<>();
         List<Product> packageItemProductList = new ArrayList<>();
-//        packageList = (List<Product>)intent.getSerializableExtra("packageItem");
         String packageNumber = intent.getStringExtra("packageNum");
         String packageID = intent.getStringExtra("packageID");
         packageNum.setText(packageNumber);

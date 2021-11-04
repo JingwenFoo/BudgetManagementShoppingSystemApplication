@@ -839,7 +839,6 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                             {
                                 String packageID = ref.child("SuggestPackage").child(preferences.getDataUserID(SelectCategory.this)).push().getKey();
                                 packageMap.put("packageID",packageID);
-                                // packageMap.put("packageItem","");
                                 packageMap.put("totalPackagePrice",String.format("%.2f",totalPrice[m]));
                                 ref.child("SuggestPackage").child(preferences.getDataUserID(SelectCategory.this)).child(packageID).setValue(packageMap);
                                 List<Product> packageDataList = new ArrayList<>();
@@ -853,7 +852,6 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                         }
 
                         Intent intent = new Intent(SelectCategory.this, PackageSuggestion.class);
-                     //   intent.putExtra("packageData", (Serializable) packageData);
                         startActivity(intent);
                     }
 

@@ -8,38 +8,57 @@
 
     <Button
         android:id="@+id/manageProductBtn"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="53dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="87dp"
         android:backgroundTint="#3F51B5"
         android:text="Manage Product"
-        app:layout_constraintBottom_toTopOf="@+id/invoiceListBtn"
+        app:layout_constraintBottom_toTopOf="@+id/manageRevenue"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/accountListBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/manageRevenue"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="132dp"
+        android:backgroundTint="#FF5722"
+        android:text="Manage Revenue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/stockCheckListBtn"
+        app:layout_constraintTop_toBottomOf="@+id/manageProductBtn" />
+
+    <Button
+        android:id="@+id/stockCheckListBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="132dp"
+        android:backgroundTint="#FFC107"
+        android:text="Stock Checklist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/manageRevenue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountListBtn" />
 
     <Button
-        android:id="@+id/invoiceListBtn"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="130dp"
-        android:backgroundTint="#FF9800"
-        android:text="Invoice List"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manageProductBtn" />
-
-    <Button
         android:id="@+id/accountListBtn"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="87dp"
         android:backgroundTint="#12B3B2"
         android:text="Account List"
-        app:layout_constraintBottom_toTopOf="@+id/manageProductBtn"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/stockCheckListBtn"
+        app:layout_constraintEnd_toStartOf="@+id/manageProductBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

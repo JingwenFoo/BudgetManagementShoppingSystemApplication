@@ -29,7 +29,6 @@ public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSu
     Context context;
     List<SuggestPackage> packageItemsID;
     String packageNumber, packageID;
-   // List<Product> packageListItem;
 
     public PackageSuggestionItemAdapter(Context context, List<SuggestPackage> packageItemsID, String packageID, String packageNumber) {
         this.context = context;
@@ -74,7 +73,6 @@ public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSu
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DisplayPackageItem.class);
-           //     intent.putExtra("packageItem", (Serializable) packageItemsID);
                 intent.putExtra("packageID",packageID);
                 intent.putExtra("packageNum", packageNumber);
                 context.startActivity(intent);
