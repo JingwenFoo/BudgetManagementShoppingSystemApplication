@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewIncome;
 import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewInvoice;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.StockChecklist;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.ViewList;
@@ -17,7 +18,7 @@ import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 
 public class AdminHomepage extends AppCompatActivity {
-Button accountListBtn, manageProductBtn, stockChecklistBtn, revenueBtn;
+Button accountListBtn, manageProductBtn, stockChecklistBtn, viewIncomeBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,7 @@ Button accountListBtn, manageProductBtn, stockChecklistBtn, revenueBtn;
         accountListBtn = findViewById(R.id.accountListBtn);
         manageProductBtn = findViewById(R.id.manageProductBtn);
         stockChecklistBtn = findViewById(R.id.stockCheckListBtn);
-        revenueBtn = findViewById(R.id.manageRevenue);
+        viewIncomeBtn = findViewById(R.id.viewIncomeBtn);
 
         manageProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +49,14 @@ Button accountListBtn, manageProductBtn, stockChecklistBtn, revenueBtn;
             public void onClick(View v) {
                 Intent stockList = new Intent(AdminHomepage.this, StockChecklist.class);
                 startActivity(stockList);
+            }
+        });
+
+        viewIncomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent income = new Intent(AdminHomepage.this, ViewIncome.class);
+                startActivity(income);
             }
         });
     }
