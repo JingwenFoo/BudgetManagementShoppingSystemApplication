@@ -1,13 +1,20 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManagePayment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.Register;
+import com.example.budgetmanagementshoppingsystemapplication.Model.Payment;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -69,6 +76,7 @@ DatabaseReference refCart, refPayment;
 
             }
         });
+
         MultiFormatWriter writer = new MultiFormatWriter();
         try{
             BitMatrix matrix = writer.encode(paymentID, BarcodeFormat.QR_CODE, 350, 350);
@@ -78,6 +86,32 @@ DatabaseReference refCart, refPayment;
         } catch (WriterException e){
             e.printStackTrace();
         }
+
+        refPayment.child(paymentID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Payment payment = snapshot.getValue(Payment.class);
+                if(payment.getPaymentStatus().matches("Paid"))
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PayByCash.this)
+                            .setTitle("Payment Success")
+                            .setMessage("You have paid RM "+totalAmount+" successfully.");
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent in = new Intent(PayByCash.this, CustomerViewHistory.class);
+                            startActivity(in);
+                        }
+                    });
+                    builder.create().show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 }

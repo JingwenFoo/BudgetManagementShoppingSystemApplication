@@ -32,8 +32,8 @@ DatabaseReference ref;
         shoppingBtn = findViewById(R.id.shoppingBtn);
         historyBtn = findViewById(R.id.historyBtn);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("Account").child(String.valueOf(preferences.getDataStatus(this)));
-        ref.addValueEventListener(new ValueEventListener() {
+        ref = FirebaseDatabase.getInstance().getReference();
+        ref.child("Account").child(String.valueOf(preferences.getDataStatus(this))).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userID = snapshot.child("uid").getValue(String.class);
@@ -45,6 +45,20 @@ DatabaseReference ref;
 
             }
         });
+
+        ref.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String custname = snapshot.child(preferences.getDataUserID(CustomerHomepage.this)).child("name").getValue(String.class);
+                preferences.setDataCustomerName(CustomerHomepage.this, custname);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
