@@ -3,14 +3,17 @@ package com.example.budgetmanagementshoppingsystemapplication.ManageAccount;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking.Budget;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +21,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 EditText username, password;
@@ -36,6 +41,30 @@ DatabaseReference ref;
         signUpBtn = (Button) findViewById(R.id.btnSignUp);
 
         ref = FirebaseDatabase.getInstance().getReference();
+
+        username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus)
+                {
+                    InputMethodManager inputMethodManager = (InputMethodManager) Objects.requireNonNull(Objects.requireNonNull(MainActivity.this)).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(),0);
+
+                }
+            }
+        });
+
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus)
+                {
+                    InputMethodManager inputMethodManager = (InputMethodManager) Objects.requireNonNull(Objects.requireNonNull(MainActivity.this)).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(),0);
+
+                }
+            }
+        });
 
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override

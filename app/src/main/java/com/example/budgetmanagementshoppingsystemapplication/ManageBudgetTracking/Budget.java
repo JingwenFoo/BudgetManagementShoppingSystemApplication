@@ -66,7 +66,6 @@ public class Budget extends AppCompatActivity {
                 {
                     InputMethodManager inputMethodManager = (InputMethodManager) Objects.requireNonNull(Objects.requireNonNull(Budget.this)).getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(),0);
-
                 }
             }
         });
