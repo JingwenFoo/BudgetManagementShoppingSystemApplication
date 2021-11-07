@@ -118,28 +118,5 @@ public class ViewList extends AppCompatActivity {
         });
 
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        if (itemId==R.id.homeBtn)
-        {
-            Intent in = new Intent(ViewList.this, AdminHomepage.class);
-            startActivity(in);
-        }
-        if(itemId==R.id.logoutBtn)
-        {
-            Intent in = new Intent(ViewList.this, MainActivity.class);
-            startActivity(in);
-            preferences.clearData(ViewList.this);
-            finish();
-        }
-
-        return true;
-    }
 }

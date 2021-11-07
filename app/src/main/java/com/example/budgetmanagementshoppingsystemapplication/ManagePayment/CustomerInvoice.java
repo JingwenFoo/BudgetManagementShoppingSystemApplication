@@ -30,28 +30,4 @@ RecyclerView recyclerViewInvoice;
         recyclerViewInvoice.setAdapter(mainInvoiceAdapter);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        if(itemId==R.id.homeBtn)
-        {
-            Intent in = new Intent(CustomerInvoice.this, CustomerHomepage.class);
-            startActivity(in);
-        }
-        if(itemId==R.id.logoutBtn)
-        {
-            Intent in = new Intent(CustomerInvoice.this, MainActivity.class);
-            startActivity(in);
-            preferences.clearData(CustomerInvoice.this);
-            finish();
-        }
-
-        return true;
-    }
 }

@@ -938,29 +938,4 @@ public class Budget extends AppCompatActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        if(itemId==R.id.homeBtn)
-        {
-            Intent in = new Intent(Budget.this, CustomerHomepage.class);
-            startActivity(in);
-        }
-        if(itemId==R.id.logoutBtn)
-        {
-            Intent in = new Intent(Budget.this, MainActivity.class);
-            startActivity(in);
-            preferences.clearData(Budget.this);
-            finish();
-        }
-
-        return true;
-    }
 }

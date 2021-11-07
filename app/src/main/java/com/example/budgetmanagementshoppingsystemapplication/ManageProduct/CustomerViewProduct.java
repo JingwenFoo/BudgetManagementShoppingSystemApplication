@@ -92,29 +92,4 @@ public class CustomerViewProduct extends AppCompatActivity {
                 });
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        if(itemId==R.id.homeBtn)
-        {
-            Intent in = new Intent(CustomerViewProduct.this, CustomerHomepage.class);
-            startActivity(in);
-        }
-        if(itemId==R.id.logoutBtn)
-        {
-            Intent in = new Intent(CustomerViewProduct.this, MainActivity.class);
-            startActivity(in);
-            preferences.clearData(CustomerViewProduct.this);
-            finish();
-        }
-
-        return true;
-    }
 }
