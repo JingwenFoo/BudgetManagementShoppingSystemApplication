@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewIncome;
-import com.example.budgetmanagementshoppingsystemapplication.ManagePayment.ViewInvoice;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.StockChecklist;
 import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.ViewList;
 import com.example.budgetmanagementshoppingsystemapplication.R;
@@ -62,14 +61,19 @@ Button accountListBtn, manageProductBtn, stockChecklistBtn, viewIncomeBtn;
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_admin_item,menu);
+        getMenuInflater().inflate(R.menu.menu_item,menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
-        if(itemId==R.id.adminLogoutBtn)
+        if (itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(AdminHomepage.this, AdminHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
         {
             Intent in = new Intent(AdminHomepage.this, MainActivity.class);
             startActivity(in);

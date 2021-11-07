@@ -188,13 +188,36 @@
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         />
+    <TextView
+        android:id="@+id/searchInvTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search: "
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/custPurchaseHistoryTextView"/>
 
+    <EditText
+        android:id="@+id/searchInvoiceList"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#80191818"
+        android:hint="Search"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:layout_below="@id/custPurchaseHistoryTextView"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/searchInvTextView"/>
     <TableLayout
         android:id="@+id/tableLayoutCustomerHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/custPurchaseHistoryTextView"
+        android:layout_below="@+id/searchInvoiceList"
         android:background="#f1f1f1">
         <TableRow>
 

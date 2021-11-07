@@ -65,12 +65,9 @@
             android:label="Card Payment"
             android:parentActivityName=".ManagePayment.CustomerCheckout" />
         <activity
-            android:name=".ManagePayment.ViewInvoice"
-            android:label="Invoice List"
-            android:parentActivityName=".ManageAccount.AdminHomepage" />
-        <activity
             android:name=".ManagePayment.CustomerInvoice"
-            android:label="Invoice" />
+            android:label="Invoice"
+            android:parentActivityName=".ManagePayment.CustomerViewHistory"/>
         <activity
             android:name=".ManagePayment.CustomerCheckout"
             android:label="Checkout"

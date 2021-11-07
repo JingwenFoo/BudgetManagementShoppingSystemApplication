@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.CustomerHomepage;
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
@@ -323,5 +327,31 @@ public class AddToCart extends AppCompatActivity {
             });
 
         }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(AddToCart.this, CustomerHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
+        {
+            Intent in = new Intent(AddToCart.this, MainActivity.class);
+            startActivity(in);
+            preferences.clearData(AddToCart.this);
+            finish();
+        }
+
+        return true;
+    }
 
     }

@@ -1,10 +1,13 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManageAccount;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -20,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -30,7 +34,7 @@ import java.util.List;
 public class ViewAccountDetailAdapter extends RecyclerView.Adapter<ViewAccountDetailAdapter.ViewHolder> {
     Context context;
     String uid;
-
+    CustomerHistoryAdapter adapter;
     public ViewAccountDetailAdapter(Context context, String uid) {
         this.context = context;
         this.uid = uid;
@@ -85,7 +89,7 @@ public class ViewAccountDetailAdapter extends RecyclerView.Adapter<ViewAccountDe
                     }
                 }
                 Collections.reverse(purchaseHistory);
-                CustomerHistoryAdapter adapter = new CustomerHistoryAdapter(context, purchaseHistory);
+                adapter = new CustomerHistoryAdapter(context, purchaseHistory);
                 holder.childRecyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -96,6 +100,43 @@ public class ViewAccountDetailAdapter extends RecyclerView.Adapter<ViewAccountDe
             }
         });
 
+        holder.search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Query query = FirebaseDatabase.getInstance().getReference().child("Payment").orderByChild("datetime")
+                        .startAt(s.toString())
+                        .endAt(s.toString()+"\uf8ff");
+
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        purchaseHistory.clear();
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            Payment inv = dataSnapshot.getValue(Payment.class);
+                            if(inv.getCustomerName()!=null && inv.getCustomerName().matches(holder.name.getText().toString()))
+                                purchaseHistory.add(inv);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
     }
@@ -108,7 +149,8 @@ public class ViewAccountDetailAdapter extends RecyclerView.Adapter<ViewAccountDe
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         RecyclerView childRecyclerView;
-        TextView name, username, id, phone, email, address;;
+        TextView name, username, id, phone, email, address;
+        EditText search;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -120,7 +162,9 @@ public class ViewAccountDetailAdapter extends RecyclerView.Adapter<ViewAccountDe
             phone = itemView.findViewById(R.id.custContactTextView);
             email = itemView.findViewById(R.id.custEmailTextView);
             address = itemView.findViewById(R.id.custAddressTextView);
+            search = itemView.findViewById(R.id.searchInvoiceList);
 
         }
     }
+
 }

@@ -32,20 +32,26 @@ Button resetBtn;
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(newPassword.getText().toString().matches(confirmNewPassword.getText().toString()))
+                if(newPassword.getText().toString().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*+=])(?=\\S+$).{6,}$"))
                 {
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Account").child(username);
-                    ref.child("password").setValue(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(UpdateNewPassword.this, "Password reset successfully",Toast.LENGTH_SHORT).show();
-                            Intent backToLogin = new Intent(UpdateNewPassword.this, MainActivity.class);
-                            startActivity(backToLogin);
-                        }
-                    });
-                }else
-                    Toast.makeText(UpdateNewPassword.this, "Confirm new password must be the same as New Password",Toast.LENGTH_SHORT).show();
+                    if(newPassword.getText().toString().matches(confirmNewPassword.getText().toString()))
+                    {
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Account").child(username);
+                        ref.child("password").setValue(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(UpdateNewPassword.this, "Password reset successfully",Toast.LENGTH_SHORT).show();
+                                Intent backToLogin = new Intent(UpdateNewPassword.this, MainActivity.class);
+                                startActivity(backToLogin);
+                            }
+                        });
+                    }else
+                        Toast.makeText(UpdateNewPassword.this, "Confirm new password must be the same as New Password",Toast.LENGTH_SHORT).show();
+                }
+                else
+                    newPassword.setError("Password too weak");
             }
+
         });
 
 

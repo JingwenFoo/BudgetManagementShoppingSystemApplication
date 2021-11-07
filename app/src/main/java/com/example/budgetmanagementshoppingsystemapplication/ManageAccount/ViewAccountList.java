@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageProduct.ViewList;
 import com.example.budgetmanagementshoppingsystemapplication.Model.Customer;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -95,5 +100,29 @@ DatabaseReference ref;
 
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(ViewAccountList.this, AdminHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
+        {
+            Intent in = new Intent(ViewAccountList.this, MainActivity.class);
+            startActivity(in);
+            preferences.clearData(ViewAccountList.this);
+            finish();
+        }
+
+        return true;
     }
 }

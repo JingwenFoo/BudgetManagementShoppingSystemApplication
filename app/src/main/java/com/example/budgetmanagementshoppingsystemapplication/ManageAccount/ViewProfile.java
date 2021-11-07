@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -84,5 +86,31 @@ DatabaseReference ref;
                 startActivity(editProfile);
             }
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(ViewProfile.this, CustomerHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
+        {
+            Intent in = new Intent(ViewProfile.this, MainActivity.class);
+            startActivity(in);
+            preferences.clearData(ViewProfile.this);
+            finish();
+        }
+
+        return true;
     }
 }

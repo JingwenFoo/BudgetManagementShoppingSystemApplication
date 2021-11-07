@@ -1,19 +1,28 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManageBudgetTracking;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.CustomerHomepage;
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
+
+import java.util.Objects;
 
 public class Budget extends AppCompatActivity {
 
@@ -50,6 +59,17 @@ public class Budget extends AppCompatActivity {
         tv_PCare.setText("0");
         tv_cloth.setText("0");
 
+        ed_bud.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus)
+                {
+                    InputMethodManager inputMethodManager = (InputMethodManager) Objects.requireNonNull(Objects.requireNonNull(Budget.this)).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(),0);
+
+                }
+            }
+        });
         sb_fresh.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressValue;
             int totalPercentage;
@@ -919,4 +939,28 @@ public class Budget extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(Budget.this, CustomerHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
+        {
+            Intent in = new Intent(Budget.this, MainActivity.class);
+            startActivity(in);
+            preferences.clearData(Budget.this);
+            finish();
+        }
+
+        return true;
+    }
 }

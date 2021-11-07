@@ -13,6 +13,8 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -204,5 +206,31 @@ public class EditProfile extends AppCompatActivity {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap map = MimeTypeMap.getSingleton();
         return  map.getExtensionFromMimeType(contentResolver.getType(uri));
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(EditProfile.this, CustomerHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
+        {
+            Intent in = new Intent(EditProfile.this, MainActivity.class);
+            startActivity(in);
+            preferences.clearData(EditProfile.this);
+            finish();
+        }
+
+        return true;
     }
 }

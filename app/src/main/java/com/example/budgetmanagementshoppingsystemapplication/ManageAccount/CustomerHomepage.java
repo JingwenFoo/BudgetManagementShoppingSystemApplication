@@ -84,6 +84,7 @@ DatabaseReference ref;
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_item,menu);
@@ -93,6 +94,11 @@ DatabaseReference ref;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
+        if(itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(CustomerHomepage.this, CustomerHomepage.class);
+            startActivity(in);
+        }
         if(itemId==R.id.logoutBtn)
         {
             Intent in = new Intent(CustomerHomepage.this, MainActivity.class);

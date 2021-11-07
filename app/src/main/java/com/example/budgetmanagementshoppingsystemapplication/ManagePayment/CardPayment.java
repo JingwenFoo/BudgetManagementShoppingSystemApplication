@@ -3,6 +3,8 @@ package com.example.budgetmanagementshoppingsystemapplication.ManagePayment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.CustomerHomepage;
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -260,5 +264,31 @@ public class CardPayment extends AppCompatActivity {
             // Payment request failed – allow retrying using the same payment method
             activity.displayAlert("Error", e.toString());
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(CardPayment.this, CustomerHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
+        {
+            Intent in = new Intent(CardPayment.this, MainActivity.class);
+            startActivity(in);
+            preferences.clearData(CardPayment.this);
+            finish();
+        }
+
+        return true;
     }
 }

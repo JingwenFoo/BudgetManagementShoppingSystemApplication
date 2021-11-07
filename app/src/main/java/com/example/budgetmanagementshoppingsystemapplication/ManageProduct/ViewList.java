@@ -9,11 +9,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.AdminHomepage;
+import com.example.budgetmanagementshoppingsystemapplication.ManageAccount.MainActivity;
 import com.example.budgetmanagementshoppingsystemapplication.Model.Product;
+import com.example.budgetmanagementshoppingsystemapplication.Model.preferences;
 import com.example.budgetmanagementshoppingsystemapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -112,5 +117,29 @@ public class ViewList extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId==R.id.homeBtn)
+        {
+            Intent in = new Intent(ViewList.this, AdminHomepage.class);
+            startActivity(in);
+        }
+        if(itemId==R.id.logoutBtn)
+        {
+            Intent in = new Intent(ViewList.this, MainActivity.class);
+            startActivity(in);
+            preferences.clearData(ViewList.this);
+            finish();
+        }
+
+        return true;
     }
 }
