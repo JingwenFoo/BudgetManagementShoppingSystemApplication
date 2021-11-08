@@ -28,6 +28,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ViewList extends AppCompatActivity {
 
@@ -68,6 +70,12 @@ public class ViewList extends AppCompatActivity {
                     Product product = snapshot1.getValue(Product.class);
                     productList.add(product);
                 }
+                Collections.sort(productList, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return o1.getProductName().compareTo(o2.getProductName());
+                    }
+                });
                 adapter.notifyDataSetChanged();
             }
 

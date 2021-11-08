@@ -25,6 +25,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ViewAccountList extends AppCompatActivity {
 EditText search;
@@ -52,6 +54,12 @@ DatabaseReference ref;
                     Customer customer = snapshot1.getValue(Customer.class);
                     accountList.add(customer);
                 }
+                Collections.sort(accountList, new Comparator<Customer>() {
+                    @Override
+                    public int compare(Customer o1, Customer o2) {
+                        return o1.getName().compareTo(o2.getName());
+                    }
+                });
                 adapter.notifyDataSetChanged();
             }
 
