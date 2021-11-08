@@ -134,7 +134,7 @@
             android:parentActivityName=".ManageAccount.MainActivity" />
         <activity
             android:name=".ManageAccount.MainActivity"
-            android:label="BMSSA">
+            android:label="Budget Management Shopping">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
