@@ -126,44 +126,46 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                 Product product = snapshot1.getValue(Product.class);
 
                                 if (product.getCategoryDetail() != null && product.getCategoryDetail().matches(selectedCategoryItem)) {
-                                    if (product.getCategory().matches("Fresh"))
+                                    if (Integer.parseInt(product.getStockAvailable())>0)
                                     {
-                                        if(product.getSellingPrice()+freshTotal<fresh)
+                                        if (product.getCategory().matches("Fresh"))
+                                        {
+                                            if(product.getSellingPrice()+freshTotal<fresh)
                                                 freshList.add(product);
 
+                                        }
+
+                                        if (product.getCategory().matches("Groceries"))
+                                        {
+                                            if(product.getSellingPrice()+groTotal<groc)
+                                                grocList.add(product);
+                                        }
+
+                                        if (product.getCategory().matches("Beverages"))
+                                        {
+                                            if(product.getSellingPrice()+bevTotal<bev)
+                                                bevList.add(product);
+                                        }
+
+                                        if (product.getCategory().matches("Household"))
+                                        {
+                                            if(product.getSellingPrice()+houseTotal<house)
+                                                houseList.add(product);
+                                        }
+
+                                        if (product.getCategory().matches("Personal Care"))
+                                        {
+                                            if(product.getSellingPrice()+PCareTotal<pCare)
+                                                pCareList.add(product);
+                                        }
+
+                                        if (product.getCategory().matches("Clothes"))
+                                        {
+                                            if(product.getSellingPrice()+clothTotal<cloth)
+                                                clothList.add(product);
+                                        }
                                     }
-
-                                    if (product.getCategory().matches("Groceries"))
-                                    {
-                                        if(product.getSellingPrice()+groTotal<groc)
-                                            grocList.add(product);
-                                    }
-
-                                    if (product.getCategory().matches("Beverages"))
-                                    {
-                                        if(product.getSellingPrice()+bevTotal<bev)
-                                            bevList.add(product);
-                                    }
-
-                                    if (product.getCategory().matches("Household"))
-                                    {
-                                        if(product.getSellingPrice()+houseTotal<house)
-                                            houseList.add(product);
-                                    }
-
-                                    if (product.getCategory().matches("Personal Care"))
-                                    {
-                                        if(product.getSellingPrice()+PCareTotal<pCare)
-                                            pCareList.add(product);
-                                    }
-
-                                    if (product.getCategory().matches("Clothes"))
-                                    {
-                                        if(product.getSellingPrice()+clothTotal<cloth)
-                                            clothList.add(product);
-                                    }
-
-
+                                    
                                 }
 
                             }
