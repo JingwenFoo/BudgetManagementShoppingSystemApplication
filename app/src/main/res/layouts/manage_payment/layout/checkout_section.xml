@@ -52,21 +52,8 @@
         android:backgroundTint="#F44336"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:layout_alignParentBottom="true"/>
-
-    <TextView
-        android:id="@+id/totalPriceCheckout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0.00"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_above="@+id/payBtn"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
-
+        android:layout_below="@+id/totalPriceCheckout"
+        android:layout_marginTop="20dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +63,22 @@
         android:textStyle="bold"
         android:layout_toLeftOf="@+id/totalPriceCheckout"
         android:layout_marginBottom="10dp"
-        android:layout_above="@+id/payBtn"/>
+        android:layout_below="@+id/paymentTypeRadio"
+        android:layout_marginTop="30dp"/>
+    <TextView
+        android:id="@+id/totalPriceCheckout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/paymentTypeRadio"
+        android:layout_marginTop="30dp"/>
+
+
 
 
 </RelativeLayout>

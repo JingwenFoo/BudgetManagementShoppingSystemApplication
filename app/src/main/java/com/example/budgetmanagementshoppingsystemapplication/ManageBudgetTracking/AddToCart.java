@@ -277,7 +277,7 @@ public class AddToCart extends AppCompatActivity {
             map.put("totalPrice", String.format("%.2f", totalPrice));
             if (Integer.parseInt(stock.getText().toString())>0)
             {
-                if ((Integer.parseInt(stock.getText().toString())-qty)>0)
+                if ((Integer.parseInt(stock.getText().toString())-qty)>=0)
                 {
                     ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

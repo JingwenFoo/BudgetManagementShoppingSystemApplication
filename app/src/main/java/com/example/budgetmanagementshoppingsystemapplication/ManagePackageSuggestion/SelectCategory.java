@@ -165,7 +165,7 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                                 clothList.add(product);
                                         }
                                     }
-                                    
+
                                 }
 
                             }
