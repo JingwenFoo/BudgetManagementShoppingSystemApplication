@@ -133,8 +133,9 @@ public class CardPayment extends AppCompatActivity {
                         .createWithPaymentMethodCreateParams(params, paymentIntentClientSecret);
                 stripe.confirmPayment(this, confirmParams);
             }
+            progressDialog.dismiss();
         });
-        progressDialog.dismiss();
+
     }
     private void displayAlert(@NonNull String title,
                               @Nullable String message) {
@@ -228,6 +229,7 @@ public class CardPayment extends AppCompatActivity {
                         refPayment.child(paymentID).child("itemPurchase").setValue(snapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                progressDialog.dismiss();
                                 Toast.makeText(activity,"Payment successful", Toast.LENGTH_SHORT).show();
                                 refCart.removeValue();
                                 Intent invoice = new Intent(CardPayment.this, CustomerViewHistory.class);
@@ -248,6 +250,7 @@ public class CardPayment extends AppCompatActivity {
 //                        gson.toJson(paymentIntent)
 //                );
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
+                progressDialog.dismiss();
                 // Payment failed – allow retrying using a different payment method
                 activity.displayAlert(
                         "Payment failed",
@@ -261,6 +264,7 @@ public class CardPayment extends AppCompatActivity {
             if (activity == null) {
                 return;
             }
+            progressDialog.dismiss();
             // Payment request failed – allow retrying using the same payment method
             activity.displayAlert("Error", e.toString());
         }
