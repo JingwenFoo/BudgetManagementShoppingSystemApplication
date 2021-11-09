@@ -95,7 +95,8 @@ DatabaseReference refCart, refPayment;
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(PayByCash.this)
                             .setTitle("Payment Success")
-                            .setMessage("You have paid RM "+totalAmount+" successfully.");
+                            .setMessage("You have paid RM "+totalAmount+" successfully.")
+                            .setCancelable(false);
                     builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -103,7 +104,14 @@ DatabaseReference refCart, refPayment;
                             startActivity(in);
                         }
                     });
-                    builder.create().show();
+                   builder.create().show();
+                   builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                       @Override
+                       public void onCancel(DialogInterface dialog) {
+
+                       }
+                   });
+
                 }
             }
 

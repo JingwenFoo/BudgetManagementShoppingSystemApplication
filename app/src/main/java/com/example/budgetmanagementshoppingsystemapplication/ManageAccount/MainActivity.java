@@ -26,8 +26,8 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 EditText username, password;
-TextView forgetPassword;
-Button loginBtn, signUpBtn;
+TextView forgetPassword, signUpBtn;
+Button loginBtn;
 DatabaseReference ref;
 
     @Override
@@ -38,7 +38,7 @@ DatabaseReference ref;
         password = (EditText) findViewById(R.id.editTextPassword);
         forgetPassword = (TextView) findViewById(R.id.forgetPassword);
         loginBtn = (Button) findViewById(R.id.btnLogin);
-        signUpBtn = (Button) findViewById(R.id.btnSignUp);
+        signUpBtn = (TextView) findViewById(R.id.btnSignUp);
 
         ref = FirebaseDatabase.getInstance().getReference();
 

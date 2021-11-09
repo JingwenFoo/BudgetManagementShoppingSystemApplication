@@ -244,11 +244,6 @@ public class CardPayment extends AppCompatActivity {
                     }
                 });
 
-//                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//                activity.displayAlert(
-//                        "Payment completed",
-//                        gson.toJson(paymentIntent)
-//                );
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
                 progressDialog.dismiss();
                 // Payment failed – allow retrying using a different payment method

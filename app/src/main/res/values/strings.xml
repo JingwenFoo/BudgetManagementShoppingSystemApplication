@@ -3,6 +3,8 @@
 
     <string name="normal_price"><Strike>RM 10.99</Strike></string>
 
+    <string name="register"><u>Register Here</u></string>
+
     <string-array name="category">
         <item>Select category</item>
         <item>Fresh</item>

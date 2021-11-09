@@ -9,46 +9,53 @@
     android:clickable="true"
     android:focusable="true">
 
-    <TextView
-        android:id="@+id/bmssaTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Budget Management Shopping System Application"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:gravity="center_horizontal"
-        android:textColor="@color/purple_500"
-        android:layout_marginTop="20dp"
-         />
-
     <ImageView
         android:id="@+id/img"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/persona_icon"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/bmssa_logo_title"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/bmssaTitle"/>
+        />
 
-    <TextView
-        android:id="@+id/signin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:textSize="25dp"
-        android:textColor="@color/teal_700"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/img"/>
+    <ImageView
+        android:id="@+id/personIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/profile_icon"
+        android:layout_below="@id/img"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:id="@+id/lockIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/lock_icon"
+        android:layout_below="@+id/usernmeloginTIL"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/shopping_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernmeloginTIL"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="false"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/signin"
-        android:layout_marginTop="10dp">
+        android:layout_below="@+id/img"
+        android:layout_toRightOf="@id/personIcon"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp">
         <EditText
             android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
@@ -65,7 +72,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
-        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/personIcon"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/usernmeloginTIL">
         <EditText
             android:id="@+id/editTextPassword"
@@ -80,24 +89,24 @@
 
     <TextView
         android:id="@+id/forgetPassword"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Forget password/username?"
         android:textColor="@color/purple_700"
         android:gravity="right"
         android:layout_below="@id/passwordloginTIL"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:text="Login"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/forgetPassword"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/tV"
@@ -105,18 +114,21 @@
         android:layout_height="wrap_content"
         android:text="Don't have an account?"
         android:textSize="15dp"
-        android:layout_alignLeft="@+id/btnLogin"
+        android:layout_alignStart="@+id/passwordloginTIL"
         android:layout_below="@+id/btnLogin"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
       />
 
-    <Button
+    <TextView
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="Sign Up"
-        android:layout_alignLeft="@+id/btnLogin"
-        android:layout_below="@+id/tV"
-        android:layout_marginTop="10dp"/>
+        android:text="@string/register"
+        android:textColor="@color/purple_500"
+        android:layout_toRightOf="@+id/tV"
+        android:layout_below="@+id/btnLogin"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"/>
 
 </RelativeLayout>
