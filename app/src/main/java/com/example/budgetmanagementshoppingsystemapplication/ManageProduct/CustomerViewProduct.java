@@ -66,7 +66,10 @@ public class CustomerViewProduct extends AppCompatActivity {
                 tv_CategoryDetail.setText(String.valueOf(productDetail.getCategoryDetail()));
                 tv_Brand.setText(String.valueOf(productDetail.getProductBrand()));
                 tv_Price.setText(String.format("%.2f",productDetail.getProductPrice()));
-                tv_Stock.setText(String.valueOf(productDetail.getStockAvailable()));
+                if (Integer.parseInt(productDetail.getStockAvailable())<=0)
+                    tv_Stock.setText("Out of Stock");
+                else
+                    tv_Stock.setText(String.valueOf(productDetail.getStockAvailable()));
                 tv_Descp.setText(String.valueOf(productDetail.getProductDescription()));
                 Picasso.get().load(String.valueOf(productDetail.getProductImage())).into(proimg);
 

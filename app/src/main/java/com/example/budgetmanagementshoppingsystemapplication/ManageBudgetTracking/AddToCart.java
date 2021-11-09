@@ -275,56 +275,68 @@ public class AddToCart extends AppCompatActivity {
             map.put("discount", String.valueOf(promotion));
             map.put("category", category);
             map.put("totalPrice", String.format("%.2f", totalPrice));
+            if (Integer.parseInt(stock.getText().toString())>0)
+            {
+                if ((Integer.parseInt(stock.getText().toString())-qty)>0)
+                {
+                    ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                String i = snapshot.child("productQuantity").getValue(String.class);
+                                Integer quantity = Integer.parseInt(i);
+                                Integer quantityUpdate = quantity + qty;
+                                Float totalPriceUpdate = quantityUpdate*price;
+                                Integer stockLeft = Integer.parseInt(stock.getText().toString());
+                                Integer stockUpdate = stockLeft-qty;
+                                ref.child("Product").child(productID).child("stockAvailable").setValue(String.valueOf(stockUpdate));
+                                ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).child("productQuantity").setValue(String.valueOf(quantityUpdate));
+                                ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).child("totalPrice").setValue(String.valueOf(totalPriceUpdate));
+                                Intent in = new Intent(AddToCart.this, ViewCart.class);
+                                startActivity(in);
+                                finish();
 
-            ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.exists()) {
-                        String i = snapshot.child("productQuantity").getValue(String.class);
-                        Integer quantity = Integer.parseInt(i);
-                        Integer quantityUpdate = quantity + qty;
-                        Float totalPriceUpdate = quantityUpdate*price;
-                        Integer stockLeft = Integer.parseInt(stock.getText().toString());
-                        Integer stockUpdate = stockLeft-qty;
-                        ref.child("Product").child(productID).child("stockAvailable").setValue(String.valueOf(stockUpdate));
-                        ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).child("productQuantity").setValue(String.valueOf(quantityUpdate));
-                        ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).child("totalPrice").setValue(String.valueOf(totalPriceUpdate));
-                        Intent in = new Intent(AddToCart.this, ViewCart.class);
-                        startActivity(in);
-                        finish();
+                            } else {
+                                Integer stockLeft = Integer.parseInt(stock.getText().toString());
+                                Integer stockUpdate = stockLeft-qty;
+                                ref.child("Product").child(productID).child("stockAvailable").setValue(String.valueOf(stockUpdate));
+                                ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(AddToCart.this, "Product added to cart successfully", Toast.LENGTH_SHORT).show();
+                                            Intent in = new Intent(AddToCart.this, ViewCart.class);
+                                            startActivity(in);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(AddToCart.this, "Failed add product to cart", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(AddToCart.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    } else {
-                        Integer stockLeft = Integer.parseInt(stock.getText().toString());
-                        Integer stockUpdate = stockLeft-qty;
-                        ref.child("Product").child(productID).child("stockAvailable").setValue(String.valueOf(stockUpdate));
-                        ref.child("ShoppingCart").child(preferences.getDataUserID(AddToCart.this)).child(productID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(AddToCart.this, "Product added to cart successfully", Toast.LENGTH_SHORT).show();
-                                    Intent in = new Intent(AddToCart.this, ViewCart.class);
-                                    startActivity(in);
-                                    finish();
-                                } else {
-                                    Toast.makeText(AddToCart.this, "Failed add product to cart", Toast.LENGTH_SHORT).show();
-                                }
+                                    }
+                                });
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddToCart.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
 
-                            }
-                        });
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(AddToCart.this,"Something is wrong", Toast.LENGTH_LONG).show();
+
+                        }
+                    });
                 }
+                else
+                    Toast.makeText(AddToCart.this,"Stock insufficient", Toast.LENGTH_LONG).show();
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(AddToCart.this,"Something is wrong", Toast.LENGTH_LONG).show();
+            }
+            else
+                Toast.makeText(AddToCart.this,"Product out of stock", Toast.LENGTH_LONG).show();
 
-                }
-            });
+
 
         }
 
