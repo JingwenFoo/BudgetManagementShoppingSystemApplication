@@ -30,6 +30,17 @@
         android:fitsSystemWindows="false" />
 
 
+    <Button
+        android:id="@+id/exportExcelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Export to Excel"
+        android:layout_below="@+id/graph"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/teal_700"/>
+
+
 
 
 

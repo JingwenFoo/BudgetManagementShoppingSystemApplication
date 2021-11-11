@@ -173,8 +173,19 @@
         android:textColor="@color/black"
         android:layout_toRightOf="@+id/seekBarFresh"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
     />
+
+    <TextView
+        android:id="@+id/freshBud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM 0.00"
+        android:layout_below="@+id/freshPer"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"/>
+
 
     <TextView
         android:id="@+id/grocPer"
@@ -185,8 +196,19 @@
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_toRightOf="@+id/seekBarFresh"
-        android:layout_below="@+id/textGroceries"
+        android:layout_below="@+id/freshBud"
+        android:layout_marginTop="40dp"
         />
+
+    <TextView
+        android:id="@+id/grocBud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM 0.00"
+        android:layout_below="@+id/grocPer"
+        android:layout_toRightOf="@+id/seekBarGroc"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/bevPer"
@@ -197,8 +219,20 @@
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_toRightOf="@+id/seekBarFresh"
-        android:layout_below="@+id/textBeverages"
+        android:layout_below="@+id/grocBud"
+        android:layout_marginTop="30dp"
         />
+
+    <TextView
+        android:id="@+id/bevBud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM 0.00"
+        android:layout_below="@+id/bevPer"
+        android:layout_toRightOf="@+id/seekBarBeverages"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"/>
+
     <TextView
         android:id="@+id/housPer"
         android:layout_width="wrap_content"
@@ -208,8 +242,19 @@
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_toRightOf="@+id/seekBarFresh"
-        android:layout_below="@+id/textHousehold"
+        android:layout_below="@+id/bevBud"
+        android:layout_marginTop="30dp"
         />
+
+    <TextView
+        android:id="@+id/houseBud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM 0.00"
+        android:layout_below="@+id/housPer"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/PCPer"
@@ -220,8 +265,19 @@
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_toRightOf="@+id/seekBarFresh"
-        android:layout_below="@+id/textPCare"
+        android:layout_below="@+id/houseBud"
+        android:layout_marginTop="30dp"
         />
+
+    <TextView
+        android:id="@+id/PCBud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM 0.00"
+        android:layout_below="@+id/PCPer"
+        android:layout_toRightOf="@+id/seekBarPC"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/clothPer"
@@ -232,8 +288,19 @@
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_toRightOf="@+id/seekBarFresh"
-        android:layout_below="@+id/textClothes"
+        android:layout_below="@+id/PCBud"
+        android:layout_marginTop="30dp"
         />
+
+    <TextView
+        android:id="@+id/clothBud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM 0.00"
+        android:layout_below="@+id/clothPer"
+        android:layout_toRightOf="@+id/seekBarFresh"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -243,7 +310,7 @@
         android:layout_below="@+id/textView1"
         android:layout_toRightOf="@+id/freshPer"
         android:textColor="@color/black"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         />
 
     <TextView
@@ -251,7 +318,8 @@
         android:layout_height="wrap_content"
         android:text="%"
         android:textSize="16sp"
-        android:layout_below="@+id/textGroceries"
+        android:layout_below="@+id/freshBud"
+        android:layout_marginTop="40dp"
         android:layout_toRightOf="@+id/grocPer"
         android:textColor="@color/black"
         />
@@ -261,7 +329,8 @@
         android:layout_height="wrap_content"
         android:text="%"
         android:textSize="16sp"
-        android:layout_below="@+id/textBeverages"
+        android:layout_below="@+id/grocBud"
+        android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/bevPer"
         android:textColor="@color/black"
         />
@@ -271,7 +340,8 @@
         android:layout_height="wrap_content"
         android:text="%"
         android:textSize="16sp"
-        android:layout_below="@+id/textHousehold"
+        android:layout_below="@+id/bevBud"
+        android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/housPer"
         android:textColor="@color/black"
         />
@@ -281,7 +351,8 @@
         android:layout_height="wrap_content"
         android:text="%"
         android:textSize="16sp"
-        android:layout_below="@+id/textPCare"
+        android:layout_below="@+id/houseBud"
+        android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/PCPer"
         android:textColor="@color/black"
         />
@@ -291,7 +362,8 @@
         android:layout_height="wrap_content"
         android:text="%"
         android:textSize="16sp"
-        android:layout_below="@+id/textClothes"
+        android:layout_below="@+id/PCBud"
+        android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/clothPer"
         android:textColor="@color/black"
         />
@@ -300,7 +372,7 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Go Shopping"
         android:textSize="16sp"
         android:backgroundTint="#009688"

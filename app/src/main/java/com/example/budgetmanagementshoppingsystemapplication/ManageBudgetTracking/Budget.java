@@ -29,7 +29,7 @@ public class Budget extends AppCompatActivity {
     Button GoShopBtn;
     EditText ed_bud;
     SeekBar sb_fresh, sb_groc, sb_bev, sb_house, sb_cloth, sb_PCare;
-    TextView tv_fresh, tv_groc, tv_bev, tv_house, tv_cloth, tv_PCare;
+    TextView tv_fresh, tv_groc, tv_bev, tv_house, tv_cloth, tv_PCare, freshBud, grocBud, bevBud, houseBud, PCBud, clothBud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,12 @@ public class Budget extends AppCompatActivity {
         tv_house = findViewById(R.id.housPer);
         tv_cloth = findViewById(R.id.clothPer);
         tv_PCare = findViewById(R.id.PCPer);
+        freshBud = findViewById(R.id.freshBud);
+        grocBud = findViewById(R.id.grocBud);
+        bevBud = findViewById(R.id.bevBud);
+        houseBud = findViewById(R.id.houseBud);
+        PCBud = findViewById(R.id.PCBud);
+        clothBud = findViewById(R.id.clothBud);
 
         ed_bud.setText("");
         tv_fresh.setText("0");
@@ -69,6 +75,7 @@ public class Budget extends AppCompatActivity {
                 }
             }
         });
+
         sb_fresh.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressValue;
             int totalPercentage;
@@ -181,8 +188,8 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                 //   preferences.clearFreshBudget(Budget.this);
                     tv_fresh.setText(String.valueOf(progressValue));
+                    freshBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
                     }
 
             });
@@ -301,9 +308,9 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                 //   preferences.clearGroBudget(Budget.this);
                     tv_groc.setText(String.valueOf(progressValue));
-                    }
+                    grocBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
+                }
             });
 
             sb_house.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -419,8 +426,8 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                //    preferences.clearHouseBudget(Budget.this);
                     tv_house.setText(String.valueOf(progressValue));
+                    houseBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
                 }
             });
 
@@ -537,8 +544,8 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                //    preferences.clearBevBudget(Budget.this);
                     tv_bev.setText(String.valueOf(progressValue));
+                    bevBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
                 }
             });
 
@@ -655,8 +662,8 @@ public class Budget extends AppCompatActivity {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                  //  preferences.clearClothBudget(Budget.this);
                     tv_cloth.setText(String.valueOf(progressValue));
+                    clothBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
 
                 }
             });
@@ -775,6 +782,7 @@ public class Budget extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     tv_PCare.setText(String.valueOf(progressValue));
+                    PCBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
                 }
             });
 
