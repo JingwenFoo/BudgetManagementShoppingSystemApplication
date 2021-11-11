@@ -946,13 +946,8 @@ public class Budget extends AppCompatActivity {
         tv_PCare.setText(String.valueOf(preferences.getDataPCareBudget(this)));
         tv_cloth.setText(String.valueOf(preferences.getDataClothBudget(this)));
 
-        freshBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_fresh.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
-        grocBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_groc.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
-        houseBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_house.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
-        bevBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_bev.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
-        PCBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_PCare.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
-        clothBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_cloth.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
-
+        if (preferences.getDataBudget(this).isEmpty())
+            preferences.setDataBudget(this,"0");
         if (preferences.getDataFreshBudget(this).isEmpty())
         {
             preferences.setDataFreshBudget(this,"0");
@@ -990,6 +985,15 @@ public class Budget extends AppCompatActivity {
         sb_bev.setProgress(Integer.parseInt(preferences.getDataBevBudget(this)));
         sb_PCare.setProgress(Integer.parseInt(preferences.getDataPCareBudget(this)));
         sb_cloth.setProgress(Integer.parseInt(preferences.getDataClothBudget(this)));
+
+
+
+        freshBud.setText("RM "+String.format("%.2f",(Float.parseFloat(preferences.getDataFreshBudget(this))*Float.parseFloat(preferences.getDataBudget(this)))/100));
+        grocBud.setText("RM "+String.format("%.2f",(Float.parseFloat(preferences.getDataGroBudget(this))*Float.parseFloat(preferences.getDataBudget(this)))/100));
+        houseBud.setText("RM "+String.format("%.2f",(Float.parseFloat(preferences.getDataHouseBudget(this))*Float.parseFloat(preferences.getDataBudget(this)))/100));
+        bevBud.setText("RM "+String.format("%.2f",(Float.parseFloat(preferences.getDataBevBudget(this))*Float.parseFloat(preferences.getDataBudget(this)))/100));
+        PCBud.setText("RM "+String.format("%.2f",(Float.parseFloat(preferences.getDataPCareBudget(this))*Float.parseFloat(preferences.getDataBudget(this)))/100));
+        clothBud.setText("RM "+String.format("%.2f",(Float.parseFloat(preferences.getDataClothBudget(this))*Float.parseFloat(preferences.getDataBudget(this)))/100));
 
 
     }
