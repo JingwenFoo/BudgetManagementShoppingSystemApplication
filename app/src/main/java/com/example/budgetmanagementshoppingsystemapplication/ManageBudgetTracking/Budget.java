@@ -189,7 +189,14 @@ public class Budget extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     tv_fresh.setText(String.valueOf(progressValue));
-                    freshBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
+                    if (ed_bud.length()!=0)
+                    {
+                        Float freshBudget = (Float.parseFloat(tv_fresh.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100;
+                        freshBud.setText("RM "+(String.format("%.2f",freshBudget)));
+                    }
+                    else
+                        Toast.makeText(Budget.this,"Budget is empty. Please enter your budget.",Toast.LENGTH_SHORT).show();
+
                     }
 
             });
@@ -309,7 +316,14 @@ public class Budget extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     tv_groc.setText(String.valueOf(progressValue));
-                    grocBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
+                    if (ed_bud.length()!=0)
+                    {
+                        Float grocBudget = (Float.parseFloat(tv_groc.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100;
+                        grocBud.setText("RM "+(String.format("%.2f",grocBudget)));
+                    }
+                    else
+                        Toast.makeText(Budget.this,"Budget is empty. Please enter your budget.",Toast.LENGTH_SHORT).show();
+
                 }
             });
 
@@ -427,7 +441,14 @@ public class Budget extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     tv_house.setText(String.valueOf(progressValue));
-                    houseBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
+                    if (ed_bud.length()!=0)
+                    {
+                        Float houseBudget = (Float.parseFloat(tv_house.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100;
+                        houseBud.setText("RM "+(String.format("%.2f",houseBudget)));
+                    }
+                    else
+                        Toast.makeText(Budget.this,"Budget is empty. Please enter your budget.",Toast.LENGTH_SHORT).show();
+
                 }
             });
 
@@ -545,7 +566,14 @@ public class Budget extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     tv_bev.setText(String.valueOf(progressValue));
-                    bevBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
+                    if (ed_bud.length()!=0)
+                    {
+                        Float bevBudget = (Float.parseFloat(tv_bev.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100;
+                        bevBud.setText("RM "+(String.format("%.2f",bevBudget)));
+                    }
+                    else
+                        Toast.makeText(Budget.this,"Budget is empty. Please enter your budget.",Toast.LENGTH_SHORT).show();
+
                 }
             });
 
@@ -663,7 +691,13 @@ public class Budget extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     tv_cloth.setText(String.valueOf(progressValue));
-                    clothBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
+                    if (ed_bud.length()!=0)
+                    {
+                        Float clothBudget = (Float.parseFloat(tv_cloth.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100;
+                        clothBud.setText("RM "+(String.format("%.2f",clothBudget)));
+                    }
+                    else
+                        Toast.makeText(Budget.this,"Budget is empty. Please enter your budget.",Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -782,7 +816,14 @@ public class Budget extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     tv_PCare.setText(String.valueOf(progressValue));
-                    PCBud.setText("RM "+(String.format("%.2f",(progressValue/100)*Float.parseFloat(ed_bud.getText().toString()))));
+                    if (ed_bud.length()!=0)
+                    {
+                        Float PCBudget = (Float.parseFloat(tv_PCare.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100;
+                        PCBud.setText("RM "+(String.format("%.2f",PCBudget)));
+                    }
+                    else
+                        Toast.makeText(Budget.this,"Budget is empty. Please enter your budget.",Toast.LENGTH_SHORT).show();
+
                 }
             });
 
@@ -905,6 +946,13 @@ public class Budget extends AppCompatActivity {
         tv_PCare.setText(String.valueOf(preferences.getDataPCareBudget(this)));
         tv_cloth.setText(String.valueOf(preferences.getDataClothBudget(this)));
 
+        freshBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_fresh.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
+        grocBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_groc.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
+        houseBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_house.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
+        bevBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_bev.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
+        PCBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_PCare.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
+        clothBud.setText("RM "+String.format("%.2f",(Float.parseFloat(tv_cloth.getText().toString())*Float.parseFloat(ed_bud.getText().toString()))/100));
+
         if (preferences.getDataFreshBudget(this).isEmpty())
         {
             preferences.setDataFreshBudget(this,"0");
@@ -942,6 +990,7 @@ public class Budget extends AppCompatActivity {
         sb_bev.setProgress(Integer.parseInt(preferences.getDataBevBudget(this)));
         sb_PCare.setProgress(Integer.parseInt(preferences.getDataPCareBudget(this)));
         sb_cloth.setProgress(Integer.parseInt(preferences.getDataClothBudget(this)));
+
 
     }
 
