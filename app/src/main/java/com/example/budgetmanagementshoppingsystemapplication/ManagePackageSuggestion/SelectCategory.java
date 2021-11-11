@@ -116,6 +116,8 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                 pCareList = new ArrayList<>();
                 clothList = new ArrayList<>();
 
+                List<String> notDisplayItem = new ArrayList<>();
+
                 for (int i = 0; i < selectedCategory.size(); i++) {
                     String selectedCategoryItem = selectedCategory.get(i);
 
@@ -132,6 +134,8 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                         {
                                             if(product.getSellingPrice()+freshTotal<fresh)
                                                 freshList.add(product);
+                                            else
+                                                notDisplayItem.add(selectedCategoryItem);
 
                                         }
 
@@ -139,30 +143,40 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                                         {
                                             if(product.getSellingPrice()+groTotal<groc)
                                                 grocList.add(product);
+                                            else
+                                                notDisplayItem.add(selectedCategoryItem);
                                         }
 
                                         if (product.getCategory().matches("Beverages"))
                                         {
                                             if(product.getSellingPrice()+bevTotal<bev)
                                                 bevList.add(product);
+                                            else
+                                                notDisplayItem.add(selectedCategoryItem);
                                         }
 
                                         if (product.getCategory().matches("Household"))
                                         {
                                             if(product.getSellingPrice()+houseTotal<house)
                                                 houseList.add(product);
+                                            else
+                                                notDisplayItem.add(selectedCategoryItem);
                                         }
 
                                         if (product.getCategory().matches("Personal Care"))
                                         {
                                             if(product.getSellingPrice()+PCareTotal<pCare)
                                                 pCareList.add(product);
+                                            else
+                                                notDisplayItem.add(selectedCategoryItem);
                                         }
 
                                         if (product.getCategory().matches("Clothes"))
                                         {
                                             if(product.getSellingPrice()+clothTotal<cloth)
                                                 clothList.add(product);
+                                            else
+                                                notDisplayItem.add(selectedCategoryItem);
                                         }
                                     }
 
@@ -858,6 +872,7 @@ ArrayList<Product> freshList, grocList, bevList, houseList, pCareList, clothList
                         }
 
                         Intent intent = new Intent(SelectCategory.this, PackageSuggestion.class);
+                        intent.putExtra("selectedItem", (Serializable) notDisplayItem);
                         startActivity(intent);
                     }
 

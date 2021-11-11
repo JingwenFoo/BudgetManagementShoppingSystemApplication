@@ -1,5 +1,6 @@
 package com.example.budgetmanagementshoppingsystemapplication.ManagePackageSuggestion;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
@@ -48,9 +49,11 @@ public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSu
     @Override
     public void onBindViewHolder(@NonNull PackageSuggestionItemAdapter.ViewHolder holder, int position) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Product");
+
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     Product product = dataSnapshot.getValue(Product.class);
@@ -58,8 +61,10 @@ public class PackageSuggestionItemAdapter extends RecyclerView.Adapter<PackageSu
                     {
                         holder.productName.setText(product.getProductName());
                         holder.sellingPrice.setText(String.format("%.2f",product.getSellingPrice()));
+
                     }
                 }
+
 
             }
 

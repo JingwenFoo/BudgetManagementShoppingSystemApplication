@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -43,6 +44,18 @@ public class PackageSuggestion extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference().child("SuggestPackage").child(preferences.getDataUserID(this));
 
         List<SuggestPackage> packageList = new ArrayList<>();
+        Intent intent = getIntent();
+        List<String> notDisplayItem = intent.getStringArrayListExtra("selectedItem");
+
+        if (notDisplayItem.size()!=0)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PackageSuggestion.this);
+            builder.setTitle("Selected Item below is over budget and cannot be suggested");
+            builder.setMessage(notDisplayItem.toString());
+            builder.setPositiveButton("Ok",null);
+            builder.create().show();
+
+        }
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,6 +66,7 @@ public class PackageSuggestion extends AppCompatActivity {
                     String totalPackagePrice = dataSnapshot.child("totalPackagePrice").getValue(String.class);
                     packageList.add(new SuggestPackage(PackageID,totalPackagePrice));
                 }
+
                 adapter = new PackageSuggestionAdapter(PackageSuggestion.this, packageList);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
@@ -63,8 +77,6 @@ public class PackageSuggestion extends AppCompatActivity {
 
             }
         });
-
-
 
     }
 
