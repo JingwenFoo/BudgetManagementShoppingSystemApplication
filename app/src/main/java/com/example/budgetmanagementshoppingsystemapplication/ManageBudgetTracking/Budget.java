@@ -938,6 +938,10 @@ public class Budget extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        if (preferences.getDataBudget(this).matches("0"))
+        {
+            ed_bud.setText("");
+        }
         ed_bud.setText(String.valueOf(preferences.getDataBudget(this)));
         tv_fresh.setText(String.valueOf(preferences.getDataFreshBudget(this)));
         tv_groc.setText(String.valueOf(preferences.getDataGroBudget(this)));
@@ -946,8 +950,13 @@ public class Budget extends AppCompatActivity {
         tv_PCare.setText(String.valueOf(preferences.getDataPCareBudget(this)));
         tv_cloth.setText(String.valueOf(preferences.getDataClothBudget(this)));
 
+
         if (preferences.getDataBudget(this).isEmpty())
+        {
             preferences.setDataBudget(this,"0");
+            ed_bud.setText("");
+        }
+
         if (preferences.getDataFreshBudget(this).isEmpty())
         {
             preferences.setDataFreshBudget(this,"0");
